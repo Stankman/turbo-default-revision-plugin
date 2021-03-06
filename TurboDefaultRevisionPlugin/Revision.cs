@@ -6,6 +6,7 @@ using Turbo.Packets.Revisions;
 using Turbo.Packets.Serializers;
 using TurboDefaultRevisionPlugin.Headers;
 using TurboDefaultRevisionPlugin.Parsers.Handshake;
+using TurboDefaultRevisionPlugin.Parsers.Room.Action;
 using TurboDefaultRevisionPlugin.Serializers.Handshake;
 
 namespace TurboDefaultRevisionPlugin
@@ -28,12 +29,24 @@ namespace TurboDefaultRevisionPlugin
 
         private void RegisterParsers()
         {
+            #region Handshake
             Parsers.Add(Incoming.ClientHello, new ClientHelloParser());
             Parsers.Add(Incoming.SSOTicket, new SSOTicketParser());
             Parsers.Add(Incoming.Pong, new PongParser());
             Parsers.Add(Incoming.InfoRetrieve, new InfoRetrieveParser());
             Parsers.Add(Incoming.UniqueId, new UniqueIdParser());
             Parsers.Add(Incoming.VersionCheck, new VersionCheckParser());
+            Parsers.Add(Incoming.CompleteDiffieHandshake, new CompleteDiffieHandshakeParser());
+            Parsers.Add(Incoming.Disconnect, new DisconnectParser());
+            Parsers.Add(Incoming.InitDiffieHandshake, new InitDiffieHandshakeParser());
+            #endregion
+
+            #region Room
+            #region Action
+            Parsers.Add(Incoming.KickUser, new KickUserParser());
+            Parsers.Add(Incoming.MuteUser, new MuteUserParser());
+            #endregion
+            #endregion
         }
 
         private void RegisterSerializers()

@@ -27,7 +27,8 @@ namespace TurboDefaultRevisionPlugin
 
             _revisionManager.DefaultRevision = myRevision;
 
-            _logger.LogInformation($"{GetType().Name} - Registered revisions: {myRevision.Revision} and {nitroRev}");
+            _logger.LogInformation($"{nameof(TurboDefaultRevisionPlugin)} - Registered revision: {myRevision.Revision}");
+            _logger.LogInformation($"{nameof(TurboDefaultRevisionPlugin)} - Registered revision: {nitroRev}");
         }
     }
 }
