@@ -1,5 +1,4 @@
-﻿using Turbo.Packets.Headers;
-using Turbo.Packets.Outgoing;
+﻿using Turbo.Packets.Outgoing;
 using Turbo.Packets.Outgoing.Handshake;
 using Turbo.Packets.Serializers;
 using TurboDefaultRevisionPlugin.Headers;
