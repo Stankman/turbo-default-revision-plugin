@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="Turbo.Packets">
+      <HintPath>..\..\turbo\Turbo\bin\Debug\net5.0\Turbo.Packets.dll</HintPath>
+    </Reference>
+    <Reference Include="Turbo.Plugins">
+      <HintPath>..\..\turbo\Turbo\bin\Debug\net5.0\Turbo.Plugins.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Parsers\" />
+    <Folder Include="Serializers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="5.0.0" />
+  </ItemGroup>
+
+</Project>
