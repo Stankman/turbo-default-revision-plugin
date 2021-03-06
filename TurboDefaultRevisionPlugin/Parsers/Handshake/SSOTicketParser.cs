@@ -4,7 +4,7 @@ using Turbo.Packets.Parsers;
 
 namespace TurboDefaultRevisionPlugin.Parsers.Handshake
 {
-    class SSOTicketParser : AbstractParser<SSOTicketMessage>
+    public class SSOTicketParser : AbstractParser<SSOTicketMessage>
     {
         public override IMessageEvent Parse(IClientPacket packet)
         {

@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31019.35
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TurboDefaultRevisionPlugin", "TurboDefaultRevisionPlugin\TurboDefaultRevisionPlugin.csproj", "{24B90E2F-1A81-4D24-B47A-2DCAF8CA62BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TurboDefaultRevisionPlugin", "TurboDefaultRevisionPlugin\TurboDefaultRevisionPlugin.csproj", "{24B90E2F-1A81-4D24-B47A-2DCAF8CA62BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TurboDefaultRevisionPlugin.Tests", "TurboDefaultRevisionPlugin.Tests\TurboDefaultRevisionPlugin.Tests.csproj", "{A7CDE0A8-2DFA-4DB4-9630-C6F16683B9E7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{24B90E2F-1A81-4D24-B47A-2DCAF8CA62BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24B90E2F-1A81-4D24-B47A-2DCAF8CA62BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{24B90E2F-1A81-4D24-B47A-2DCAF8CA62BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7CDE0A8-2DFA-4DB4-9630-C6F16683B9E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7CDE0A8-2DFA-4DB4-9630-C6F16683B9E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7CDE0A8-2DFA-4DB4-9630-C6F16683B9E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7CDE0A8-2DFA-4DB4-9630-C6F16683B9E7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
