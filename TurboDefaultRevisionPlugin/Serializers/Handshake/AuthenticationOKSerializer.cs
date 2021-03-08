@@ -9,12 +9,12 @@ namespace TurboDefaultRevisionPlugin.Serializers.Handshake
     {
         public AuthenticationOKSerializer() : base(Outgoing.AuthenticationOK)
         {
-            
+
         }
 
         protected override void Serialize(IServerPacket packet, AuthenticationOKMessage message)
         {
-            
+
         }
     }
 }

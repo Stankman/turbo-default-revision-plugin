@@ -11,6 +11,9 @@
     <Reference Include="Turbo.Plugins">
       <HintPath>..\..\turbo\Turbo\bin\Debug\net5.0\Turbo.Plugins.dll</HintPath>
     </Reference>
+	<Reference Include="Turbo.Core">
+		<HintPath>..\..\turbo\Turbo\bin\Debug\net5.0\Turbo.Core.dll</HintPath>
+	</Reference>
   </ItemGroup>
 
   <ItemGroup>

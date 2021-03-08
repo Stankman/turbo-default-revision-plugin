@@ -14,7 +14,7 @@ namespace TurboDefaultRevisionPlugin.Serializers.Handshake
 
         protected override void Serialize(IServerPacket packet, PingMessage message)
         {
-            
+
         }
     }
 }

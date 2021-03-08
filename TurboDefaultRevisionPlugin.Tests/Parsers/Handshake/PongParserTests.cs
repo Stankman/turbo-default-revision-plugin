@@ -1,10 +1,10 @@
-﻿using Turbo.Packets.Incoming;
+﻿using AutoFixture;
+using DotNetty.Buffers;
+using Turbo.Packets.Incoming;
 using Turbo.Packets.Incoming.Handshake;
 using Turbo.Packets.Parsers;
-using Xunit;
-using DotNetty.Buffers;
-using AutoFixture;
 using TurboDefaultRevisionPlugin.Parsers.Handshake;
+using Xunit;
 
 namespace Turbo.Packets.Tests.Parsers.Handshake
 {
