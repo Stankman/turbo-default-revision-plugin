@@ -1,8 +1,8 @@
 ﻿using AutoFixture;
 using DotNetty.Buffers;
+using Turbo.Core.Packets.Messages;
 using Turbo.Packets.Incoming;
 using Turbo.Packets.Incoming.Handshake;
-using Turbo.Packets.Parsers;
 using TurboDefaultRevisionPlugin.Parsers.Handshake;
 using Xunit;
 

@@ -1,9 +1,9 @@
 ﻿using AutoFixture;
 using DotNetty.Buffers;
 using System.Text;
+using Turbo.Core.Packets.Messages;
 using Turbo.Packets.Incoming;
 using Turbo.Packets.Incoming.Navigator;
-using Turbo.Packets.Parsers;
 using TurboDefaultRevisionPlugin.Parsers.Navigator;
 using Xunit;
 

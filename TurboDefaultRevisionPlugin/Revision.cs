@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using Turbo.Core.Packets.Messages;
+using Turbo.Core.Packets.Revisions;
 using Turbo.Packets.Outgoing.Handshake;
-using Turbo.Packets.Parsers;
-using Turbo.Packets.Revisions;
-using Turbo.Packets.Serializers;
 using TurboDefaultRevisionPlugin.Headers;
 using TurboDefaultRevisionPlugin.Parsers.Handshake;
 using TurboDefaultRevisionPlugin.Parsers.Navigator;

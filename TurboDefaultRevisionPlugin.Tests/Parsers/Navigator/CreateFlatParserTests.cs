@@ -1,10 +1,10 @@
 ﻿using AutoFixture;
 using DotNetty.Buffers;
 using System.Text;
-using Turbo.Core.Navigator.Enums;
+using Turbo.Core.Game.Navigator.Constants;
+using Turbo.Core.Packets.Messages;
 using Turbo.Packets.Incoming;
 using Turbo.Packets.Incoming.Navigator;
-using Turbo.Packets.Parsers;
 using TurboDefaultRevisionPlugin.Parsers.Navigator;
 using Xunit;
 
@@ -51,7 +51,7 @@ namespace TurboDefaultRevisionPlugin.Tests.Parsers.Navigator
             var packet = new ClientPacket(_fixture.Create<int>(), _buffer);
 
             // Act
-            var result = (CreateFlatMessage)_sut.Parse(packet);
+            var result = (CreateFlatMessage) _sut.Parse(packet);
 
             // Assert
             Assert.Equal(flatName, result.FlatName);
