@@ -63,6 +63,7 @@ namespace TurboDefaultRevisionPlugin
             Parsers.Add(Incoming.MyRoomRightsSearch, new MyRoomRightsSearchParser());
             Parsers.Add(Incoming.MyRoomsSearch, new MyRoomsSearchParser());
             Parsers.Add(Incoming.NavigatorAddCollapsedCategory, new NavigatorAddCollapsedCategoryParser());
+            Parsers.Add(Incoming.NavigatorAddSavedSearch, new NavigatorAddSavedSearchParser());
             #endregion
         }
 
