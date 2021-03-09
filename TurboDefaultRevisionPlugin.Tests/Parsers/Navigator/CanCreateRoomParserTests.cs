@@ -1,37 +1,40 @@
 ﻿using AutoFixture;
 using DotNetty.Buffers;
+using System.Text;
 using Turbo.Core.Packets.Messages;
 using Turbo.Packets.Incoming;
-using Turbo.Packets.Incoming.Handshake;
-using TurboDefaultRevisionPlugin.Parsers.Handshake;
+using Turbo.Packets.Incoming.Navigator;
+using TurboDefaultRevisionPlugin.Parsers.Navigator;
 using Xunit;
 
 namespace Turbo.Packets.Tests.Parsers.Handshake
 {
-    public class PongParserTests
+    public class CanCreateRoomParserTests
     {
         private readonly IFixture _fixture;
+        private readonly IByteBuffer _buffer;
         private readonly IParser _sut;
 
-        public PongParserTests()
+        public CanCreateRoomParserTests()
         {
             _fixture = new Fixture();
-            _sut = new PongParser();
+            _buffer = Unpooled.Buffer();
+            _sut = new CanCreateRoomParser();
         }
 
         [Fact]
-        private void Parse_WithClientPacket_ReturnsPongMessage()
+        private void Parse_WithClientPacket_CanCreateRoomMessage()
         {
             // Arrange
             var packetHeader = _fixture.Create<int>();
-            IByteBuffer buffer = Unpooled.Buffer();
-            var packet = new ClientPacket(packetHeader, buffer);
+
+            var packet = new ClientPacket(packetHeader, _buffer);
 
             // Act
             var result = _sut.Parse(packet);
 
             // Assert
-            Assert.True(result is PongMessage);
+            Assert.IsType<CanCreateRoomMessage>(result);
         }
     }
 }

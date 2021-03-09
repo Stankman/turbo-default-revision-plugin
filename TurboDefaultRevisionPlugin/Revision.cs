@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using Turbo.Core.Packets.Messages;
+using Turbo.Core.Packets.Revisions;
 using Turbo.Packets.Outgoing.Handshake;
-using Turbo.Packets.Parsers;
-using Turbo.Packets.Revisions;
-using Turbo.Packets.Serializers;
 using TurboDefaultRevisionPlugin.Headers;
 using TurboDefaultRevisionPlugin.Parsers.Handshake;
+using TurboDefaultRevisionPlugin.Parsers.Navigator;
 using TurboDefaultRevisionPlugin.Parsers.Room.Action;
 using TurboDefaultRevisionPlugin.Serializers.Handshake;
 
@@ -46,6 +46,13 @@ namespace TurboDefaultRevisionPlugin
             Parsers.Add(Incoming.KickUser, new KickUserParser());
             Parsers.Add(Incoming.MuteUser, new MuteUserParser());
             #endregion
+            #endregion
+
+            #region Navigator
+            Parsers.Add(Incoming.CanCreateRoom, new CanCreateRoomParser());
+            Parsers.Add(Incoming.CreateFlat, new CreateFlatParser());
+            Parsers.Add(Incoming.DeleteRoom, new DeleteRoomParser());
+            Parsers.Add(Incoming.ForwardToSomeRoom, new ForwardToSomeRoomParser());
             #endregion
         }
 

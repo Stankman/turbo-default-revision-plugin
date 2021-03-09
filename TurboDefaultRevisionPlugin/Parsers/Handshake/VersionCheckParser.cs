@@ -1,4 +1,4 @@
-﻿using Turbo.Packets.Incoming;
+﻿using Turbo.Core.Packets.Messages;
 using Turbo.Packets.Incoming.Handshake;
 using Turbo.Packets.Parsers;
 
@@ -6,14 +6,11 @@ namespace TurboDefaultRevisionPlugin.Parsers.Handshake
 {
     public class VersionCheckParser : AbstractParser<VersionCheckMessage>
     {
-        public override IMessageEvent Parse(IClientPacket packet)
+        public override IMessageEvent Parse(IClientPacket packet) => new VersionCheckMessage
         {
-            return new VersionCheckMessage
-            {
-                ClientID = packet.PopInt(),
-                ClientURL = packet.PopString(),
-                ExternalVariablesURL = packet.PopString()
-            };
-        }
+            ClientID = packet.PopInt(),
+            ClientURL = packet.PopString(),
+            ExternalVariablesURL = packet.PopString()
+        };
     }
 }

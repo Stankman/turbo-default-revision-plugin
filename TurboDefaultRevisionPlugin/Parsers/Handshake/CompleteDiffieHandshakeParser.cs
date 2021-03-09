@@ -1,5 +1,4 @@
-﻿using System;
-using Turbo.Packets.Incoming;
+﻿using Turbo.Core.Packets.Messages;
 using Turbo.Packets.Incoming.Handshake;
 using Turbo.Packets.Parsers;
 
@@ -7,12 +6,9 @@ namespace TurboDefaultRevisionPlugin.Parsers.Handshake
 {
     public class CompleteDiffieHandshakeParser : AbstractParser<CompleteDiffieHandshakeMessage>
     {
-        public override IMessageEvent Parse(IClientPacket packet)
+        public override IMessageEvent Parse(IClientPacket packet) => new CompleteDiffieHandshakeMessage
         {
-            return new CompleteDiffieHandshakeMessage
-            {
-                PublicKey = packet.PopString()
-            };
-        }
+            PublicKey = packet.PopString()
+        };
     }
 }

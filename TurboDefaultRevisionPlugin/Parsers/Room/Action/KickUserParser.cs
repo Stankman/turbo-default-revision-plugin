@@ -1,4 +1,4 @@
-﻿using Turbo.Packets.Incoming;
+﻿using Turbo.Core.Packets.Messages;
 using Turbo.Packets.Incoming.Room.Action;
 using Turbo.Packets.Parsers;
 
@@ -6,12 +6,9 @@ namespace TurboDefaultRevisionPlugin.Parsers.Room.Action
 {
     public class KickUserParser : AbstractParser<KickUserMessage>
     {
-        public override IMessageEvent Parse(IClientPacket packet)
+        public override IMessageEvent Parse(IClientPacket packet) => new KickUserMessage
         {
-            return new KickUserMessage
-            {
-                UserId = packet.PopInt()
-            };
-        }
+            UserId = packet.PopInt()
+        };
     }
 }

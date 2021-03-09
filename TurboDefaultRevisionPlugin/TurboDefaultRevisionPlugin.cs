@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
-using System;
+using Turbo.Core.Packets.Revisions;
+using Turbo.Core.Plugins;
 using Turbo.Packets.Revisions;
-using Turbo.Plugins;
 
 namespace TurboDefaultRevisionPlugin
 {
@@ -10,9 +10,9 @@ namespace TurboDefaultRevisionPlugin
         private readonly IRevisionManager _revisionManager;
         private readonly ILogger<TurboDefaultRevisionPlugin> _logger;
 
-        public string PluginName => "Default Revision Plugin";
+        public string PluginName => "Default Turbo Revision Plugin";
 
-        public string PluginAuthor => "ur mom";
+        public string PluginAuthor => "Krews";
 
         public TurboDefaultRevisionPlugin(IRevisionManager revisionManager, ILogger<TurboDefaultRevisionPlugin> logger)
         {

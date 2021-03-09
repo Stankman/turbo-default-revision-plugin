@@ -1,4 +1,4 @@
-﻿using Turbo.Packets.Outgoing;
+﻿using Turbo.Core.Packets.Messages;
 using Turbo.Packets.Outgoing.Handshake;
 using Turbo.Packets.Serializers;
 using TurboDefaultRevisionPlugin.Headers;
@@ -14,7 +14,7 @@ namespace TurboDefaultRevisionPlugin.Serializers.Handshake
 
         protected override void Serialize(IServerPacket packet, PingMessage message)
         {
-            
+
         }
     }
 }
