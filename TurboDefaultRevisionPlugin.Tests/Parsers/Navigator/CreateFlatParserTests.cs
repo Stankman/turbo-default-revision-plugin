@@ -1,8 +1,5 @@
 ﻿using AutoFixture;
-using DotNetty.Buffers;
-using System.Text;
 using Turbo.Core.Game.Navigator.Constants;
-using Turbo.Core.Packets.Messages;
 using Turbo.Packets.Incoming;
 using Turbo.Packets.Incoming.Navigator;
 using TurboDefaultRevisionPlugin.Parsers.Navigator;
@@ -10,18 +7,11 @@ using Xunit;
 
 namespace TurboDefaultRevisionPlugin.Tests.Parsers.Navigator
 {
-    public class CreateFlatParserTests
+    public class CreateFlatParserTests : AbstractParserTestBase<CreateFlatParser, CreateFlatMessage>
     {
-        private readonly IFixture _fixture;
-        private readonly IByteBuffer _buffer;
-        private readonly Encoding _encoding = Encoding.UTF8;
-        private readonly IParser _sut;
-
-        public CreateFlatParserTests()
+        public CreateFlatParserTests() : base()
         {
-            _fixture = new Fixture();
-            _buffer = Unpooled.Buffer();
-            _sut = new CreateFlatParser();
+
         }
 
         [Theory]
@@ -38,15 +28,12 @@ namespace TurboDefaultRevisionPlugin.Tests.Parsers.Navigator
             var categoryID = _fixture.Create<int>();
             var maxPlayers = _fixture.Create<int>();
 
-            _buffer.WriteShort(_encoding.GetByteCount(flatName));
-            _buffer.WriteString(flatName, _encoding);
-            _buffer.WriteShort(_encoding.GetByteCount(flatDescription));
-            _buffer.WriteString(flatDescription, _encoding);
-            _buffer.WriteShort(_encoding.GetByteCount(flatModelName));
-            _buffer.WriteString(flatModelName, _encoding);
-            _buffer.WriteInt(categoryID);
-            _buffer.WriteInt(maxPlayers);
-            _buffer.WriteInt(tradeType);
+            WriteString(flatName);
+            WriteString(flatDescription);
+            WriteString(flatModelName);
+            WriteInt(categoryID);
+            WriteInt(maxPlayers);
+            WriteInt(tradeType);
 
             var packet = new ClientPacket(_fixture.Create<int>(), _buffer);
 

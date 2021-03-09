@@ -9,17 +9,11 @@ using Xunit;
 
 namespace TurboDefaultRevisionPlugin.Tests.Parsers.Navigator
 {
-    public class DeleteRoomParserTests
+    public class DeleteRoomParserTests : AbstractParserTestBase<DeleteRoomParser, DeleteRoomMessage>
     {
-        private readonly IFixture _fixture;
-        private readonly IByteBuffer _buffer;
-        private readonly IParser _sut;
-
-        public DeleteRoomParserTests()
+        public DeleteRoomParserTests() : base()
         {
-            _fixture = new Fixture();
-            _buffer = Unpooled.Buffer();
-            _sut = new DeleteRoomParser();
+
         }
 
         [Fact]
@@ -28,7 +22,7 @@ namespace TurboDefaultRevisionPlugin.Tests.Parsers.Navigator
             // Arrange
             var roomId = _fixture.Create<int>();
 
-            _buffer.WriteInt(roomId);
+            WriteInt(roomId);
 
             var packet = new ClientPacket(_fixture.Create<int>(), _buffer);
 

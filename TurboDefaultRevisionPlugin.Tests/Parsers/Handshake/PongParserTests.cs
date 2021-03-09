@@ -1,37 +1,14 @@
-﻿using AutoFixture;
-using DotNetty.Buffers;
-using Turbo.Core.Packets.Messages;
-using Turbo.Packets.Incoming;
-using Turbo.Packets.Incoming.Handshake;
+﻿using Turbo.Packets.Incoming.Handshake;
 using TurboDefaultRevisionPlugin.Parsers.Handshake;
-using Xunit;
+using TurboDefaultRevisionPlugin.Tests.Parsers;
 
 namespace Turbo.Packets.Tests.Parsers.Handshake
 {
-    public class PongParserTests
+    public class PongParserTests : EmptyPacketParserTestBase<PongParser, PongMessage>
     {
-        private readonly IFixture _fixture;
-        private readonly IParser _sut;
-
-        public PongParserTests()
+        public PongParserTests() : base()
         {
-            _fixture = new Fixture();
-            _sut = new PongParser();
-        }
 
-        [Fact]
-        private void Parse_WithClientPacket_ReturnsPongMessage()
-        {
-            // Arrange
-            var packetHeader = _fixture.Create<int>();
-            IByteBuffer buffer = Unpooled.Buffer();
-            var packet = new ClientPacket(packetHeader, buffer);
-
-            // Act
-            var result = _sut.Parse(packet);
-
-            // Assert
-            Assert.True(result is PongMessage);
         }
     }
 }

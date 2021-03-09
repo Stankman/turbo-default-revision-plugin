@@ -1,44 +1,32 @@
 ﻿using AutoFixture;
-using DotNetty.Buffers;
-using System.Text;
-using Turbo.Core.Packets.Messages;
 using Turbo.Packets.Incoming;
 using Turbo.Packets.Incoming.Handshake;
 using TurboDefaultRevisionPlugin.Parsers.Handshake;
+using TurboDefaultRevisionPlugin.Tests.Parsers;
 using Xunit;
 
 namespace Turbo.Packets.Tests.Parsers.Handshake
 {
-    public class VersionCheckParserTests
+    public class VersionCheckParserTests : AbstractParserTestBase<VersionCheckParser, VersionCheckMessage>
     {
-        private readonly IFixture _fixture;
-        private readonly IParser _sut;
-
-        public VersionCheckParserTests()
+        public VersionCheckParserTests() : base()
         {
-            _fixture = new Fixture();
-            _sut = new VersionCheckParser();
+
         }
 
         [Fact]
         private void Parse_WithClientPacket_VersionCheckMessage()
         {
             // Arrange
-            var packetHeader = _fixture.Create<int>();
             var clientId = _fixture.Create<int>();
             var clientUrl = _fixture.Create<string>();
             var externalVariablesUrl = _fixture.Create<string>();
 
-            IByteBuffer buffer = Unpooled.Buffer();
-            var encoding = Encoding.UTF8;
+            WriteInt(clientId);
+            WriteString(clientUrl);
+            WriteString(externalVariablesUrl);
 
-            buffer.WriteInt(clientId);
-            buffer.WriteShort(encoding.GetByteCount(clientUrl));
-            buffer.WriteString(clientUrl, encoding);
-            buffer.WriteShort(encoding.GetByteCount(externalVariablesUrl));
-            buffer.WriteString(externalVariablesUrl, encoding);
-
-            var packet = new ClientPacket(packetHeader, buffer);
+            var packet = new ClientPacket(_fixture.Create<int>(), _buffer);
 
             // Act
             var result = (VersionCheckMessage)_sut.Parse(packet);
