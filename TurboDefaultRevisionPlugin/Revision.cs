@@ -53,6 +53,9 @@ namespace TurboDefaultRevisionPlugin
             Parsers.Add(Incoming.CreateFlat, new CreateFlatParser());
             Parsers.Add(Incoming.DeleteRoom, new DeleteRoomParser());
             Parsers.Add(Incoming.ForwardToSomeRoom, new ForwardToSomeRoomParser());
+            Parsers.Add(Incoming.GetPopularRoomTags, new GetPopularRoomTagsParser());
+            Parsers.Add(Incoming.GetUserEventCats, new GetUserEventCatsParser());
+            Parsers.Add(Incoming.GetUserFlatCats, new GetUserFlatCatsParser());
             #endregion
         }
 
