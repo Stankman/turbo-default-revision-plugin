@@ -56,6 +56,13 @@ namespace TurboDefaultRevisionPlugin
             Parsers.Add(Incoming.GetPopularRoomTags, new GetPopularRoomTagsParser());
             Parsers.Add(Incoming.GetUserEventCats, new GetUserEventCatsParser());
             Parsers.Add(Incoming.GetUserFlatCats, new GetUserFlatCatsParser());
+            Parsers.Add(Incoming.MyFavouriteRoomsSearch, new MyFavouriteRoomsSearchParser());
+            Parsers.Add(Incoming.MyFriendsRoomsSearch, new MyFriendsRoomsSearchParser());
+            Parsers.Add(Incoming.MyGuildBasesSearch, new MyGuildBasesSearchParser());
+            Parsers.Add(Incoming.MyRoomHistorySearch, new MyRoomHistorySearchParser());
+            Parsers.Add(Incoming.MyRoomRightsSearch, new MyRoomRightsSearchParser());
+            Parsers.Add(Incoming.MyRoomsSearch, new MyRoomsSearchParser());
+            Parsers.Add(Incoming.NavigatorAddCollapsedCategory, new NavigatorAddCollapsedCategoryParser());
             #endregion
         }
 
