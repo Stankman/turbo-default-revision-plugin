@@ -68,7 +68,7 @@ namespace TurboDefaultRevisionPlugin
             Parsers.Add(Incoming.NavigatorRemoveCollapsedCategory, new NavigatorRemoveCollapsedCategoryParser());
             Parsers.Add(Incoming.NavigatorSetSearchCodeViewMode, new NavigatorSetSearchCodeViewModeParser());
             Parsers.Add(Incoming.NewNavigatorInit, new NewNavigatorInitParser());
-            Parsers.Add(Incoming.NavigatorAddSavedSearch, new NavigatorAddSavedSearchParser());
+            Parsers.Add(Incoming.NewNavigatorSearch, new NewNavigatorSearchParser());
             #endregion
         }
 
