@@ -64,6 +64,15 @@ namespace TurboDefaultRevisionPlugin
             Parsers.Add(Incoming.MyRoomsSearch, new MyRoomsSearchParser());
             Parsers.Add(Incoming.NavigatorAddCollapsedCategory, new NavigatorAddCollapsedCategoryParser());
             Parsers.Add(Incoming.NavigatorAddSavedSearch, new NavigatorAddSavedSearchParser());
+            Parsers.Add(Incoming.NavigatorDeleteSavedSearch, new NavigatorDeleteSavedSearchParser());
+            Parsers.Add(Incoming.NavigatorRemoveCollapsedCategory, new NavigatorRemoveCollapsedCategoryParser());
+            Parsers.Add(Incoming.NavigatorSetSearchCodeViewMode, new NavigatorSetSearchCodeViewModeParser());
+            Parsers.Add(Incoming.NewNavigatorInit, new NewNavigatorInitParser());
+            Parsers.Add(Incoming.NewNavigatorSearch, new NewNavigatorSearchParser());
+            Parsers.Add(Incoming.PopularRoomsSearch, new PopularRoomsSearchParser());
+            Parsers.Add(Incoming.RoomsWhereMyFriendsAreSearch, new RoomsWhereMyFriendsAreSearchParser());
+            Parsers.Add(Incoming.RoomsWithHighestScoreSearch, new RoomsWithHighestScoreSearchParser());
+            Parsers.Add(Incoming.SetNewNavigatorWindowPreferences, new SetNewNavigatorWindowPreferencesParser());
             #endregion
         }
 

@@ -15,10 +15,10 @@ namespace TurboDefaultRevisionPlugin.Tests.Parsers.Navigator
         }
 
         [Theory]
-        [InlineData(0, RoomTradeSetting.TRADING_NOT_ALLOWED)]
-        [InlineData(1, RoomTradeSetting.TRADING_ROOM_OWNER_AND_RIGHTS)]
-        [InlineData(2, RoomTradeSetting.TRADING_ALLOWED)]
-        [InlineData(3, RoomTradeSetting.TRADING_NOT_ALLOWED)]
+        [InlineData(0, RoomTradeSetting.TradingNotAllowed)]
+        [InlineData(1, RoomTradeSetting.TradingRoomOwnerAndRights)]
+        [InlineData(2, RoomTradeSetting.TradingAllowed)]
+        [InlineData(3, RoomTradeSetting.TradingNotAllowed)]
         private void Parse_WithClientPacket_CreateFlatMessage(int tradeType, RoomTradeSetting expectedSetting)
         {
             // Arrange

@@ -33,5 +33,6 @@ namespace TurboDefaultRevisionPlugin.Tests.Parsers
 
         protected void WriteInt(int x) => _buffer.WriteInt(x);
         protected void WriteShort(short x) => _buffer.WriteShort(x);
+        protected void WriteBool(bool x) => _buffer.WriteBoolean(x);
     }
 }
