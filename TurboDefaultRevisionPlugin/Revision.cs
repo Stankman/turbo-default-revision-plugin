@@ -64,6 +64,7 @@ namespace TurboDefaultRevisionPlugin
             Parsers.Add(Incoming.MyRoomsSearch, new MyRoomsSearchParser());
             Parsers.Add(Incoming.NavigatorAddCollapsedCategory, new NavigatorAddCollapsedCategoryParser());
             Parsers.Add(Incoming.NavigatorAddSavedSearch, new NavigatorAddSavedSearchParser());
+            Parsers.Add(Incoming.NavigatorDeleteSavedSearch, new NavigatorDeleteSavedSearchParser());
             #endregion
         }
 
