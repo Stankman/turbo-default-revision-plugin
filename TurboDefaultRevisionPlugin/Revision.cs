@@ -69,6 +69,7 @@ namespace TurboDefaultRevisionPlugin
             Parsers.Add(Incoming.NavigatorSetSearchCodeViewMode, new NavigatorSetSearchCodeViewModeParser());
             Parsers.Add(Incoming.NewNavigatorInit, new NewNavigatorInitParser());
             Parsers.Add(Incoming.NewNavigatorSearch, new NewNavigatorSearchParser());
+            Parsers.Add(Incoming.PopularRoomsSearch, new PopularRoomsSearchParser());
             #endregion
         }
 
