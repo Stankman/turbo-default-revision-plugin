@@ -1,4 +1,5 @@
 ﻿using AutoFixture;
+using Turbo.Core.Game.Navigator.Constants;
 using Turbo.Packets.Incoming;
 using Turbo.Packets.Incoming.Navigator;
 using TurboDefaultRevisionPlugin.Parsers.Navigator;
@@ -12,12 +13,14 @@ namespace TurboDefaultRevisionPlugin.Tests.Parsers.Navigator
         {
         }
 
-        [Fact]
-        private void Parse_WithClientPacket_NavigatorSetSearchCodeViewModeMessage()
+        [Theory]
+        [InlineData(0, NavigatorResultsMode.ROWS)]
+        [InlineData(1, NavigatorResultsMode.TILES)]
+        [InlineData(2, NavigatorResultsMode.ROWS)]
+        private void Parse_WithClientPacket_NavigatorSetSearchCodeViewModeMessage(int viewMode, NavigatorResultsMode expectedMode)
         {
             // Arrange
             var categoryName = _fixture.Create<string>();
-            var viewMode = _fixture.Create<int>();
 
             WriteString(categoryName);
             WriteInt(viewMode);
@@ -29,7 +32,7 @@ namespace TurboDefaultRevisionPlugin.Tests.Parsers.Navigator
 
             // Assert
             Assert.Equal(categoryName, result.CategoryName);
-            Assert.Equal(viewMode, result.ViewMode);
+            Assert.Equal(expectedMode, result.ViewMode);
         }
     }
 }
