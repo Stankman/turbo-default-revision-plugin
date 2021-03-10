@@ -20,13 +20,13 @@ namespace TurboDefaultRevisionPlugin.Parsers.Navigator
             switch (tradeType)
             {
                 case 1:
-                    tradeSetting = RoomTradeSetting.TRADING_ROOM_OWNER_AND_RIGHTS;
+                    tradeSetting = RoomTradeSetting.TradingRoomOwnerAndRights;
                     break;
                 case 2:
-                    tradeSetting = RoomTradeSetting.TRADING_ALLOWED;
+                    tradeSetting = RoomTradeSetting.TradingAllowed;
                     break;
                 default:
-                    tradeSetting = RoomTradeSetting.TRADING_NOT_ALLOWED;
+                    tradeSetting = RoomTradeSetting.TradingNotAllowed;
                     break;
             }
 

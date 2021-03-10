@@ -20,10 +20,10 @@ namespace TurboDefaultRevisionPlugin.Parsers.Navigator
             switch(resultsModeInt)
             {
                 case 1:
-                    resultsMode = NavigatorResultsMode.TILES;
+                    resultsMode = NavigatorResultsMode.Tiles;
                     break;
                 default:
-                    resultsMode = NavigatorResultsMode.ROWS;
+                    resultsMode = NavigatorResultsMode.Rows;
                     break;
             }
 

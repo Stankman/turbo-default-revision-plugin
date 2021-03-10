@@ -14,9 +14,9 @@ namespace TurboDefaultRevisionPlugin.Tests.Parsers.Navigator
         }
 
         [Theory]
-        [InlineData(0, NavigatorResultsMode.ROWS)]
-        [InlineData(1, NavigatorResultsMode.TILES)]
-        [InlineData(2, NavigatorResultsMode.ROWS)]
+        [InlineData(0, NavigatorResultsMode.Rows)]
+        [InlineData(1, NavigatorResultsMode.Tiles)]
+        [InlineData(2, NavigatorResultsMode.Rows)]
         private void Parse_WithClientPacket_SetNewNavigatorWindowPreferencesMessage(int resultsMode, NavigatorResultsMode expectedMode)
         {
             // Arrange
