@@ -70,6 +70,7 @@ namespace TurboDefaultRevisionPlugin
             Parsers.Add(Incoming.NewNavigatorInit, new NewNavigatorInitParser());
             Parsers.Add(Incoming.NewNavigatorSearch, new NewNavigatorSearchParser());
             Parsers.Add(Incoming.PopularRoomsSearch, new PopularRoomsSearchParser());
+            Parsers.Add(Incoming.RoomsWhereMyFriendsAreSearch, new RoomsWhereMyFriendsAreSearchParser());
             #endregion
         }
 
