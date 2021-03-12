@@ -1,13 +1,12 @@
 ﻿using Turbo.Core.Packets.Messages;
 using Turbo.Packets.Outgoing.Handshake;
 using Turbo.Packets.Serializers;
-using TurboDefaultRevisionPlugin.Headers;
 
 namespace TurboDefaultRevisionPlugin.Serializers.Handshake
 {
     class UniqueMachineIdSerializer : AbstractSerializer<UniqueMachineIdMessage>
     {
-        public UniqueMachineIdSerializer() : base(Outgoing.UniqueMachineID)
+        public UniqueMachineIdSerializer(int header) : base(header)
         {
 
         }

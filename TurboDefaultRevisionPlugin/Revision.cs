@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using Turbo.Core.Packets.Messages;
 using Turbo.Core.Packets.Revisions;
 using Turbo.Packets.Outgoing.Handshake;
+using Turbo.Packets.Outgoing.Navigator;
 using TurboDefaultRevisionPlugin.Headers;
 using TurboDefaultRevisionPlugin.Parsers.Handshake;
 using TurboDefaultRevisionPlugin.Parsers.Navigator;
 using TurboDefaultRevisionPlugin.Parsers.Room.Action;
 using TurboDefaultRevisionPlugin.Serializers.Handshake;
+using TurboDefaultRevisionPlugin.Serializers.Navigator;
 
 namespace TurboDefaultRevisionPlugin
 {
@@ -54,6 +56,7 @@ namespace TurboDefaultRevisionPlugin
             Parsers.Add(Incoming.DeleteRoom, new DeleteRoomParser());
             Parsers.Add(Incoming.ForwardToSomeRoom, new ForwardToSomeRoomParser());
             Parsers.Add(Incoming.GetPopularRoomTags, new GetPopularRoomTagsParser());
+            Parsers.Add(Incoming.GetGuestRoom, new GetGuestRoomParser());
             Parsers.Add(Incoming.GetUserEventCats, new GetUserEventCatsParser());
             Parsers.Add(Incoming.GetUserFlatCats, new GetUserFlatCatsParser());
             Parsers.Add(Incoming.MyFavouriteRoomsSearch, new MyFavouriteRoomsSearchParser());
@@ -78,9 +81,11 @@ namespace TurboDefaultRevisionPlugin
 
         private void RegisterSerializers()
         {
-            Serializers.Add(typeof(AuthenticationOKMessage), new AuthenticationOKSerializer());
-            Serializers.Add(typeof(PingMessage), new PingSerializer());
-            Serializers.Add(typeof(UniqueMachineIdMessage), new UniqueMachineIdSerializer());
+            Serializers.Add(typeof(AuthenticationOKMessage), new AuthenticationOKSerializer(Outgoing.AuthenticationOK));
+            Serializers.Add(typeof(PingMessage), new PingSerializer(Outgoing.Ping));
+            Serializers.Add(typeof(UniqueMachineIdMessage), new UniqueMachineIdSerializer(Outgoing.UniqueMachineID));
+            Serializers.Add(typeof(UserObjectMessage), new UserObjectSerializer(Outgoing.UserObject));
+            Serializers.Add(typeof(GetGuestRoomResultMessage), new GetGuestRoomResultSerializer(Outgoing.GetGuestRoomResult));
         }
     }
 }

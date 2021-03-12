@@ -1,13 +1,12 @@
 ﻿using Turbo.Core.Packets.Messages;
 using Turbo.Packets.Outgoing.Handshake;
 using Turbo.Packets.Serializers;
-using TurboDefaultRevisionPlugin.Headers;
 
 namespace TurboDefaultRevisionPlugin.Serializers.Handshake
 {
     public class AuthenticationOKSerializer : AbstractSerializer<AuthenticationOKMessage>
     {
-        public AuthenticationOKSerializer() : base(Outgoing.AuthenticationOK)
+        public AuthenticationOKSerializer(int header) : base(header)
         {
 
         }
