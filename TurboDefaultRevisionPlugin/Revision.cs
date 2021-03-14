@@ -3,11 +3,18 @@ using System.Collections.Generic;
 using Turbo.Core.Packets.Messages;
 using Turbo.Core.Packets.Revisions;
 using Turbo.Packets.Outgoing.Handshake;
+using Turbo.Packets.Outgoing.Navigator;
+using Turbo.Packets.Outgoing.Room.Engine;
+using Turbo.Packets.Outgoing.Room.Session;
 using TurboDefaultRevisionPlugin.Headers;
 using TurboDefaultRevisionPlugin.Parsers.Handshake;
 using TurboDefaultRevisionPlugin.Parsers.Navigator;
 using TurboDefaultRevisionPlugin.Parsers.Room.Action;
+using TurboDefaultRevisionPlugin.Parsers.Room.Engine;
 using TurboDefaultRevisionPlugin.Serializers.Handshake;
+using TurboDefaultRevisionPlugin.Serializers.Navigator;
+using TurboDefaultRevisionPlugin.Serializers.Rooms.Engine;
+using TurboDefaultRevisionPlugin.Serializers.Rooms.Session;
 
 namespace TurboDefaultRevisionPlugin
 {
@@ -46,6 +53,11 @@ namespace TurboDefaultRevisionPlugin
             Parsers.Add(Incoming.KickUser, new KickUserParser());
             Parsers.Add(Incoming.MuteUser, new MuteUserParser());
             #endregion
+            #region Engine
+            Parsers.Add(Incoming.GetFurnitureAliases, new GetFurnitureAliasesParser());
+            Parsers.Add(Incoming.GetRoomEntryData, new GetRoomEntryDataParser());
+            Parsers.Add(Incoming.PlaceObject, new PlaceObjectParser());
+            #endregion
             #endregion
 
             #region Navigator
@@ -54,6 +66,7 @@ namespace TurboDefaultRevisionPlugin
             Parsers.Add(Incoming.DeleteRoom, new DeleteRoomParser());
             Parsers.Add(Incoming.ForwardToSomeRoom, new ForwardToSomeRoomParser());
             Parsers.Add(Incoming.GetPopularRoomTags, new GetPopularRoomTagsParser());
+            Parsers.Add(Incoming.GetGuestRoom, new GetGuestRoomParser());
             Parsers.Add(Incoming.GetUserEventCats, new GetUserEventCatsParser());
             Parsers.Add(Incoming.GetUserFlatCats, new GetUserFlatCatsParser());
             Parsers.Add(Incoming.MyFavouriteRoomsSearch, new MyFavouriteRoomsSearchParser());
@@ -78,9 +91,27 @@ namespace TurboDefaultRevisionPlugin
 
         private void RegisterSerializers()
         {
-            Serializers.Add(typeof(AuthenticationOKMessage), new AuthenticationOKSerializer());
-            Serializers.Add(typeof(PingMessage), new PingSerializer());
-            Serializers.Add(typeof(UniqueMachineIdMessage), new UniqueMachineIdSerializer());
+            #region Authentication
+            Serializers.Add(typeof(AuthenticationOKMessage), new AuthenticationOKSerializer(Outgoing.AuthenticationOK));
+            Serializers.Add(typeof(PingMessage), new PingSerializer(Outgoing.Ping));
+            Serializers.Add(typeof(UniqueMachineIdMessage), new UniqueMachineIdSerializer(Outgoing.UniqueMachineID));
+            Serializers.Add(typeof(UserObjectMessage), new UserObjectSerializer(Outgoing.UserObject));
+            #endregion
+
+            #region Navigator
+            Serializers.Add(typeof(GetGuestRoomResultMessage), new GetGuestRoomResultSerializer(Outgoing.GetGuestRoomResult));
+            #endregion
+
+            #region Rooms.Engine
+            Serializers.Add(typeof(HeightMapMessage), new HeightMapSerializer(Outgoing.HeightMap));
+            Serializers.Add(typeof(HeightMapUpdateMessage), new HeightMapUpdateSerializer(Outgoing.HeightMapUpdate));
+            Serializers.Add(typeof(FloorHeightMapMessage), new FloorHeightMapSerializer(Outgoing.FloorHeightMap));
+            #endregion
+
+            #region Rooms.Session
+            Serializers.Add(typeof(OpenConnectionMessage), new OpenConnectionSerializer(Outgoing.OpenConnection));
+            Serializers.Add(typeof(RoomReadyMessage), new RoomReadySerializer(Outgoing.RoomReady));
+            #endregion
         }
     }
 }
