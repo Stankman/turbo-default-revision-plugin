@@ -9,10 +9,21 @@
         public const int UserObject = 2725;
         #endregion
 
-        #region Room
-
         #region Navigator
         public const int GetGuestRoomResult = 687;
+        #endregion
+
+        #region Room
+
+        #region Engine
+        public const int FloorHeightMap = 1301;
+        public const int HeightMap = 2753;
+        public const int HeightMapUpdate = 558;
+        #endregion
+
+        #region Session
+        public const int OpenConnection = 758;
+        public const int RoomReady = 2031;
         #endregion
         #endregion
     }

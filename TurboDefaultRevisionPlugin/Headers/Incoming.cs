@@ -25,6 +25,12 @@
         public const int Whisper = 1543;
         #endregion
 
+        #region Engine
+        public const int GetFurnitureAliases = 3898;
+        public const int GetRoomEntryData = 2300;
+        public const int PlaceObject = 1258;
+        #endregion
+
         #endregion
 
         #region Navigator
