@@ -6,9 +6,6 @@ namespace TurboDefaultRevisionPlugin.Parsers.Room.Engine
 {
     public class GetRoomEntryDataParser : AbstractParser<GetRoomEntryDataMessage>
     {
-        public override IMessageEvent Parse(IClientPacket packet)
-        {
-            return new GetRoomEntryDataMessage { };
-        }
+        public override IMessageEvent Parse(IClientPacket packet) => new GetRoomEntryDataMessage();
     }
 }

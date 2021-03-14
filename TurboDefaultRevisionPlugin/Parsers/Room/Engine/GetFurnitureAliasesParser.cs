@@ -6,9 +6,6 @@ namespace TurboDefaultRevisionPlugin.Parsers.Room.Engine
 {
     public class GetFurnitureAliasesParser : AbstractParser<GetFurnitureAliasesMessage>
     {
-        public override IMessageEvent Parse(IClientPacket packet)
-        {
-            return new GetFurnitureAliasesMessage { };
-        }
+        public override IMessageEvent Parse(IClientPacket packet) => new GetFurnitureAliasesMessage();
     }
 }
