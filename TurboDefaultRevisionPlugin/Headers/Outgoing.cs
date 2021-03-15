@@ -19,11 +19,13 @@
         public const int FloorHeightMap = 1301;
         public const int HeightMap = 2753;
         public const int HeightMapUpdate = 558;
+        public const int RoomEntryInfo = 749;
         #endregion
 
         #region Session
         public const int OpenConnection = 758;
         public const int RoomReady = 2031;
+        public const int RoomForward = 160;
         #endregion
         #endregion
     }

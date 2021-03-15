@@ -11,6 +11,7 @@ using TurboDefaultRevisionPlugin.Parsers.Handshake;
 using TurboDefaultRevisionPlugin.Parsers.Navigator;
 using TurboDefaultRevisionPlugin.Parsers.Room.Action;
 using TurboDefaultRevisionPlugin.Parsers.Room.Engine;
+using TurboDefaultRevisionPlugin.Parsers.Room.Session;
 using TurboDefaultRevisionPlugin.Serializers.Handshake;
 using TurboDefaultRevisionPlugin.Serializers.Navigator;
 using TurboDefaultRevisionPlugin.Serializers.Rooms.Engine;
@@ -57,6 +58,9 @@ namespace TurboDefaultRevisionPlugin
             Parsers.Add(Incoming.GetFurnitureAliases, new GetFurnitureAliasesParser());
             Parsers.Add(Incoming.GetRoomEntryData, new GetRoomEntryDataParser());
             Parsers.Add(Incoming.PlaceObject, new PlaceObjectParser());
+            #endregion
+            #region Session
+            Parsers.Add(Incoming.OpenFlatConnection, new OpenFlatConnectionParser());
             #endregion
             #endregion
 
@@ -106,11 +110,13 @@ namespace TurboDefaultRevisionPlugin
             Serializers.Add(typeof(HeightMapMessage), new HeightMapSerializer(Outgoing.HeightMap));
             Serializers.Add(typeof(HeightMapUpdateMessage), new HeightMapUpdateSerializer(Outgoing.HeightMapUpdate));
             Serializers.Add(typeof(FloorHeightMapMessage), new FloorHeightMapSerializer(Outgoing.FloorHeightMap));
+            Serializers.Add(typeof(RoomEntryInfoMessage), new RoomEntryInfoSerializer(Outgoing.RoomEntryInfo));
             #endregion
 
             #region Rooms.Session
             Serializers.Add(typeof(OpenConnectionMessage), new OpenConnectionSerializer(Outgoing.OpenConnection));
             Serializers.Add(typeof(RoomReadyMessage), new RoomReadySerializer(Outgoing.RoomReady));
+            Serializers.Add(typeof(RoomForwardMessage), new RoomForwardSerializer(Outgoing.RoomForward));
             #endregion
         }
     }
