@@ -33,6 +33,10 @@
 
         #endregion
 
+        #region Session
+        public const int OpenFlatConnection = 2312;
+        #endregion
+
         #region Navigator
         public const int CanCreateRoom = 2128;
         public const int CreateFlat = 2752;
