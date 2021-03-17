@@ -5,7 +5,7 @@ using TurboDefaultRevisionPlugin.Headers;
 
 namespace TurboDefaultRevisionPlugin.Serializers.Handshake
 {
-    class UniqueMachineIdSerializer : AbstractSerializer<UniqueMachineIdMessage>
+    public class UniqueMachineIdSerializer : AbstractSerializer<UniqueMachineIdMessage>
     {
         public UniqueMachineIdSerializer() : base(Outgoing.UniqueMachineID)
         {

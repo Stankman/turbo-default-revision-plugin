@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using Turbo.Core.Packets.Messages;
 using Turbo.Core.Packets.Revisions;
 using Turbo.Packets.Outgoing.Handshake;
+using Turbo.Packets.Outgoing.Navigator;
 using TurboDefaultRevisionPlugin.Headers;
 using TurboDefaultRevisionPlugin.Parsers.Handshake;
 using TurboDefaultRevisionPlugin.Parsers.Navigator;
 using TurboDefaultRevisionPlugin.Parsers.Room.Action;
 using TurboDefaultRevisionPlugin.Serializers.Handshake;
+using TurboDefaultRevisionPlugin.Serializers.Navigator;
 
 namespace TurboDefaultRevisionPlugin
 {
@@ -78,9 +80,15 @@ namespace TurboDefaultRevisionPlugin
 
         private void RegisterSerializers()
         {
+            #region Handshake
             Serializers.Add(typeof(AuthenticationOKMessage), new AuthenticationOKSerializer());
             Serializers.Add(typeof(PingMessage), new PingSerializer());
             Serializers.Add(typeof(UniqueMachineIdMessage), new UniqueMachineIdSerializer());
+            #endregion
+
+            #region Navigator
+            Serializers.Add(typeof(NavigatorMetaDataMessage), new NavigatorMetaDataSerializer());
+            #endregion
         }
     }
 }

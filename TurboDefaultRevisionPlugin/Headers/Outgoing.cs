@@ -7,5 +7,9 @@
         public const int Ping = 3928;
         public const int UniqueMachineID = 1488;
         #endregion
+
+        #region Navigator
+        public const int NavigatorMetaData = 3052;
+        #endregion
     }
 }
