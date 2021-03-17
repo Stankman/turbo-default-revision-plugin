@@ -66,6 +66,7 @@ namespace TurboDefaultRevisionPlugin
             #endregion
             #region Session
             Parsers.Add(Incoming.OpenFlatConnection, new OpenFlatConnectionParser());
+            Parsers.Add(Incoming.Quit, new QuitParser());
             #endregion
             #endregion
 
@@ -127,6 +128,7 @@ namespace TurboDefaultRevisionPlugin
             Serializers.Add(typeof(RoomReadyMessage), new RoomReadySerializer(Outgoing.RoomReady));
             Serializers.Add(typeof(RoomForwardMessage), new RoomForwardSerializer(Outgoing.RoomForward));
             Serializers.Add(typeof(CantConnectMessage), new CantConnectSerializer(Outgoing.CantConnect));
+            Serializers.Add(typeof(CloseConnectionMessage), new CloseConnectionSerializer(Outgoing.CloseConnection));
             #endregion
         }
     }

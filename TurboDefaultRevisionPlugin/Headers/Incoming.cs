@@ -39,6 +39,7 @@
 
         #region Session
         public const int OpenFlatConnection = 2312;
+        public const int Quit = 105;
         #endregion
 
         #region Navigator

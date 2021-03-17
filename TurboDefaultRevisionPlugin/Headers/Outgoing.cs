@@ -31,6 +31,7 @@
         public const int RoomReady = 2031;
         public const int RoomForward = 160;
         public const int CantConnect = 899;
+        public const int CloseConnection = 122;
         #endregion
         #endregion
     }
