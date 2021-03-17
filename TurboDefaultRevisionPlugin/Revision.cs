@@ -118,7 +118,6 @@ namespace TurboDefaultRevisionPlugin
             Serializers.Add(typeof(OpenConnectionMessage), new OpenConnectionSerializer(Outgoing.OpenConnection));
             Serializers.Add(typeof(RoomReadyMessage), new RoomReadySerializer(Outgoing.RoomReady));
             Serializers.Add(typeof(RoomForwardMessage), new RoomForwardSerializer(Outgoing.RoomForward));
->>>>>>> TurboDefaultRevisionPlugin/Revision.cs
             #endregion
         }
     }
