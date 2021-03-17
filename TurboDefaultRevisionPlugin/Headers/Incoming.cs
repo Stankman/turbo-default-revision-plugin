@@ -21,6 +21,20 @@
         public const int MuteUser = 3485;
         #endregion
 
+        #region Chat
+        public const int Whisper = 1543;
+        #endregion
+
+        #region Engine
+        public const int GetFurnitureAliases = 3898;
+        public const int GetRoomEntryData = 2300;
+        public const int PlaceObject = 1258;
+        #endregion
+
+        #endregion
+
+        #region Session
+        public const int OpenFlatConnection = 2312;
         #endregion
 
         #region Navigator
@@ -29,6 +43,7 @@
         public const int DeleteRoom = 532;
         public const int ForwardToSomeRoom = 1703;
         public const int GetPopularRoomTags = 826;
+        public const int GetGuestRoom = 2230;
         public const int GetUserEventCats = 1782;
         public const int GetUserFlatCats = 3027;
         public const int MyFavouriteRoomsSearch = 2578;
