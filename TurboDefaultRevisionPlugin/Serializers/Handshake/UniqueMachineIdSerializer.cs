@@ -4,7 +4,7 @@ using Turbo.Packets.Serializers;
 
 namespace TurboDefaultRevisionPlugin.Serializers.Handshake
 {
-    class UniqueMachineIdSerializer : AbstractSerializer<UniqueMachineIdMessage>
+    public class UniqueMachineIdSerializer : AbstractSerializer<UniqueMachineIdMessage>
     {
         public UniqueMachineIdSerializer(int header) : base(header)
         {

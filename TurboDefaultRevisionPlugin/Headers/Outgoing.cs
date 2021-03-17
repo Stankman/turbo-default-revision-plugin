@@ -1,4 +1,4 @@
-﻿namespace TurboDefaultRevisionPlugin.Headers
+namespace TurboDefaultRevisionPlugin.Headers
 {
     public static class Outgoing
     {
@@ -11,6 +11,7 @@
 
         #region Navigator
         public const int GetGuestRoomResult = 687;
+        public const int NavigatorMetaData = 3052;
         #endregion
 
         #region Room

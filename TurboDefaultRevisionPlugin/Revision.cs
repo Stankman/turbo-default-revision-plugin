@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Turbo.Core.Packets.Messages;
 using Turbo.Core.Packets.Revisions;
@@ -95,7 +95,7 @@ namespace TurboDefaultRevisionPlugin
 
         private void RegisterSerializers()
         {
-            #region Authentication
+            #region Handshake
             Serializers.Add(typeof(AuthenticationOKMessage), new AuthenticationOKSerializer(Outgoing.AuthenticationOK));
             Serializers.Add(typeof(PingMessage), new PingSerializer(Outgoing.Ping));
             Serializers.Add(typeof(UniqueMachineIdMessage), new UniqueMachineIdSerializer(Outgoing.UniqueMachineID));
@@ -103,7 +103,8 @@ namespace TurboDefaultRevisionPlugin
             #endregion
 
             #region Navigator
-            Serializers.Add(typeof(GetGuestRoomResultMessage), new GetGuestRoomResultSerializer(Outgoing.GetGuestRoomResult));
+            Serializers.Add(typeof(NavigatorMetaDataMessage), new NavigatorMetaDataSerializer());
+            Serializers.Add(typeof(GetGuestRoomResultMessage), new GetGuestRoomResultSerializer(Outgoing.GetGuestRoomResult));            
             #endregion
 
             #region Rooms.Engine
