@@ -6,6 +6,9 @@ namespace TurboDefaultRevisionPlugin.Parsers.Room.Session
 {
     public class OpenFlatConnectionParser : AbstractParser<OpenFlatConnectionMessage>
     {
-        public override IMessageEvent Parse(IClientPacket packet) => new OpenFlatConnectionMessage { RoomId = packet.PopInt() };
+        public override IMessageEvent Parse(IClientPacket packet) => new OpenFlatConnectionMessage { 
+            RoomId = packet.PopInt(),
+            Password = packet.PopString()
+        };
     }
 }

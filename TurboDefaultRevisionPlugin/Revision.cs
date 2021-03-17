@@ -10,6 +10,7 @@ using TurboDefaultRevisionPlugin.Headers;
 using TurboDefaultRevisionPlugin.Parsers.Handshake;
 using TurboDefaultRevisionPlugin.Parsers.Navigator;
 using TurboDefaultRevisionPlugin.Parsers.Room.Action;
+using TurboDefaultRevisionPlugin.Parsers.Room.Avatar;
 using TurboDefaultRevisionPlugin.Parsers.Room.Engine;
 using TurboDefaultRevisionPlugin.Parsers.Room.Session;
 using TurboDefaultRevisionPlugin.Serializers.Handshake;
@@ -54,10 +55,14 @@ namespace TurboDefaultRevisionPlugin
             Parsers.Add(Incoming.KickUser, new KickUserParser());
             Parsers.Add(Incoming.MuteUser, new MuteUserParser());
             #endregion
+            #region Avatar
+            Parsers.Add(Incoming.Dance, new DanceParser());
+            #endregion
             #region Engine
             Parsers.Add(Incoming.GetFurnitureAliases, new GetFurnitureAliasesParser());
             Parsers.Add(Incoming.GetRoomEntryData, new GetRoomEntryDataParser());
             Parsers.Add(Incoming.PlaceObject, new PlaceObjectParser());
+            Parsers.Add(Incoming.MoveAvatar, new MoveAvatarParser());
             #endregion
             #region Session
             Parsers.Add(Incoming.OpenFlatConnection, new OpenFlatConnectionParser());
@@ -111,12 +116,17 @@ namespace TurboDefaultRevisionPlugin
             Serializers.Add(typeof(HeightMapUpdateMessage), new HeightMapUpdateSerializer(Outgoing.HeightMapUpdate));
             Serializers.Add(typeof(FloorHeightMapMessage), new FloorHeightMapSerializer(Outgoing.FloorHeightMap));
             Serializers.Add(typeof(RoomEntryInfoMessage), new RoomEntryInfoSerializer(Outgoing.RoomEntryInfo));
+            Serializers.Add(typeof(FurnitureAliasesMessage), new FurnitureAliasesSerializer(Outgoing.FurnitureAliases));
+            Serializers.Add(typeof(UsersMessage), new UsersSerializer(Outgoing.Users));
+            Serializers.Add(typeof(UserUpdateMessage), new UserUpdateSerializer(Outgoing.UserUpdate));
+            Serializers.Add(typeof(UserRemoveMessage), new UserRemoveSerializer(Outgoing.UserRemove));
             #endregion
 
             #region Rooms.Session
             Serializers.Add(typeof(OpenConnectionMessage), new OpenConnectionSerializer(Outgoing.OpenConnection));
             Serializers.Add(typeof(RoomReadyMessage), new RoomReadySerializer(Outgoing.RoomReady));
             Serializers.Add(typeof(RoomForwardMessage), new RoomForwardSerializer(Outgoing.RoomForward));
+            Serializers.Add(typeof(CantConnectMessage), new CantConnectSerializer(Outgoing.CantConnect));
             #endregion
         }
     }
