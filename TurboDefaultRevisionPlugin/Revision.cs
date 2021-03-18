@@ -57,6 +57,15 @@ namespace TurboDefaultRevisionPlugin
             #endregion
             #region Avatar
             Parsers.Add(Incoming.Dance, new DanceParser());
+            Parsers.Add(Incoming.AvatarExpression, new AvatarExpressionParser());
+            Parsers.Add(Incoming.ChangeMotto, new ChangeMottoParser());
+            Parsers.Add(Incoming.ChangePosture, new ChangePostureParser());
+            Parsers.Add(Incoming.CustomizeAvatarWithFurni, new CustomizeAvatarWithFurniParser());
+            Parsers.Add(Incoming.DropCarryItem, new DropCarryItemParser());
+            Parsers.Add(Incoming.LookTo, new LookToParser());
+            Parsers.Add(Incoming.PassCarryItem, new PassCarryItemParser());
+            Parsers.Add(Incoming.PassCarryItemToPet, new PassCarryItemToPetParser());
+            Parsers.Add(Incoming.Sign, new SignParser());
             #endregion
             #region Engine
             Parsers.Add(Incoming.GetFurnitureAliases, new GetFurnitureAliasesParser());
@@ -67,6 +76,8 @@ namespace TurboDefaultRevisionPlugin
             #region Session
             Parsers.Add(Incoming.OpenFlatConnection, new OpenFlatConnectionParser());
             Parsers.Add(Incoming.Quit, new QuitParser());
+            Parsers.Add(Incoming.GoToFlat, new GoToFlatParser());
+            Parsers.Add(Incoming.ChangeQueue, new ChangeQueueParser());
             #endregion
             #endregion
 

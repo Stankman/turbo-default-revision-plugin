@@ -23,6 +23,15 @@
 
         #region Avatar
         public const int Dance = 2080;
+        public const int AvatarExpression = 2456;
+        public const int ChangeMotto = 2228;
+        public const int ChangePosture = 2235;
+        public const int CustomizeAvatarWithFurni = 3374;
+        public const int DropCarryItem = 2814;
+        public const int LookTo = 3301;
+        public const int PassCarryItem = 2941;
+        public const int PassCarryItemToPet = 2768;
+        public const int Sign = 1975;
         #endregion
         #region Chat
         public const int Whisper = 1543;
@@ -40,6 +49,8 @@
         #region Session
         public const int OpenFlatConnection = 2312;
         public const int Quit = 105;
+        public const int GoToFlat = 685;
+        public const int ChangeQueue = 3093;
         #endregion
 
         #region Navigator
