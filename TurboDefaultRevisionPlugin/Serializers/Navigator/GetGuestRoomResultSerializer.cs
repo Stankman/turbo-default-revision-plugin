@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using Turbo.Core.Game.Rooms;
+using Turbo.Core.Game.Rooms.Constants;
 using Turbo.Core.Packets.Messages;
 using Turbo.Packets.Outgoing.Navigator;
 using Turbo.Packets.Serializers;
@@ -7,86 +9,96 @@ namespace TurboDefaultRevisionPlugin.Serializers.Navigator
 {
     public class GetGuestRoomResultSerializer : AbstractSerializer<GetGuestRoomResultMessage>
     {
-        private const int THUMBNAIL_BITMASK = 1;
-        private const int GROUPDATA_BITMASK = 2;
-        private const int ROOMAD_BITMASK = 4;
-        private const int SHOWOWNER_BITMASK = 8;
-        private const int ALLOWPETS_BITMASK = 16;
-        private const int DISPLAYROOMENTRYAD_BITMASK = 32;
-
         public GetGuestRoomResultSerializer(int header) : base(header) { }
 
         protected override void Serialize(IServerPacket packet, GetGuestRoomResultMessage message)
         {
+            IRoomDetails roomDetails = message.Room.RoomDetails;
+
             packet.WriteBoolean(message.EnterRoom);
-            SerializeRoomData(packet, message);
+
+            SerializeRoomData(packet, roomDetails);
+
             packet.WriteBoolean(message.IsRoomForward);
             packet.WriteBoolean(message.IsStaffPick);
             packet.WriteBoolean(message.IsGroupMember);
             packet.WriteBoolean(message.AllInRoomMuted);
-            SerializeModerationSettings(packet, message);
+
+            SerializeModerationSettings(packet, roomDetails);
+
             packet.WriteBoolean(message.CanMute);
-            SerializeChatSettings(packet, message);
+
+            SerializeChatSettings(packet, roomDetails);
         }
 
-        private void SerializeRoomData(IServerPacket packet, GetGuestRoomResultMessage message)
+        private void SerializeRoomData(IServerPacket packet, IRoomDetails roomDetails)
         {
-            packet.WriteInteger(message.Room.Id);
-            packet.WriteString(message.Room.RoomDetails.Name);
-            packet.WriteInteger(1);// room owner id
+            packet.WriteInteger(roomDetails.Id);
+            packet.WriteString(roomDetails.Name);
+            packet.WriteInteger(roomDetails.PlayerId);
             packet.WriteString("test");// room owner name
-            packet.WriteInteger(0); // door mode
-            packet.WriteInteger(0); // user count
-            packet.WriteInteger(10); // max user count
-            packet.WriteString(""); // room description
-            packet.WriteInteger(0);// room trade mode
+            packet.WriteInteger((int)roomDetails.State);
+            packet.WriteInteger(roomDetails.UsersNow);
+            packet.WriteInteger(roomDetails.UsersMax);
+            packet.WriteString(roomDetails.Description);
+            packet.WriteInteger((int)roomDetails.TradeType);
             packet.WriteInteger(0);// room score
             packet.WriteInteger(0);// room ranking
             packet.WriteInteger(0); // category id
+            packet.WriteInteger(0); //tag count, iterate string
 
-            var tags = new List<string>();
-            packet.WriteInteger(tags.Count);
-            foreach(var tag in tags)
-            {
-                packet.WriteString(tag);
-            }
+            SerializeBitmask(packet, roomDetails);
+        }
 
-            int bitmask = 8;
+        private void SerializeModerationSettings(IServerPacket packet, IRoomDetails roomDetails)
+        {
+            packet.WriteInteger((int)roomDetails.MuteType);
+            packet.WriteInteger((int)roomDetails.KickType);
+            packet.WriteInteger((int)roomDetails.BanType);
+        }
+
+        private void SerializeChatSettings(IServerPacket packet, IRoomDetails roomDetails)
+        {
+            packet.WriteInteger((int)roomDetails.ChatModeType);
+            packet.WriteInteger((int)roomDetails.ChatWeightType);
+            packet.WriteInteger((int)roomDetails.ChatSpeedType);
+            packet.WriteInteger(roomDetails.ChatDistance);
+            packet.WriteInteger((int)roomDetails.ChatProtectionType);
+        }
+
+        private void SerializeBitmask(IServerPacket packet, IRoomDetails roomDetails)
+        {
+            int bitmask = 0;
+
+            bitmask += (int)RoomBitmaskType.ShowOwner; // if public room, no
+
+            if(roomDetails.AllowPets) bitmask += (int)RoomBitmaskType.AllowPets;
+
+            // bitmask += (int)RoomBitmaskType.Thumbnail;
+            // bitmask += (int)RoomBitmaskType.GroupData;
+            // bitmask += (int)RoomBitmaskType.RoomAd;
+            // bitmask += (int)RoomBitmaskType.DisplayRoomAd;
+
             packet.WriteInteger(bitmask);
-            /*
-            if ((_local_4 & this.THUMBNAIL_BITMASK) > 0)
-            {
-                this._officialRoomPicRef = k.readString();
-            }
-            if ((_local_4 & this.GROUPDATA_BITMASK) > 0)
-            {
-                this._habboGroupId = k.readInteger();
-                this._groupName = k.readString();
-                this._groupBadgeCode = k.readString();
-            }
-            if ((_local_4 & this.ROOMAD_BITMASK) > 0)
-            {
-                this._roomAdName = k.readString();
-                this._roomAdDescription = k.readString();
-                this._roomAdExpiresInMin = k.readInteger();
-            }
-            */
-        }
 
-        private void SerializeModerationSettings(IServerPacket packet, GetGuestRoomResultMessage message)
-        {
-            packet.WriteInteger(0);//mute state
-            packet.WriteInteger(0);//kick state
-            packet.WriteInteger(0);//ban state
-        }
+            if((bitmask & (int)RoomBitmaskType.Thumbnail) > 0)
+            {
+                packet.WriteString("");
+            }
 
-        private void SerializeChatSettings(IServerPacket packet, GetGuestRoomResultMessage message)
-        {
-            packet.WriteInteger(0); // bubble mode
-            packet.WriteInteger(0);//bubble type
-            packet.WriteInteger(0);// bubble 
-            packet.WriteInteger(0); // chat distance
-            packet.WriteInteger(0);// anti flood settings
+            if ((bitmask & (int)RoomBitmaskType.GroupData) > 0)
+            {
+                packet.WriteInteger(0); // group id
+                packet.WriteString(""); // group name
+                packet.WriteString(""); // group badge
+            }
+
+            if ((bitmask & (int)RoomBitmaskType.RoomAd) > 0)
+            {
+                packet.WriteString(""); // ad name
+                packet.WriteString(""); // ad description
+                packet.WriteString(""); // ad expires in
+            }
         }
     }
 }
