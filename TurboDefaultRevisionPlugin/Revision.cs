@@ -10,6 +10,7 @@ using TurboDefaultRevisionPlugin.Headers;
 using TurboDefaultRevisionPlugin.Parsers.Handshake;
 using TurboDefaultRevisionPlugin.Parsers.Navigator;
 using TurboDefaultRevisionPlugin.Parsers.Room.Action;
+using TurboDefaultRevisionPlugin.Parsers.Room.Avatar;
 using TurboDefaultRevisionPlugin.Parsers.Room.Engine;
 using TurboDefaultRevisionPlugin.Parsers.Room.Session;
 using TurboDefaultRevisionPlugin.Serializers.Handshake;
@@ -54,13 +55,29 @@ namespace TurboDefaultRevisionPlugin
             Parsers.Add(Incoming.KickUser, new KickUserParser());
             Parsers.Add(Incoming.MuteUser, new MuteUserParser());
             #endregion
+            #region Avatar
+            Parsers.Add(Incoming.Dance, new DanceParser());
+            Parsers.Add(Incoming.AvatarExpression, new AvatarExpressionParser());
+            Parsers.Add(Incoming.ChangeMotto, new ChangeMottoParser());
+            Parsers.Add(Incoming.ChangePosture, new ChangePostureParser());
+            Parsers.Add(Incoming.CustomizeAvatarWithFurni, new CustomizeAvatarWithFurniParser());
+            Parsers.Add(Incoming.DropCarryItem, new DropCarryItemParser());
+            Parsers.Add(Incoming.LookTo, new LookToParser());
+            Parsers.Add(Incoming.PassCarryItem, new PassCarryItemParser());
+            Parsers.Add(Incoming.PassCarryItemToPet, new PassCarryItemToPetParser());
+            Parsers.Add(Incoming.Sign, new SignParser());
+            #endregion
             #region Engine
             Parsers.Add(Incoming.GetFurnitureAliases, new GetFurnitureAliasesParser());
             Parsers.Add(Incoming.GetRoomEntryData, new GetRoomEntryDataParser());
             Parsers.Add(Incoming.PlaceObject, new PlaceObjectParser());
+            Parsers.Add(Incoming.MoveAvatar, new MoveAvatarParser());
             #endregion
             #region Session
             Parsers.Add(Incoming.OpenFlatConnection, new OpenFlatConnectionParser());
+            Parsers.Add(Incoming.Quit, new QuitParser());
+            Parsers.Add(Incoming.GoToFlat, new GoToFlatParser());
+            Parsers.Add(Incoming.ChangeQueue, new ChangeQueueParser());
             #endregion
             #endregion
 
@@ -112,12 +129,18 @@ namespace TurboDefaultRevisionPlugin
             Serializers.Add(typeof(HeightMapUpdateMessage), new HeightMapUpdateSerializer(Outgoing.HeightMapUpdate));
             Serializers.Add(typeof(FloorHeightMapMessage), new FloorHeightMapSerializer(Outgoing.FloorHeightMap));
             Serializers.Add(typeof(RoomEntryInfoMessage), new RoomEntryInfoSerializer(Outgoing.RoomEntryInfo));
+            Serializers.Add(typeof(FurnitureAliasesMessage), new FurnitureAliasesSerializer(Outgoing.FurnitureAliases));
+            Serializers.Add(typeof(UsersMessage), new UsersSerializer(Outgoing.Users));
+            Serializers.Add(typeof(UserUpdateMessage), new UserUpdateSerializer(Outgoing.UserUpdate));
+            Serializers.Add(typeof(UserRemoveMessage), new UserRemoveSerializer(Outgoing.UserRemove));
             #endregion
 
             #region Rooms.Session
             Serializers.Add(typeof(OpenConnectionMessage), new OpenConnectionSerializer(Outgoing.OpenConnection));
             Serializers.Add(typeof(RoomReadyMessage), new RoomReadySerializer(Outgoing.RoomReady));
             Serializers.Add(typeof(RoomForwardMessage), new RoomForwardSerializer(Outgoing.RoomForward));
+            Serializers.Add(typeof(CantConnectMessage), new CantConnectSerializer(Outgoing.CantConnect));
+            Serializers.Add(typeof(CloseConnectionMessage), new CloseConnectionSerializer(Outgoing.CloseConnection));
             #endregion
         }
     }

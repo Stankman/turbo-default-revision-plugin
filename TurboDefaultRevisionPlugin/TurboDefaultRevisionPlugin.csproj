@@ -14,10 +14,17 @@
 	<Reference Include="Turbo.Core">
 		<HintPath>..\..\turbo\Turbo\bin\Debug\net5.0\Turbo.Core.dll</HintPath>
 	</Reference>
+	<Reference Include="Turbo.Rooms">
+	  <HintPath>..\..\turbo\Turbo\bin\Debug\net5.0\Turbo.Rooms.dll</HintPath>
+	</Reference>
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Serializers\Rooms\Action\" />
   </ItemGroup>
 
 </Project>
