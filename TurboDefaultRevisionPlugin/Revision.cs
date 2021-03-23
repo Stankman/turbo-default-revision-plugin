@@ -123,6 +123,7 @@ namespace TurboDefaultRevisionPlugin
             Serializers.Add(typeof(NavigatorMetaDataMessage), new NavigatorMetaDataSerializer(Outgoing.NavigatorMetaData));
             Serializers.Add(typeof(GetGuestRoomResultMessage), new GetGuestRoomResultSerializer(Outgoing.GetGuestRoomResult));
             Serializers.Add(typeof(NavigatorLiftedRoomsMessage), new NavigatorLiftedRoomsSerializer(Outgoing.NavigatorLiftedRooms));
+            Serializers.Add(typeof(NavigatorSavedSearchesMessage), new NavigatorSavedSearchesSerializer(Outgoing.NavigatorSavedSearches));
             #endregion
 
             #region Rooms.Engine

@@ -13,6 +13,7 @@ namespace TurboDefaultRevisionPlugin.Headers
         public const int GetGuestRoomResult = 687;
         public const int NavigatorMetaData = 3052;
         public const int NavigatorLiftedRooms = 3104;
+        public const int NavigatorSavedSearches = 3984;
         #endregion
 
         #region Room
