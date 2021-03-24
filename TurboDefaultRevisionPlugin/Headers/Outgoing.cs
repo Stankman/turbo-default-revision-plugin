@@ -9,6 +9,16 @@ namespace TurboDefaultRevisionPlugin.Headers
         public const int UserObject = 2725;
         #endregion
 
+        #region Inventory
+        #region Furni
+        public const int FurniListAddOrUpdate = 104;
+        public const int FurniListInvalidate = 3151;
+        public const int FurniListRemove = 159;
+        public const int FurniList = 994;
+        public const int PostItPlaced = 1501;
+        #endregion
+        #endregion
+
         #region Navigator
         public const int GetGuestRoomResult = 687;
         public const int NavigatorMetaData = 3052;

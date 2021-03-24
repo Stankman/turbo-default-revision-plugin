@@ -14,6 +14,43 @@
         public const int InitDiffieHandshake = 3110;
         #endregion
 
+        #region Inventory
+
+        #region Furni
+        public const int RequestFurniInventory = 3150;
+        public const int RequestFurniInventoryWhenNotInRoom = 3500;
+        public const int RequestRoomPropertySet = 711;
+        #endregion
+        #endregion
+
+        #region Navigator
+        public const int CanCreateRoom = 2128;
+        public const int CreateFlat = 2752;
+        public const int DeleteRoom = 532;
+        public const int ForwardToSomeRoom = 1703;
+        public const int GetPopularRoomTags = 826;
+        public const int GetGuestRoom = 2230;
+        public const int GetUserEventCats = 1782;
+        public const int GetUserFlatCats = 3027;
+        public const int MyFavouriteRoomsSearch = 2578;
+        public const int MyFriendsRoomsSearch = 2266;
+        public const int MyGuildBasesSearch = 39;
+        public const int MyRoomHistorySearch = 2264;
+        public const int MyRoomRightsSearch = 272;
+        public const int MyRoomsSearch = 2277;
+        public const int NavigatorAddCollapsedCategory = 1834;
+        public const int NavigatorAddSavedSearch = 2226;
+        public const int NavigatorDeleteSavedSearch = 1954;
+        public const int NavigatorRemoveCollapsedCategory = 637;
+        public const int NavigatorSetSearchCodeViewMode = 1202;
+        public const int NewNavigatorInit = 2110;
+        public const int NewNavigatorSearch = 249;
+        public const int PopularRoomsSearch = 2758;
+        public const int RoomsWhereMyFriendsAreSearch = 1786;
+        public const int RoomsWithHighestScoreSearch = 2939;
+        public const int SetNewNavigatorWindowPreferences = 3159;
+        #endregion
+
         #region Room
 
         #region Action
@@ -44,8 +81,6 @@
         public const int MoveAvatar = 3320;
         #endregion
 
-        #endregion
-
         #region Session
         public const int OpenFlatConnection = 2312;
         public const int Quit = 105;
@@ -53,32 +88,6 @@
         public const int ChangeQueue = 3093;
         #endregion
 
-        #region Navigator
-        public const int CanCreateRoom = 2128;
-        public const int CreateFlat = 2752;
-        public const int DeleteRoom = 532;
-        public const int ForwardToSomeRoom = 1703;
-        public const int GetPopularRoomTags = 826;
-        public const int GetGuestRoom = 2230;
-        public const int GetUserEventCats = 1782;
-        public const int GetUserFlatCats = 3027;
-        public const int MyFavouriteRoomsSearch = 2578;
-        public const int MyFriendsRoomsSearch = 2266;
-        public const int MyGuildBasesSearch = 39;
-        public const int MyRoomHistorySearch = 2264;
-        public const int MyRoomRightsSearch = 272;
-        public const int MyRoomsSearch = 2277;
-        public const int NavigatorAddCollapsedCategory = 1834;
-        public const int NavigatorAddSavedSearch = 2226;
-        public const int NavigatorDeleteSavedSearch = 1954;
-        public const int NavigatorRemoveCollapsedCategory = 637;
-        public const int NavigatorSetSearchCodeViewMode = 1202;
-        public const int NewNavigatorInit = 2110;
-        public const int NewNavigatorSearch = 249;
-        public const int PopularRoomsSearch = 2758;
-        public const int RoomsWhereMyFriendsAreSearch = 1786;
-        public const int RoomsWithHighestScoreSearch = 2939;
-        public const int SetNewNavigatorWindowPreferences = 3159;
         #endregion
     }
 }

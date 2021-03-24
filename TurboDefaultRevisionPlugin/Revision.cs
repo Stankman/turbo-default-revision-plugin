@@ -3,17 +3,20 @@ using System.Collections.Generic;
 using Turbo.Core.Packets.Messages;
 using Turbo.Core.Packets.Revisions;
 using Turbo.Packets.Outgoing.Handshake;
+using Turbo.Packets.Outgoing.Inventory.Furni;
 using Turbo.Packets.Outgoing.Navigator;
 using Turbo.Packets.Outgoing.Room.Engine;
 using Turbo.Packets.Outgoing.Room.Session;
 using TurboDefaultRevisionPlugin.Headers;
 using TurboDefaultRevisionPlugin.Parsers.Handshake;
+using TurboDefaultRevisionPlugin.Parsers.Inventory.Furni;
 using TurboDefaultRevisionPlugin.Parsers.Navigator;
 using TurboDefaultRevisionPlugin.Parsers.Room.Action;
 using TurboDefaultRevisionPlugin.Parsers.Room.Avatar;
 using TurboDefaultRevisionPlugin.Parsers.Room.Engine;
 using TurboDefaultRevisionPlugin.Parsers.Room.Session;
 using TurboDefaultRevisionPlugin.Serializers.Handshake;
+using TurboDefaultRevisionPlugin.Serializers.Inventory.Furni;
 using TurboDefaultRevisionPlugin.Serializers.Navigator;
 using TurboDefaultRevisionPlugin.Serializers.Rooms.Engine;
 using TurboDefaultRevisionPlugin.Serializers.Rooms.Session;
@@ -48,6 +51,15 @@ namespace TurboDefaultRevisionPlugin
             Parsers.Add(Incoming.CompleteDiffieHandshake, new CompleteDiffieHandshakeParser());
             Parsers.Add(Incoming.Disconnect, new DisconnectParser());
             Parsers.Add(Incoming.InitDiffieHandshake, new InitDiffieHandshakeParser());
+            #endregion
+
+            #region Inventory
+
+            #region Furni
+            Parsers.Add(Incoming.RequestFurniInventory, new RequestFurniInventoryParser());
+            Parsers.Add(Incoming.RequestFurniInventoryWhenNotInRoom, new RequestFurniInventoryWhenNotInRoomParser());
+            Parsers.Add(Incoming.RequestRoomPropertySet, new RequestRoomPropertySetParser());
+            #endregion
             #endregion
 
             #region Room
@@ -119,6 +131,16 @@ namespace TurboDefaultRevisionPlugin
             Serializers.Add(typeof(UserObjectMessage), new UserObjectSerializer(Outgoing.UserObject));
             #endregion
 
+            #region Inventory
+
+            #region Furni
+            Serializers.Add(typeof(FurniListAddOrUpdateMessage), new FurniListAddOrUpdateSerializer(Outgoing.FurniListAddOrUpdate));
+            Serializers.Add(typeof(FurniListInvalidateMessage), new FurniListInvalidateSerializer(Outgoing.FurniListInvalidate));
+            Serializers.Add(typeof(FurniListRemoveMessage), new FurniListRemoveSerializer(Outgoing.FurniListRemove));
+            Serializers.Add(typeof(PostItPlacedMessage), new PostItPlacedSerializer(Outgoing.PostItPlaced));
+            #endregion
+
+            #endregion
             #region Navigator
             Serializers.Add(typeof(NavigatorMetaDataMessage), new NavigatorMetaDataSerializer());
             Serializers.Add(typeof(GetGuestRoomResultMessage), new GetGuestRoomResultSerializer(Outgoing.GetGuestRoomResult));            
