@@ -124,6 +124,7 @@ namespace TurboDefaultRevisionPlugin
             Serializers.Add(typeof(GetGuestRoomResultMessage), new GetGuestRoomResultSerializer(Outgoing.GetGuestRoomResult));
             Serializers.Add(typeof(NavigatorLiftedRoomsMessage), new NavigatorLiftedRoomsSerializer(Outgoing.NavigatorLiftedRooms));
             Serializers.Add(typeof(NavigatorSavedSearchesMessage), new NavigatorSavedSearchesSerializer(Outgoing.NavigatorSavedSearches));
+            Serializers.Add(typeof(NavigatorEventCategoriesMessage), new NavigatorEventCategoriesSerializer(Outgoing.NavigatorEventCategories));
             #endregion
 
             #region Rooms.Engine

@@ -5,6 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Reference Include="Turbo.Database">
+      <HintPath>..\..\Turbo\Turbo.Database\bin\Debug\net5.0\Turbo.Database.dll</HintPath>
+    </Reference>
     <Reference Include="Turbo.Packets">
       <HintPath>..\..\turbo\Turbo\bin\Debug\net5.0\Turbo.Packets.dll</HintPath>
     </Reference>
