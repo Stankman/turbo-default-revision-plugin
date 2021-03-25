@@ -23,7 +23,7 @@ namespace TurboDefaultRevisionPlugin.Serializers.Inventory.Furni.Types
                 packet.WriteBoolean(furnitureLogic.FurnitureDefinition.CanSell);
                 packet.WriteInteger(-1);//secondsToExpiration
                 packet.WriteBoolean(false);// hasRentPeriodStarted
-                packet.WriteInteger(roomObject.Room.Id); // should just be set to -1 ?
+                packet.WriteInteger(roomObject.Room.Id);
 
                 if(type.Equals("S"))
                 {
