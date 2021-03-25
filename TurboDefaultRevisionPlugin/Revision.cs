@@ -155,6 +155,12 @@ namespace TurboDefaultRevisionPlugin
             Serializers.Add(typeof(UsersMessage), new UsersSerializer(Outgoing.Users));
             Serializers.Add(typeof(UserUpdateMessage), new UserUpdateSerializer(Outgoing.UserUpdate));
             Serializers.Add(typeof(UserRemoveMessage), new UserRemoveSerializer(Outgoing.UserRemove));
+            Serializers.Add(typeof(ObjectAddMessage), new ObjectAddSerializer(Outgoing.ObjectAdd));
+            Serializers.Add(typeof(ObjectDataUpdateMessage), new ObjectDataUpdateSerializer(Outgoing.ObjectDataUpdate));
+            Serializers.Add(typeof(ObjectRemoveMessage), new ObjectRemoveSerializer(Outgoing.ObjectRemove));
+            Serializers.Add(typeof(ObjectsDataUpdateMessage), new ObjectsDataUpdateSerializer(Outgoing.ObjectsDataUpdate));
+            Serializers.Add(typeof(ObjectsMessage), new ObjectsSerializer(Outgoing.Objects));
+            Serializers.Add(typeof(ObjectUpdateMessage), new ObjectUpdateSerializer(Outgoing.ObjectUpdate));
             #endregion
 
             #region Rooms.Session
