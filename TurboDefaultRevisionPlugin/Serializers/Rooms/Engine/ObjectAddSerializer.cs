@@ -11,7 +11,7 @@ namespace TurboDefaultRevisionPlugin.Serializers.Rooms.Engine
         protected override void Serialize(IServerPacket packet, ObjectAddMessage message)
         {
             ObjectDataSerializer.Serialize(packet, message.Object);
-            packet.WriteString("");// todo: owner name
+            packet.WriteString(message.OwnerName);
         }
     }
 }
