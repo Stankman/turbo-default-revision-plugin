@@ -50,6 +50,11 @@ namespace TurboDefaultRevisionPlugin.Headers
         public const int ObjectsDataUpdate = 1453;
         public const int Objects = 1778;
         public const int ObjectUpdate = 3776;
+        public const int ItemAdd = 2187;
+        public const int ItemDataUpdate = 2202;
+        public const int ItemRemove = 3208;
+        public const int Items = 1369;
+        public const int ItemUpdate = 2009;
         #endregion
 
         #region Session
