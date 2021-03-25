@@ -36,6 +36,7 @@ namespace TurboDefaultRevisionPlugin.Headers
         #endregion
 
         #region Engine
+        public const int FavouriteMembershipUpdate = 3403;
         public const int FloorHeightMap = 1301;
         public const int HeightMap = 2753;
         public const int HeightMapUpdate = 558;
@@ -55,6 +56,10 @@ namespace TurboDefaultRevisionPlugin.Headers
         public const int ItemRemove = 3208;
         public const int Items = 1369;
         public const int ItemUpdate = 2009;
+        public const int RoomProperty = 2454;
+        public const int RoomVisualizationSettings = 3547;
+        public const int SlideObjectBundle = 3207;
+        public const int UserChange = 3920;
         #endregion
 
         #region Session

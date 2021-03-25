@@ -152,6 +152,7 @@ namespace TurboDefaultRevisionPlugin
             #endregion
 
             #endregion
+
             #region Navigator
             Serializers.Add(typeof(NavigatorMetaDataMessage), new NavigatorMetaDataSerializer());
             Serializers.Add(typeof(GetGuestRoomResultMessage), new GetGuestRoomResultSerializer(Outgoing.GetGuestRoomResult));
@@ -169,6 +170,7 @@ namespace TurboDefaultRevisionPlugin
             #endregion
 
             #region Engine
+            Serializers.Add(typeof(FavouriteMembershipUpdateMessage), new FavouriteMembershipUpdateSerializer(Outgoing.FavouriteMembershipUpdate));
             Serializers.Add(typeof(HeightMapMessage), new HeightMapSerializer(Outgoing.HeightMap));
             Serializers.Add(typeof(HeightMapUpdateMessage), new HeightMapUpdateSerializer(Outgoing.HeightMapUpdate));
             Serializers.Add(typeof(FloorHeightMapMessage), new FloorHeightMapSerializer(Outgoing.FloorHeightMap));
@@ -188,6 +190,10 @@ namespace TurboDefaultRevisionPlugin
             Serializers.Add(typeof(ItemRemoveMessage), new ItemRemoveSerializer(Outgoing.ItemRemove));
             Serializers.Add(typeof(ItemsMessage), new ItemsSerializer(Outgoing.Items));
             Serializers.Add(typeof(ItemUpdateMessage), new ItemUpdateSerializer(Outgoing.ItemUpdate));
+            Serializers.Add(typeof(RoomPropertyMessage), new RoomPropertySerializer(Outgoing.RoomProperty));
+            Serializers.Add(typeof(RoomVisualizationSettingsMessage), new RoomVisualizationSettingsSerializer(Outgoing.RoomVisualizationSettings));
+            Serializers.Add(typeof(SlideObjectBundleMessage), new SlideObjectBundleSerializer(Outgoing.SlideObjectBundle));
+            Serializers.Add(typeof(UserChangeMessage), new UserChangeSerializer(Outgoing.UserChange));
             #endregion
 
             #region Session
