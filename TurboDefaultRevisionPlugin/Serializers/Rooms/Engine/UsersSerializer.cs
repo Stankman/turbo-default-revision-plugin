@@ -1,4 +1,5 @@
-﻿using Turbo.Core.Packets.Messages;
+﻿using Turbo.Core.Game.Rooms.Object;
+using Turbo.Core.Packets.Messages;
 using Turbo.Packets.Outgoing.Room.Engine;
 using Turbo.Packets.Serializers;
 using Turbo.Rooms.Object.Logic.Avatar;
@@ -14,10 +15,12 @@ namespace TurboDefaultRevisionPlugin.Serializers.Rooms.Engine
             packet.WriteInteger(message.RoomObjects.Count);
             foreach (var roomObject in message.RoomObjects)
             {
-                packet.WriteInteger(roomObject.RoomObjectHolder.Id);
-                packet.WriteString(roomObject.RoomObjectHolder.Name);
-                packet.WriteString(roomObject.RoomObjectHolder.Motto);
-                packet.WriteString(roomObject.RoomObjectHolder.Figure);
+                IRoomObjectUserHolder userHolder = (IRoomObjectUserHolder)roomObject.RoomObjectHolder;
+
+                packet.WriteInteger(userHolder.Id);
+                packet.WriteString(userHolder.Name);
+                packet.WriteString(userHolder.Motto);
+                packet.WriteString(userHolder.Figure);
 
                 packet.WriteInteger(roomObject.Id);
                 packet.WriteInteger(roomObject.Location.X);
@@ -44,7 +47,7 @@ namespace TurboDefaultRevisionPlugin.Serializers.Rooms.Engine
                 else if (roomObject.Logic is AvatarLogic)
                 {
                     packet.WriteInteger(1);
-                    packet.WriteString(roomObject.RoomObjectHolder.Gender);
+                    packet.WriteString(userHolder.Gender);
                     packet.WriteInteger(0);// todo: group id
                     packet.WriteInteger(0); // todo: group status
                     packet.WriteString("");// todo: group name
