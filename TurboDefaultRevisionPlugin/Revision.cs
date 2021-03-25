@@ -5,6 +5,7 @@ using Turbo.Core.Packets.Revisions;
 using Turbo.Packets.Outgoing.Handshake;
 using Turbo.Packets.Outgoing.Inventory.Furni;
 using Turbo.Packets.Outgoing.Navigator;
+using Turbo.Packets.Outgoing.Room.Action;
 using Turbo.Packets.Outgoing.Room.Engine;
 using Turbo.Packets.Outgoing.Room.Session;
 using TurboDefaultRevisionPlugin.Headers;
@@ -18,6 +19,7 @@ using TurboDefaultRevisionPlugin.Parsers.Room.Session;
 using TurboDefaultRevisionPlugin.Serializers.Handshake;
 using TurboDefaultRevisionPlugin.Serializers.Inventory.Furni;
 using TurboDefaultRevisionPlugin.Serializers.Navigator;
+using TurboDefaultRevisionPlugin.Serializers.Rooms.Action;
 using TurboDefaultRevisionPlugin.Serializers.Rooms.Engine;
 using TurboDefaultRevisionPlugin.Serializers.Rooms.Session;
 
@@ -143,10 +145,21 @@ namespace TurboDefaultRevisionPlugin
             #endregion
             #region Navigator
             Serializers.Add(typeof(NavigatorMetaDataMessage), new NavigatorMetaDataSerializer());
-            Serializers.Add(typeof(GetGuestRoomResultMessage), new GetGuestRoomResultSerializer(Outgoing.GetGuestRoomResult));            
+            Serializers.Add(typeof(GetGuestRoomResultMessage), new GetGuestRoomResultSerializer(Outgoing.GetGuestRoomResult));
             #endregion
 
-            #region Rooms.Engine
+            #region Room
+
+            #region Action
+            Serializers.Add(typeof(AvatarEffectMessage), new AvatarEffectSerializer(Outgoing.AvatarEffect));
+            Serializers.Add(typeof(CarryObjectMessage), new CarryObjectSerializer(Outgoing.CarryObject));
+            Serializers.Add(typeof(DanceMessage), new DanceSerializer(Outgoing.Dance));
+            Serializers.Add(typeof(ExpressionMessage), new ExpressionSerializer(Outgoing.Expression));
+            Serializers.Add(typeof(SleepMessage), new SleepSerializer(Outgoing.Sleep));
+            Serializers.Add(typeof(UseObjectMessage), new UseObjectSerializer(Outgoing.UseObject));
+            #endregion
+
+            #region Engine
             Serializers.Add(typeof(HeightMapMessage), new HeightMapSerializer(Outgoing.HeightMap));
             Serializers.Add(typeof(HeightMapUpdateMessage), new HeightMapUpdateSerializer(Outgoing.HeightMapUpdate));
             Serializers.Add(typeof(FloorHeightMapMessage), new FloorHeightMapSerializer(Outgoing.FloorHeightMap));
@@ -163,12 +176,13 @@ namespace TurboDefaultRevisionPlugin
             Serializers.Add(typeof(ObjectUpdateMessage), new ObjectUpdateSerializer(Outgoing.ObjectUpdate));
             #endregion
 
-            #region Rooms.Session
+            #region Session
             Serializers.Add(typeof(OpenConnectionMessage), new OpenConnectionSerializer(Outgoing.OpenConnection));
             Serializers.Add(typeof(RoomReadyMessage), new RoomReadySerializer(Outgoing.RoomReady));
             Serializers.Add(typeof(RoomForwardMessage), new RoomForwardSerializer(Outgoing.RoomForward));
             Serializers.Add(typeof(CantConnectMessage), new CantConnectSerializer(Outgoing.CantConnect));
             Serializers.Add(typeof(CloseConnectionMessage), new CloseConnectionSerializer(Outgoing.CloseConnection));
+            #endregion
             #endregion
         }
     }

@@ -26,6 +26,15 @@ namespace TurboDefaultRevisionPlugin.Headers
 
         #region Room
 
+        #region Action
+        public const int AvatarEffect = 1167;
+        public const int CarryObject = 1474;
+        public const int Dance = 2233;
+        public const int Expression = 1631;
+        public const int Sleep = 1797;
+        public const int UseObject = 1774;
+        #endregion
+
         #region Engine
         public const int FloorHeightMap = 1301;
         public const int HeightMap = 2753;
