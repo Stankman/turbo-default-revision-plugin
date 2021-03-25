@@ -86,6 +86,15 @@ namespace TurboDefaultRevisionPlugin
             Parsers.Add(Incoming.GetRoomEntryData, new GetRoomEntryDataParser());
             Parsers.Add(Incoming.PlaceObject, new PlaceObjectParser());
             Parsers.Add(Incoming.MoveAvatar, new MoveAvatarParser());
+            Parsers.Add(Incoming.GetItemData, new GetItemDataParser());
+            Parsers.Add(Incoming.MoveObject, new MoveObjectParser());
+            Parsers.Add(Incoming.MoveWallItem, new MoveWallItemParser());
+            Parsers.Add(Incoming.PickupObject, new PickupObjectParser());
+            Parsers.Add(Incoming.RemoveItem, new RemoveItemParser());
+            Parsers.Add(Incoming.SetItemData, new SetItemDataParser());
+            Parsers.Add(Incoming.SetObjectData, new SetObjectDataParser());
+            Parsers.Add(Incoming.UseFurniture, new UseFurnitureParser());
+            Parsers.Add(Incoming.UseWallItem, new UseWallItemParser());
             #endregion
             #region Session
             Parsers.Add(Incoming.OpenFlatConnection, new OpenFlatConnectionParser());

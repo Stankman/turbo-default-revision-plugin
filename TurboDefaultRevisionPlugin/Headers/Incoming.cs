@@ -79,6 +79,15 @@
         public const int GetRoomEntryData = 2300;
         public const int PlaceObject = 1258;
         public const int MoveAvatar = 3320;
+        public const int GetItemData = 3964;
+        public const int MoveObject = 248;
+        public const int MoveWallItem = 168;
+        public const int PickupObject = 3456;
+        public const int RemoveItem = 3336;
+        public const int SetItemData = 3666;
+        public const int SetObjectData = 3608;
+        public const int UseFurniture = 99;
+        public const int UseWallItem = 210;
         #endregion
 
         #region Session
