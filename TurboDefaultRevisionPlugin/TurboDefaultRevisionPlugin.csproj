@@ -26,8 +26,4 @@
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="5.0.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Serializers\Rooms\Action\" />
-  </ItemGroup>
-
 </Project>

@@ -3,18 +3,23 @@ using System.Collections.Generic;
 using Turbo.Core.Packets.Messages;
 using Turbo.Core.Packets.Revisions;
 using Turbo.Packets.Outgoing.Handshake;
+using Turbo.Packets.Outgoing.Inventory.Furni;
 using Turbo.Packets.Outgoing.Navigator;
+using Turbo.Packets.Outgoing.Room.Action;
 using Turbo.Packets.Outgoing.Room.Engine;
 using Turbo.Packets.Outgoing.Room.Session;
 using TurboDefaultRevisionPlugin.Headers;
 using TurboDefaultRevisionPlugin.Parsers.Handshake;
+using TurboDefaultRevisionPlugin.Parsers.Inventory.Furni;
 using TurboDefaultRevisionPlugin.Parsers.Navigator;
 using TurboDefaultRevisionPlugin.Parsers.Room.Action;
 using TurboDefaultRevisionPlugin.Parsers.Room.Avatar;
 using TurboDefaultRevisionPlugin.Parsers.Room.Engine;
 using TurboDefaultRevisionPlugin.Parsers.Room.Session;
 using TurboDefaultRevisionPlugin.Serializers.Handshake;
+using TurboDefaultRevisionPlugin.Serializers.Inventory.Furni;
 using TurboDefaultRevisionPlugin.Serializers.Navigator;
+using TurboDefaultRevisionPlugin.Serializers.Rooms.Action;
 using TurboDefaultRevisionPlugin.Serializers.Rooms.Engine;
 using TurboDefaultRevisionPlugin.Serializers.Rooms.Session;
 
@@ -50,6 +55,15 @@ namespace TurboDefaultRevisionPlugin
             Parsers.Add(Incoming.InitDiffieHandshake, new InitDiffieHandshakeParser());
             #endregion
 
+            #region Inventory
+
+            #region Furni
+            Parsers.Add(Incoming.RequestFurniInventory, new RequestFurniInventoryParser());
+            Parsers.Add(Incoming.RequestFurniInventoryWhenNotInRoom, new RequestFurniInventoryWhenNotInRoomParser());
+            Parsers.Add(Incoming.RequestRoomPropertySet, new RequestRoomPropertySetParser());
+            #endregion
+            #endregion
+
             #region Room
             #region Action
             Parsers.Add(Incoming.KickUser, new KickUserParser());
@@ -72,6 +86,15 @@ namespace TurboDefaultRevisionPlugin
             Parsers.Add(Incoming.GetRoomEntryData, new GetRoomEntryDataParser());
             Parsers.Add(Incoming.PlaceObject, new PlaceObjectParser());
             Parsers.Add(Incoming.MoveAvatar, new MoveAvatarParser());
+            Parsers.Add(Incoming.GetItemData, new GetItemDataParser());
+            Parsers.Add(Incoming.MoveObject, new MoveObjectParser());
+            Parsers.Add(Incoming.MoveWallItem, new MoveWallItemParser());
+            Parsers.Add(Incoming.PickupObject, new PickupObjectParser());
+            Parsers.Add(Incoming.RemoveItem, new RemoveItemParser());
+            Parsers.Add(Incoming.SetItemData, new SetItemDataParser());
+            Parsers.Add(Incoming.SetObjectData, new SetObjectDataParser());
+            Parsers.Add(Incoming.UseFurniture, new UseFurnitureParser());
+            Parsers.Add(Incoming.UseWallItem, new UseWallItemParser());
             #endregion
             #region Session
             Parsers.Add(Incoming.OpenFlatConnection, new OpenFlatConnectionParser());
@@ -119,6 +142,17 @@ namespace TurboDefaultRevisionPlugin
             Serializers.Add(typeof(UserObjectMessage), new UserObjectSerializer(Outgoing.UserObject));
             #endregion
 
+            #region Inventory
+
+            #region Furni
+            Serializers.Add(typeof(FurniListAddOrUpdateMessage), new FurniListAddOrUpdateSerializer(Outgoing.FurniListAddOrUpdate));
+            Serializers.Add(typeof(FurniListInvalidateMessage), new FurniListInvalidateSerializer(Outgoing.FurniListInvalidate));
+            Serializers.Add(typeof(FurniListRemoveMessage), new FurniListRemoveSerializer(Outgoing.FurniListRemove));
+            Serializers.Add(typeof(PostItPlacedMessage), new PostItPlacedSerializer(Outgoing.PostItPlaced));
+            #endregion
+
+            #endregion
+
             #region Navigator
             Serializers.Add(typeof(NavigatorMetaDataMessage), new NavigatorMetaDataSerializer(Outgoing.NavigatorMetaData));
             Serializers.Add(typeof(GetGuestRoomResultMessage), new GetGuestRoomResultSerializer(Outgoing.GetGuestRoomResult));
@@ -127,7 +161,19 @@ namespace TurboDefaultRevisionPlugin
             Serializers.Add(typeof(NavigatorEventCategoriesMessage), new NavigatorEventCategoriesSerializer(Outgoing.NavigatorEventCategories));
             #endregion
 
-            #region Rooms.Engine
+            #region Room
+
+            #region Action
+            Serializers.Add(typeof(AvatarEffectMessage), new AvatarEffectSerializer(Outgoing.AvatarEffect));
+            Serializers.Add(typeof(CarryObjectMessage), new CarryObjectSerializer(Outgoing.CarryObject));
+            Serializers.Add(typeof(DanceMessage), new DanceSerializer(Outgoing.Dance));
+            Serializers.Add(typeof(ExpressionMessage), new ExpressionSerializer(Outgoing.Expression));
+            Serializers.Add(typeof(SleepMessage), new SleepSerializer(Outgoing.Sleep));
+            Serializers.Add(typeof(UseObjectMessage), new UseObjectSerializer(Outgoing.UseObject));
+            #endregion
+
+            #region Engine
+            Serializers.Add(typeof(FavouriteMembershipUpdateMessage), new FavouriteMembershipUpdateSerializer(Outgoing.FavouriteMembershipUpdate));
             Serializers.Add(typeof(HeightMapMessage), new HeightMapSerializer(Outgoing.HeightMap));
             Serializers.Add(typeof(HeightMapUpdateMessage), new HeightMapUpdateSerializer(Outgoing.HeightMapUpdate));
             Serializers.Add(typeof(FloorHeightMapMessage), new FloorHeightMapSerializer(Outgoing.FloorHeightMap));
@@ -136,14 +182,30 @@ namespace TurboDefaultRevisionPlugin
             Serializers.Add(typeof(UsersMessage), new UsersSerializer(Outgoing.Users));
             Serializers.Add(typeof(UserUpdateMessage), new UserUpdateSerializer(Outgoing.UserUpdate));
             Serializers.Add(typeof(UserRemoveMessage), new UserRemoveSerializer(Outgoing.UserRemove));
+            Serializers.Add(typeof(ObjectAddMessage), new ObjectAddSerializer(Outgoing.ObjectAdd));
+            Serializers.Add(typeof(ObjectDataUpdateMessage), new ObjectDataUpdateSerializer(Outgoing.ObjectDataUpdate));
+            Serializers.Add(typeof(ObjectRemoveMessage), new ObjectRemoveSerializer(Outgoing.ObjectRemove));
+            Serializers.Add(typeof(ObjectsDataUpdateMessage), new ObjectsDataUpdateSerializer(Outgoing.ObjectsDataUpdate));
+            Serializers.Add(typeof(ObjectsMessage), new ObjectsSerializer(Outgoing.Objects));
+            Serializers.Add(typeof(ObjectUpdateMessage), new ObjectUpdateSerializer(Outgoing.ObjectUpdate));
+            Serializers.Add(typeof(ItemAddMessage), new ItemAddSerializer(Outgoing.ItemAdd));
+            Serializers.Add(typeof(ItemDataUpdateMessage), new ItemDataUpdateSerializer(Outgoing.ItemDataUpdate));
+            Serializers.Add(typeof(ItemRemoveMessage), new ItemRemoveSerializer(Outgoing.ItemRemove));
+            Serializers.Add(typeof(ItemsMessage), new ItemsSerializer(Outgoing.Items));
+            Serializers.Add(typeof(ItemUpdateMessage), new ItemUpdateSerializer(Outgoing.ItemUpdate));
+            Serializers.Add(typeof(RoomPropertyMessage), new RoomPropertySerializer(Outgoing.RoomProperty));
+            Serializers.Add(typeof(RoomVisualizationSettingsMessage), new RoomVisualizationSettingsSerializer(Outgoing.RoomVisualizationSettings));
+            Serializers.Add(typeof(SlideObjectBundleMessage), new SlideObjectBundleSerializer(Outgoing.SlideObjectBundle));
+            Serializers.Add(typeof(UserChangeMessage), new UserChangeSerializer(Outgoing.UserChange));
             #endregion
 
-            #region Rooms.Session
+            #region Session
             Serializers.Add(typeof(OpenConnectionMessage), new OpenConnectionSerializer(Outgoing.OpenConnection));
             Serializers.Add(typeof(RoomReadyMessage), new RoomReadySerializer(Outgoing.RoomReady));
             Serializers.Add(typeof(RoomForwardMessage), new RoomForwardSerializer(Outgoing.RoomForward));
             Serializers.Add(typeof(CantConnectMessage), new CantConnectSerializer(Outgoing.CantConnect));
             Serializers.Add(typeof(CloseConnectionMessage), new CloseConnectionSerializer(Outgoing.CloseConnection));
+            #endregion
             #endregion
         }
     }

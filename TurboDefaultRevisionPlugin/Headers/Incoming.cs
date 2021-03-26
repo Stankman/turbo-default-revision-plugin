@@ -14,43 +14,13 @@
         public const int InitDiffieHandshake = 3110;
         #endregion
 
-        #region Room
+        #region Inventory
 
-        #region Action
-        public const int KickUser = 1320;
-        public const int MuteUser = 3485;
+        #region Furni
+        public const int RequestFurniInventory = 3150;
+        public const int RequestFurniInventoryWhenNotInRoom = 3500;
+        public const int RequestRoomPropertySet = 711;
         #endregion
-
-        #region Avatar
-        public const int Dance = 2080;
-        public const int AvatarExpression = 2456;
-        public const int ChangeMotto = 2228;
-        public const int ChangePosture = 2235;
-        public const int CustomizeAvatarWithFurni = 3374;
-        public const int DropCarryItem = 2814;
-        public const int LookTo = 3301;
-        public const int PassCarryItem = 2941;
-        public const int PassCarryItemToPet = 2768;
-        public const int Sign = 1975;
-        #endregion
-        #region Chat
-        public const int Whisper = 1543;
-        #endregion
-
-        #region Engine
-        public const int GetFurnitureAliases = 3898;
-        public const int GetRoomEntryData = 2300;
-        public const int PlaceObject = 1258;
-        public const int MoveAvatar = 3320;
-        #endregion
-
-        #endregion
-
-        #region Session
-        public const int OpenFlatConnection = 2312;
-        public const int Quit = 105;
-        public const int GoToFlat = 685;
-        public const int ChangeQueue = 3093;
         #endregion
 
         #region Navigator
@@ -79,6 +49,54 @@
         public const int RoomsWhereMyFriendsAreSearch = 1786;
         public const int RoomsWithHighestScoreSearch = 2939;
         public const int SetNewNavigatorWindowPreferences = 3159;
+        #endregion
+
+        #region Room
+
+        #region Action
+        public const int KickUser = 1320;
+        public const int MuteUser = 3485;
+        #endregion
+
+        #region Avatar
+        public const int Dance = 2080;
+        public const int AvatarExpression = 2456;
+        public const int ChangeMotto = 2228;
+        public const int ChangePosture = 2235;
+        public const int CustomizeAvatarWithFurni = 3374;
+        public const int DropCarryItem = 2814;
+        public const int LookTo = 3301;
+        public const int PassCarryItem = 2941;
+        public const int PassCarryItemToPet = 2768;
+        public const int Sign = 1975;
+        #endregion
+        #region Chat
+        public const int Whisper = 1543;
+        #endregion
+
+        #region Engine
+        public const int GetFurnitureAliases = 3898;
+        public const int GetRoomEntryData = 2300;
+        public const int PlaceObject = 1258;
+        public const int MoveAvatar = 3320;
+        public const int GetItemData = 3964;
+        public const int MoveObject = 248;
+        public const int MoveWallItem = 168;
+        public const int PickupObject = 3456;
+        public const int RemoveItem = 3336;
+        public const int SetItemData = 3666;
+        public const int SetObjectData = 3608;
+        public const int UseFurniture = 99;
+        public const int UseWallItem = 210;
+        #endregion
+
+        #region Session
+        public const int OpenFlatConnection = 2312;
+        public const int Quit = 105;
+        public const int GoToFlat = 685;
+        public const int ChangeQueue = 3093;
+        #endregion
+
         #endregion
     }
 }

@@ -54,7 +54,7 @@ namespace TurboDefaultRevisionPlugin.Serializers.Rooms.Engine
                     packet.WriteString(""); // swim figure
                     packet.WriteInteger(0);// todo : activity points
                     packet.WriteBoolean(false);// todo : is moderator
-                } 
+                }
             }
         }
     }

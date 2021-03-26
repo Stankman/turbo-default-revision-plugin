@@ -9,6 +9,16 @@ namespace TurboDefaultRevisionPlugin.Headers
         public const int UserObject = 2725;
         #endregion
 
+        #region Inventory
+        #region Furni
+        public const int FurniListAddOrUpdate = 104;
+        public const int FurniListInvalidate = 3151;
+        public const int FurniListRemove = 159;
+        public const int FurniList = 994;
+        public const int PostItPlaced = 1501;
+        #endregion
+        #endregion
+
         #region Navigator
         public const int GetGuestRoomResult = 687;
         public const int NavigatorMetaData = 3052;
@@ -19,7 +29,17 @@ namespace TurboDefaultRevisionPlugin.Headers
 
         #region Room
 
+        #region Action
+        public const int AvatarEffect = 1167;
+        public const int CarryObject = 1474;
+        public const int Dance = 2233;
+        public const int Expression = 1631;
+        public const int Sleep = 1797;
+        public const int UseObject = 1774;
+        #endregion
+
         #region Engine
+        public const int FavouriteMembershipUpdate = 3403;
         public const int FloorHeightMap = 1301;
         public const int HeightMap = 2753;
         public const int HeightMapUpdate = 558;
@@ -28,6 +48,21 @@ namespace TurboDefaultRevisionPlugin.Headers
         public const int Users = 374;
         public const int UserUpdate = 1640;
         public const int UserRemove = 2661;
+        public const int ObjectAdd = 1534;
+        public const int ObjectDataUpdate = 2547;
+        public const int ObjectRemove = 2703;
+        public const int ObjectsDataUpdate = 1453;
+        public const int Objects = 1778;
+        public const int ObjectUpdate = 3776;
+        public const int ItemAdd = 2187;
+        public const int ItemDataUpdate = 2202;
+        public const int ItemRemove = 3208;
+        public const int Items = 1369;
+        public const int ItemUpdate = 2009;
+        public const int RoomProperty = 2454;
+        public const int RoomVisualizationSettings = 3547;
+        public const int SlideObjectBundle = 3207;
+        public const int UserChange = 3920;
         #endregion
 
         #region Session
