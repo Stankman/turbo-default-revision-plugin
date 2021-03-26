@@ -7,7 +7,7 @@ namespace TurboDefaultRevisionPlugin.Serializers.Navigator
 {
     public class NavigatorMetaDataSerializer : AbstractSerializer<NavigatorMetaDataMessage>
     {
-        public NavigatorMetaDataSerializer() : base(Outgoing.NavigatorMetaData)
+        public NavigatorMetaDataSerializer(int header) : base(header)
         {
 
         }
