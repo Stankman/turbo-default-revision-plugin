@@ -36,7 +36,7 @@ namespace TurboDefaultRevisionPlugin.Serializers.Navigator
             packet.WriteInteger(roomDetails.Id);
             packet.WriteString(roomDetails.Name);
             packet.WriteInteger(roomDetails.PlayerId);
-            packet.WriteString("test");// room owner name
+            packet.WriteString(roomDetails.PlayerName);
             packet.WriteInteger((int)roomDetails.State);
             packet.WriteInteger(roomDetails.UsersNow);
             packet.WriteInteger(roomDetails.UsersMax);
