@@ -24,7 +24,7 @@ namespace TurboDefaultRevisionPlugin.Serializers.Rooms.Engine.Types
                     packet.WriteInteger(1); // todo: extra
                     StuffDataSerializer.Serialize(packet, roomObject);
                     packet.WriteInteger(-1);//secondsToExpiration
-                    packet.WriteInteger((int)furnitureLogic.FurnitureDefinition.UsagePolicy);
+                    packet.WriteInteger((int)furnitureLogic.UsagePolicy);
                     packet.WriteInteger(furnitureHolder.PlayerId);
                     if (type < 0) packet.WriteString(""); // furnidata object name if it has no sprite id
                 }
