@@ -65,6 +65,12 @@ namespace TurboDefaultRevisionPlugin.Headers
         public const int UserChange = 3920;
         #endregion
 
+        #region Permissions
+        public const int YouAreOwner = 339;
+        public const int YouAreController = 780;
+        public const int YouAreNotController = 2392;
+        #endregion
+
         #region Session
         public const int OpenConnection = 758;
         public const int RoomReady = 2031;

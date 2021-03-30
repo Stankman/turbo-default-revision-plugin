@@ -7,6 +7,7 @@ using Turbo.Packets.Outgoing.Inventory.Furni;
 using Turbo.Packets.Outgoing.Navigator;
 using Turbo.Packets.Outgoing.Room.Action;
 using Turbo.Packets.Outgoing.Room.Engine;
+using Turbo.Packets.Outgoing.Room.Permissions;
 using Turbo.Packets.Outgoing.Room.Session;
 using TurboDefaultRevisionPlugin.Headers;
 using TurboDefaultRevisionPlugin.Parsers.Handshake;
@@ -21,6 +22,7 @@ using TurboDefaultRevisionPlugin.Serializers.Inventory.Furni;
 using TurboDefaultRevisionPlugin.Serializers.Navigator;
 using TurboDefaultRevisionPlugin.Serializers.Rooms.Action;
 using TurboDefaultRevisionPlugin.Serializers.Rooms.Engine;
+using TurboDefaultRevisionPlugin.Serializers.Rooms.Permissions;
 using TurboDefaultRevisionPlugin.Serializers.Rooms.Session;
 
 namespace TurboDefaultRevisionPlugin
@@ -197,6 +199,12 @@ namespace TurboDefaultRevisionPlugin
             Serializers.Add(typeof(RoomVisualizationSettingsMessage), new RoomVisualizationSettingsSerializer(Outgoing.RoomVisualizationSettings));
             Serializers.Add(typeof(SlideObjectBundleMessage), new SlideObjectBundleSerializer(Outgoing.SlideObjectBundle));
             Serializers.Add(typeof(UserChangeMessage), new UserChangeSerializer(Outgoing.UserChange));
+            #endregion
+
+            #region Permissions
+            Serializers.Add(typeof(YouAreControllerMessage), new YouAreControllerSerializer(Outgoing.YouAreController));
+            Serializers.Add(typeof(YouAreNotControllerMessage), new YouAreNotControllerSerializer(Outgoing.YouAreNotController));
+            Serializers.Add(typeof(YouAreOwnerMessage), new YouAreOwnerSerializer(Outgoing.YouAreOwner));
             #endregion
 
             #region Session
