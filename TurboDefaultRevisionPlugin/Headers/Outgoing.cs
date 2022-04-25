@@ -25,6 +25,7 @@ namespace TurboDefaultRevisionPlugin.Headers
         public const int NavigatorLiftedRooms = 3104;
         public const int NavigatorSavedSearches = 3984;
         public const int NavigatorEventCategories = 3244;
+        public const int NavigatorSettings = 2875;
         #endregion
 
         #region Room

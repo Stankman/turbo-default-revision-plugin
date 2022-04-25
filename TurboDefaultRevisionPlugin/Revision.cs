@@ -16,6 +16,7 @@ using TurboDefaultRevisionPlugin.Parsers.Navigator;
 using TurboDefaultRevisionPlugin.Parsers.Room.Action;
 using TurboDefaultRevisionPlugin.Parsers.Room.Avatar;
 using TurboDefaultRevisionPlugin.Parsers.Room.Engine;
+using TurboDefaultRevisionPlugin.Parsers.Room.Furniture;
 using TurboDefaultRevisionPlugin.Parsers.Room.Session;
 using TurboDefaultRevisionPlugin.Serializers.Handshake;
 using TurboDefaultRevisionPlugin.Serializers.Inventory.Furni;
@@ -67,10 +68,12 @@ namespace TurboDefaultRevisionPlugin
             #endregion
 
             #region Room
+
             #region Action
             Parsers.Add(Incoming.KickUser, new KickUserParser());
             Parsers.Add(Incoming.MuteUser, new MuteUserParser());
             #endregion
+
             #region Avatar
             Parsers.Add(Incoming.Dance, new DanceParser());
             Parsers.Add(Incoming.AvatarExpression, new AvatarExpressionParser());
@@ -83,6 +86,7 @@ namespace TurboDefaultRevisionPlugin
             Parsers.Add(Incoming.PassCarryItemToPet, new PassCarryItemToPetParser());
             Parsers.Add(Incoming.Sign, new SignParser());
             #endregion
+
             #region Engine
             Parsers.Add(Incoming.GetFurnitureAliases, new GetFurnitureAliasesParser());
             Parsers.Add(Incoming.GetRoomEntryData, new GetRoomEntryDataParser());
@@ -98,12 +102,19 @@ namespace TurboDefaultRevisionPlugin
             Parsers.Add(Incoming.UseFurniture, new UseFurnitureParser());
             Parsers.Add(Incoming.UseWallItem, new UseWallItemParser());
             #endregion
+
+            #region Furniture
+            Parsers.Add(Incoming.ThrowDice, new ThrowDiceParser());
+            Parsers.Add(Incoming.CloseDice, new DiceOffParser());
+            #endregion
+
             #region Session
             Parsers.Add(Incoming.OpenFlatConnection, new OpenFlatConnectionParser());
             Parsers.Add(Incoming.Quit, new QuitParser());
             Parsers.Add(Incoming.GoToFlat, new GoToFlatParser());
             Parsers.Add(Incoming.ChangeQueue, new ChangeQueueParser());
             #endregion
+
             #endregion
 
             #region Navigator
@@ -161,6 +172,7 @@ namespace TurboDefaultRevisionPlugin
             Serializers.Add(typeof(NavigatorLiftedRoomsMessage), new NavigatorLiftedRoomsSerializer(Outgoing.NavigatorLiftedRooms));
             Serializers.Add(typeof(NavigatorSavedSearchesMessage), new NavigatorSavedSearchesSerializer(Outgoing.NavigatorSavedSearches));
             Serializers.Add(typeof(NavigatorEventCategoriesMessage), new NavigatorEventCategoriesSerializer(Outgoing.NavigatorEventCategories));
+            Serializers.Add(typeof(NavigatorSettingsMessage), new NavigatorSettingsSerializer(Outgoing.NavigatorSettings));
             #endregion
 
             #region Room
@@ -214,6 +226,7 @@ namespace TurboDefaultRevisionPlugin
             Serializers.Add(typeof(CantConnectMessage), new CantConnectSerializer(Outgoing.CantConnect));
             Serializers.Add(typeof(CloseConnectionMessage), new CloseConnectionSerializer(Outgoing.CloseConnection));
             #endregion
+
             #endregion
         }
     }

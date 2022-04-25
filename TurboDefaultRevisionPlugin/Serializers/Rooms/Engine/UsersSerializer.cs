@@ -1,4 +1,6 @@
-﻿using Turbo.Core.Game.Rooms.Object;
+﻿using System;
+using Turbo.Core.Game.Rooms.Object;
+using Turbo.Core.Game.Rooms.Object.Constants;
 using Turbo.Core.Packets.Messages;
 using Turbo.Packets.Outgoing.Room.Engine;
 using Turbo.Packets.Serializers;
@@ -47,7 +49,7 @@ namespace TurboDefaultRevisionPlugin.Serializers.Rooms.Engine
                 else if (roomObject.Logic is AvatarLogic)
                 {
                     packet.WriteInteger(1);
-                    packet.WriteString(userHolder.Gender);
+                    packet.WriteString(Enum.GetName(typeof(AvatarGender), userHolder.Gender));
                     packet.WriteInteger(0);// todo: group id
                     packet.WriteInteger(0); // todo: group status
                     packet.WriteString("");// todo: group name

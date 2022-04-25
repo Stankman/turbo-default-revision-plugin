@@ -70,6 +70,7 @@
         public const int PassCarryItemToPet = 2768;
         public const int Sign = 1975;
         #endregion
+
         #region Chat
         public const int Whisper = 1543;
         #endregion
@@ -88,6 +89,11 @@
         public const int SetObjectData = 3608;
         public const int UseFurniture = 99;
         public const int UseWallItem = 210;
+        #endregion
+
+        #region Furniture
+        public const int ThrowDice = 1990;
+        public const int CloseDice = 1533;
         #endregion
 
         #region Session

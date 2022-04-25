@@ -20,7 +20,7 @@ namespace TurboDefaultRevisionPlugin
             _logger = logger;
 
             IRevision myRevision = new Revision();
-            string nitroRev = "NITRO-0-4-0";
+            string nitroRev = "NITRO-2-0-0";
             _revisionManager.Revisions.Add(myRevision.Revision, myRevision);
 
             _revisionManager.Revisions.Add(nitroRev, myRevision);

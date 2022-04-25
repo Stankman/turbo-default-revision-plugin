@@ -1,4 +1,6 @@
-﻿using Turbo.Core.Packets.Messages;
+﻿using System;
+using Turbo.Core.Game.Rooms.Object.Constants;
+using Turbo.Core.Packets.Messages;
 using Turbo.Packets.Outgoing.Handshake;
 using Turbo.Packets.Serializers;
 
@@ -14,7 +16,7 @@ namespace TurboDefaultRevisionPlugin.Serializers.Handshake
             packet.WriteInteger(message.Player.Id);
             packet.WriteString(message.Player.Name);
             packet.WriteString(message.Player.PlayerDetails.Figure);
-            packet.WriteString(message.Player.PlayerDetails.Gender);
+            packet.WriteString(Enum.GetName(typeof(AvatarGender), message.Player.PlayerDetails.Gender));
             packet.WriteString(message.Player.PlayerDetails.Motto);
             packet.WriteString("");//todo: real name here
             packet.WriteString("");//todo: email here
