@@ -7,6 +7,7 @@ namespace TurboDefaultRevisionPlugin.Serializers.Rooms.Engine
     public class RoomPropertySerializer : AbstractSerializer<RoomPropertyMessage>
     {
         public RoomPropertySerializer(int header) : base(header) { }
+
         protected override void Serialize(IServerPacket packet, RoomPropertyMessage message)
         {
             packet.WriteString(message.Property);

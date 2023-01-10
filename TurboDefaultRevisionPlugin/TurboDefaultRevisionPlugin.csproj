@@ -1,29 +1,42 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <Commandlineparameters></Commandlineparameters>
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Turbo.Database">
-      <HintPath>..\..\Turbo\Turbo.Database\bin\Debug\net5.0\Turbo.Database.dll</HintPath>
-    </Reference>
-    <Reference Include="Turbo.Packets">
-      <HintPath>..\..\turbo\Turbo\bin\Debug\net5.0\Turbo.Packets.dll</HintPath>
-    </Reference>
-    <Reference Include="Turbo.Plugins">
-      <HintPath>..\..\turbo\Turbo\bin\Debug\net5.0\Turbo.Plugins.dll</HintPath>
-    </Reference>
-	<Reference Include="Turbo.Core">
-		<HintPath>..\..\turbo\Turbo\bin\Debug\net5.0\Turbo.Core.dll</HintPath>
-	</Reference>
 	<Reference Include="Turbo.Rooms">
-	  <HintPath>..\..\turbo\Turbo\bin\Debug\net5.0\Turbo.Rooms.dll</HintPath>
+	  <HintPath>..\..\turbo-emulator\Turbo\bin\Debug\net7.0\Turbo.Rooms.dll</HintPath>
+	</Reference>
+	<Reference Include="Turbo.Core">
+	  <HintPath>..\..\turbo-emulator\Turbo\bin\Debug\net7.0\Turbo.Core.dll</HintPath>
+	</Reference>
+	<Reference Include="Turbo.Database">
+	  <HintPath>..\..\turbo-emulator\Turbo\bin\Debug\net7.0\Turbo.Database.dll</HintPath>
+	</Reference>
+	<Reference Include="Turbo.Main">
+	  <HintPath>..\..\turbo-emulator\Turbo\bin\Debug\net7.0\Turbo.Main.dll</HintPath>
+	</Reference>
+	<Reference Include="Turbo.Packets">
+	  <HintPath>..\..\turbo-emulator\Turbo\bin\Debug\net7.0\Turbo.Packets.dll</HintPath>
+	</Reference>
+	<Reference Include="Turbo.Furniture">
+	  <HintPath>..\..\turbo-emulator\Turbo\bin\Debug\net7.0\Turbo.Furniture.dll</HintPath>
 	</Reference>
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Turbo.Main" />
+    <None Remove="Turbo.Core" />
+    <None Remove="Turbo.Packets" />
+    <None Remove="Turbo.Rooms" />
+    <None Remove="Turbo.Database" />
+  </ItemGroup>
 </Project>

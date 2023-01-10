@@ -8,10 +8,12 @@ namespace TurboDefaultRevisionPlugin.Serializers.Rooms.Engine
     public class ObjectDataUpdateSerializer : AbstractSerializer<ObjectDataUpdateMessage>
     {
         public ObjectDataUpdateSerializer(int header) : base(header) { }
+
         protected override void Serialize(IServerPacket packet, ObjectDataUpdateMessage message)
         {
             packet.WriteString(message.Object.Id.ToString());
-            StuffDataSerializer.Serialize(packet, message.Object);
+
+            StuffDataSerializer.SerializeStuffData(packet, message.Object);
         }
     }
 }

@@ -9,9 +9,11 @@ namespace TurboDefaultRevisionPlugin.Serializers.Rooms.Engine
     public class ObjectsSerializer : AbstractSerializer<ObjectsMessage>
     {
         public ObjectsSerializer(int header) : base(header) { }
+
         protected override void Serialize(IServerPacket packet, ObjectsMessage message)
         {
             packet.WriteInteger(message.OwnersIdToUsername.Count);
+
             foreach(var entry in message.OwnersIdToUsername)
             {
                 packet.WriteInteger(entry.Key);
@@ -19,6 +21,7 @@ namespace TurboDefaultRevisionPlugin.Serializers.Rooms.Engine
             }
 
             packet.WriteInteger(message.Objects.Count);
+
             foreach(var obj in message.Objects)
             {
                 ObjectDataSerializer.Serialize(packet, obj);

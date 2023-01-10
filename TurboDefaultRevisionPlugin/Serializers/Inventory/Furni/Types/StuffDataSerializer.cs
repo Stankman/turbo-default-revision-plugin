@@ -1,92 +1,93 @@
 ﻿using System;
 using Turbo.Core.Game.Rooms.Object;
-using Turbo.Core.Game.Rooms.Object.Data;
 using Turbo.Core.Game.Rooms.Object.Logic;
+using Turbo.Core.Game.Furniture.Data;
 using Turbo.Core.Packets.Messages;
-using Turbo.Rooms.Object.Data;
-using Turbo.Rooms.Object.Data.Types;
+using Turbo.Furniture.Data.Types;
 
 namespace TurboDefaultRevisionPlugin.Serializers.Inventory.Furni.Types
 {
     public static class StuffDataSerializer
     {
-        public static void Serialize(IServerPacket packet, IRoomObject roomObject)
+        public static void SerializeStuffData(IServerPacket packet, IRoomObject roomObject)
         {
-            if (roomObject.Logic is IFurnitureLogic furnitureLogic)
+            if (roomObject?.Logic is not IFurnitureLogic furnitureLogic) return;
+
+            SerializeStuffData(packet, furnitureLogic.StuffData);
+        }
+
+        public static void SerializeStuffData(IServerPacket packet, IStuffData stuffData)
+        {
+            packet.WriteInteger(stuffData.Flags);
+
+            if (stuffData is CrackableStuffData crackableData)
             {
-                IStuffData stuffData = furnitureLogic.StuffData;
+                packet.WriteString(crackableData.State);
+                packet.WriteInteger(crackableData.Hits);
+                packet.WriteInteger(crackableData.Target);
+            }
 
-                packet.WriteInteger(stuffData.Flags);
+            else if (stuffData is EmptyStuffData emptyData)
+            {
 
-                if (stuffData is CrackableStuffData crackableData)
+            }
+
+            else if (stuffData is HighscoreStuffData highscoreData)
+            {
+
+            }
+
+            else if (stuffData is LegacyStuffData legacyData)
+            {
+                packet.WriteString(legacyData.Data);
+            }
+
+            else if (stuffData is MapStuffData mapData)
+            {
+                var data = mapData.Data;
+
+                packet.WriteInteger(data.Count);
+
+                foreach (string key in data.Keys)
                 {
-                    packet.WriteString(crackableData.State);
-                    packet.WriteInteger(crackableData.Hits);
-                    packet.WriteInteger(crackableData.Target);
+                    packet.WriteString(key);
+                    packet.WriteString(data[key]);
                 }
+            }
 
-                else if (stuffData is EmptyStuffData emptyData)
+            else if (stuffData is NumberStuffData numberData)
+            {
+                var data = numberData.Data;
+
+                packet.WriteInteger(data.Count);
+
+                foreach (int value in data)
                 {
-
+                    packet.WriteInteger(value);
                 }
+            }
 
-                else if (stuffData is HighscoreStuffData highscoreData)
+            else if (stuffData is StringStuffData stringData)
+            {
+                var data = stringData.Data;
+
+                packet.WriteInteger(data.Count);
+
+                foreach (string value in data)
                 {
-
+                    packet.WriteString(value);
                 }
+            }
 
-                else if (stuffData is LegacyStuffData legacyData)
-                {
-                    packet.WriteString(legacyData.Data);
-                }
+            else if (stuffData is VoteStuffData voteData)
+            {
 
-                else if (stuffData is MapStuffData mapData)
-                {
-                    var data = mapData.Data;
+            }
 
-                    packet.WriteInteger(data.Count);
-
-                    foreach (string key in data.Keys)
-                    {
-                        packet.WriteString(key);
-                        packet.WriteString(data[key]);
-                    }
-                }
-
-                else if (stuffData is NumberStuffData numberData)
-                {
-                    var data = numberData.Data;
-
-                    packet.WriteInteger(data.Count);
-
-                    foreach (int value in data)
-                    {
-                        packet.WriteInteger(value);
-                    }
-                }
-
-                else if (stuffData is StringStuffData stringData)
-                {
-                    var data = stringData.Data;
-
-                    packet.WriteInteger(data.Count);
-
-                    foreach (string value in data)
-                    {
-                        packet.WriteString(value);
-                    }
-                }
-
-                else if (stuffData is VoteStuffData voteData)
-                {
-
-                }
-
-                if (furnitureLogic.StuffData.IsUnique())
-                {
-                    packet.WriteInteger(stuffData.UniqueNumber);
-                    packet.WriteInteger(stuffData.UniqueSeries);
-                }
+            if (stuffData.IsUnique())
+            {
+                packet.WriteInteger(stuffData.UniqueNumber);
+                packet.WriteInteger(stuffData.UniqueSeries);
             }
         }
     }

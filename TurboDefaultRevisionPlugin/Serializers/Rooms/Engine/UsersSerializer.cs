@@ -15,6 +15,7 @@ namespace TurboDefaultRevisionPlugin.Serializers.Rooms.Engine
         protected override void Serialize(IServerPacket packet, UsersMessage message)
         {
             packet.WriteInteger(message.RoomObjects.Count);
+
             foreach (var roomObject in message.RoomObjects)
             {
                 IRoomObjectUserHolder userHolder = (IRoomObjectUserHolder)roomObject.RoomObjectHolder;

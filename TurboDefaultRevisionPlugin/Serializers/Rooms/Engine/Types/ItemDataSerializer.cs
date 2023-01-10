@@ -8,16 +8,22 @@ namespace TurboDefaultRevisionPlugin.Serializers.Rooms.Engine.Types
     {
         public static void Serialize(IServerPacket packet, IRoomObject roomObject)
         {
-            if (roomObject.Logic is IFurnitureLogic furnitureLogic)
+            if (roomObject.Logic is not IFurnitureLogic furnitureLogic) return;
+
+            packet.WriteInteger(roomObject.Id);
+            packet.WriteInteger(furnitureLogic.FurnitureDefinition.SpriteId);
+            packet.WriteString(""); // todo: walllocation
+            packet.WriteString(furnitureLogic.StuffData.GetLegacyString());
+            packet.WriteInteger(-1);//secondsToExpiration
+            packet.WriteInteger((int)furnitureLogic.UsagePolicy);
+
+            if(roomObject.RoomObjectHolder is IRoomObjectFurnitureHolder holder)
             {
-                int type = furnitureLogic.FurnitureDefinition.SpriteId;
-                packet.WriteInteger(roomObject.Id);
-                packet.WriteInteger(type);
-                packet.WriteString(""); // todo: walllocation
-                packet.WriteString("0"); // todo: dataStr
-                packet.WriteInteger(-1);//secondsToExpiration
-                packet.WriteInteger(1); // todo: fix usage policy
-                packet.WriteInteger(1); // todo: owner id
+                packet.WriteInteger(holder.PlayerId);
+            }
+            else
+            {
+                packet.WriteInteger(-1);
             }
         }
     }

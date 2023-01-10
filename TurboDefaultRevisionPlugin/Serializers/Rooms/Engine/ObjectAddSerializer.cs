@@ -8,9 +8,11 @@ namespace TurboDefaultRevisionPlugin.Serializers.Rooms.Engine
     public class ObjectAddSerializer : AbstractSerializer<ObjectAddMessage>
     {
         public ObjectAddSerializer(int header) : base(header) { }
+
         protected override void Serialize(IServerPacket packet, ObjectAddMessage message)
         {
             ObjectDataSerializer.Serialize(packet, message.Object);
+
             packet.WriteString(message.OwnerName);
         }
     }

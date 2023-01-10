@@ -8,6 +8,7 @@ namespace TurboDefaultRevisionPlugin.Serializers.Inventory.Furni
     public class FurniListAddOrUpdateSerializer : AbstractSerializer<FurniListAddOrUpdateMessage>
     {
         public FurniListAddOrUpdateSerializer(int header) : base(header) { }
+
         protected override void Serialize(IServerPacket packet, FurniListAddOrUpdateMessage message)
         {
             FurniDataSerializer.Serialize(packet, message.Furniture);

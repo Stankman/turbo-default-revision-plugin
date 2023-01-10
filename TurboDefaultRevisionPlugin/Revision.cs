@@ -89,13 +89,13 @@ namespace TurboDefaultRevisionPlugin
 
             #region Engine
             Parsers.Add(Incoming.GetFurnitureAliases, new GetFurnitureAliasesParser());
-            Parsers.Add(Incoming.GetRoomEntryData, new GetRoomEntryDataParser());
-            Parsers.Add(Incoming.PlaceObject, new PlaceObjectParser());
-            Parsers.Add(Incoming.MoveAvatar, new MoveAvatarParser());
             Parsers.Add(Incoming.GetItemData, new GetItemDataParser());
+            Parsers.Add(Incoming.GetRoomEntryData, new GetRoomEntryDataParser());
+            Parsers.Add(Incoming.MoveAvatar, new MoveAvatarParser());
             Parsers.Add(Incoming.MoveObject, new MoveObjectParser());
             Parsers.Add(Incoming.MoveWallItem, new MoveWallItemParser());
             Parsers.Add(Incoming.PickupObject, new PickupObjectParser());
+            Parsers.Add(Incoming.PlaceObject, new PlaceObjectParser());
             Parsers.Add(Incoming.RemoveItem, new RemoveItemParser());
             Parsers.Add(Incoming.SetItemData, new SetItemDataParser());
             Parsers.Add(Incoming.SetObjectData, new SetObjectDataParser());
@@ -161,6 +161,7 @@ namespace TurboDefaultRevisionPlugin
             Serializers.Add(typeof(FurniListAddOrUpdateMessage), new FurniListAddOrUpdateSerializer(Outgoing.FurniListAddOrUpdate));
             Serializers.Add(typeof(FurniListInvalidateMessage), new FurniListInvalidateSerializer(Outgoing.FurniListInvalidate));
             Serializers.Add(typeof(FurniListRemoveMessage), new FurniListRemoveSerializer(Outgoing.FurniListRemove));
+            Serializers.Add(typeof(FurniListMessage), new FurniListSerializer(Outgoing.FurniList));
             Serializers.Add(typeof(PostItPlacedMessage), new PostItPlacedSerializer(Outgoing.PostItPlaced));
             #endregion
 

@@ -9,7 +9,7 @@ namespace TurboDefaultRevisionPlugin.Parsers.Room.Engine
     {
         public override IMessageEvent Parse(IClientPacket packet) 
         {
-            int furniId = packet.PopInt();
+            int objectId = packet.PopInt();
             int count = packet.PopInt() / 2;
             Dictionary<string, string> data = new();
 
@@ -20,7 +20,7 @@ namespace TurboDefaultRevisionPlugin.Parsers.Room.Engine
 
             return new SetObjectDataMessage
             {
-                FurniId = furniId,
+                ObjectId = objectId,
                 Data = data
             };
         }

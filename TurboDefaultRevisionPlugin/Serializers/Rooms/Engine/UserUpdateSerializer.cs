@@ -14,6 +14,7 @@ namespace TurboDefaultRevisionPlugin.Serializers.Rooms.Engine
         protected override void Serialize(IServerPacket packet, UserUpdateMessage message)
         {
             packet.WriteInteger(message.RoomObjects.Count);
+
             foreach (var roomObject in message.RoomObjects)
             {
                 packet.WriteInteger(roomObject.Id);
@@ -28,6 +29,7 @@ namespace TurboDefaultRevisionPlugin.Serializers.Rooms.Engine
                 MovingAvatarLogic avatarLogic = (MovingAvatarLogic)roomObject.Logic;
 
                 StringBuilder statusString = new StringBuilder("/");
+
                 foreach (var status in avatarLogic.Statuses)
                 {
                     statusString

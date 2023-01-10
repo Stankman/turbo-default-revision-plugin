@@ -7,6 +7,7 @@ namespace TurboDefaultRevisionPlugin.Serializers.Rooms.Engine
     public class UserChangeSerializer : AbstractSerializer<UserChangeMessage>
     {
         public UserChangeSerializer(int header) : base(header) { }
+
         protected override void Serialize(IServerPacket packet, UserChangeMessage message)
         {
             packet.WriteInteger(message.Id);

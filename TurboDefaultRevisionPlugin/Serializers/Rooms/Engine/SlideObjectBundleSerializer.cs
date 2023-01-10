@@ -8,6 +8,7 @@ namespace TurboDefaultRevisionPlugin.Serializers.Rooms.Engine
     public class SlideObjectBundleSerializer : AbstractSerializer<SlideObjectBundleMessage>
     {
         public SlideObjectBundleSerializer(int header) : base(header) { }
+
         protected override void Serialize(IServerPacket packet, SlideObjectBundleMessage message)
         {
             packet.WriteInteger(message.OldPos.X);
