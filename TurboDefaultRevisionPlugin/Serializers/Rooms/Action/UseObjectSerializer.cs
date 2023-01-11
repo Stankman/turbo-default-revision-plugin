@@ -9,7 +9,7 @@ namespace TurboDefaultRevisionPlugin.Serializers.Rooms.Action
         public UseObjectSerializer(int header) : base(header) { }
         protected override void Serialize(IServerPacket packet, UseObjectMessage message)
         {
-            packet.WriteInteger(message.UserId);
+            packet.WriteInteger(message.ObjectId);
             packet.WriteInteger(message.ItemType);
         }
     }

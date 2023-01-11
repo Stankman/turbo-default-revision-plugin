@@ -16,41 +16,39 @@ namespace TurboDefaultRevisionPlugin.Serializers.Rooms.Engine
         {
             packet.WriteInteger(message.RoomObjects.Count);
 
-            foreach (var roomObject in message.RoomObjects)
+            foreach (var avatarObject in message.RoomObjects)
             {
-                IRoomObjectUserHolder userHolder = (IRoomObjectUserHolder)roomObject.RoomObjectHolder;
+                packet.WriteInteger(avatarObject.RoomObjectHolder.Id);
+                packet.WriteString(avatarObject.RoomObjectHolder.Name);
+                packet.WriteString(avatarObject.RoomObjectHolder.Motto);
+                packet.WriteString(avatarObject.RoomObjectHolder.Figure);
 
-                packet.WriteInteger(userHolder.Id);
-                packet.WriteString(userHolder.Name);
-                packet.WriteString(userHolder.Motto);
-                packet.WriteString(userHolder.Figure);
+                packet.WriteInteger(avatarObject.Id);
+                packet.WriteInteger(avatarObject.Location.X);
+                packet.WriteInteger(avatarObject.Location.Y);
+                packet.WriteString(avatarObject.Location.Z.ToString());
+                packet.WriteInteger((int)avatarObject.Location.Rotation);
 
-                packet.WriteInteger(roomObject.Id);
-                packet.WriteInteger(roomObject.Location.X);
-                packet.WriteInteger(roomObject.Location.Y);
-                packet.WriteString(roomObject.Location.Z.ToString());
-                packet.WriteInteger((int)roomObject.Location.Rotation);
-
-                if (roomObject.Logic is RentableBotLogic)
+                if (avatarObject.Logic is RentableBotLogic)
                 {
                     packet.WriteInteger(4);
                     // do the composer for type 4
                 }
-                else if (roomObject.Logic is BotLogic)
+                else if (avatarObject.Logic is BotLogic)
                 {
                     packet.WriteInteger(3);
                     // do the composer for type 3
                 }
-                else if (roomObject.Logic is PetLogic)
+                else if (avatarObject.Logic is PetLogic)
                 {
                     packet.WriteInteger(2);
                     packet.WriteInteger(0); // todo : subtype
                     // do the composer for type 2
                 }
-                else if (roomObject.Logic is AvatarLogic)
+                else if (avatarObject.Logic is AvatarLogic)
                 {
                     packet.WriteInteger(1);
-                    packet.WriteString(Enum.GetName(typeof(AvatarGender), userHolder.Gender));
+                    packet.WriteString(Enum.GetName(typeof(AvatarGender), avatarObject.RoomObjectHolder.Gender));
                     packet.WriteInteger(0);// todo: group id
                     packet.WriteInteger(0); // todo: group status
                     packet.WriteString("");// todo: group name

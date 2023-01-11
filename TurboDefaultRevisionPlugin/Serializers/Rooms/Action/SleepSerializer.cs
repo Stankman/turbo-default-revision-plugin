@@ -9,7 +9,7 @@ namespace TurboDefaultRevisionPlugin.Serializers.Rooms.Action
         public SleepSerializer(int header) : base(header) { }
         protected override void Serialize(IServerPacket packet, SleepMessage message)
         {
-            packet.WriteInteger(message.UserId);
+            packet.WriteInteger(message.ObjectId);
             packet.WriteBoolean(message.Sleeping);
         }
     }

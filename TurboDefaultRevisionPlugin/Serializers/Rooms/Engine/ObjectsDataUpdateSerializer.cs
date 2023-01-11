@@ -13,11 +13,11 @@ namespace TurboDefaultRevisionPlugin.Serializers.Rooms.Engine
         {
             packet.WriteInteger(message.Objects.Count);
 
-            foreach(var obj in message.Objects)
+            foreach (var floorObject in message.Objects)
             {
-                packet.WriteInteger(obj.Id);
+                packet.WriteInteger(floorObject.Id);
 
-                StuffDataSerializer.SerializeStuffData(packet, obj);
+                StuffDataSerializer.SerializeStuffData(packet, floorObject);
             }
         }
     }

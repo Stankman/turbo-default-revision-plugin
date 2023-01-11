@@ -1,30 +1,19 @@
 ﻿using Turbo.Core.Game.Rooms.Object;
-using Turbo.Core.Game.Rooms.Object.Logic;
 using Turbo.Core.Packets.Messages;
 
 namespace TurboDefaultRevisionPlugin.Serializers.Rooms.Engine.Types
 {
     public static class ItemDataSerializer
     {
-        public static void Serialize(IServerPacket packet, IRoomObject roomObject)
+        public static void Serialize(IServerPacket packet, IRoomObjectWall wallObject)
         {
-            if (roomObject.Logic is not IFurnitureLogic furnitureLogic) return;
-
-            packet.WriteInteger(roomObject.Id);
-            packet.WriteInteger(furnitureLogic.FurnitureDefinition.SpriteId);
-            packet.WriteString(""); // todo: walllocation
-            packet.WriteString(furnitureLogic.StuffData.GetLegacyString());
+            packet.WriteInteger(wallObject.Id);
+            packet.WriteInteger(wallObject.Logic.FurnitureDefinition.SpriteId);
+            packet.WriteString(wallObject.WallLocation);
+            packet.WriteString(wallObject.Logic.StuffData.GetLegacyString());
             packet.WriteInteger(-1);//secondsToExpiration
-            packet.WriteInteger((int)furnitureLogic.UsagePolicy);
-
-            if(roomObject.RoomObjectHolder is IRoomObjectFurnitureHolder holder)
-            {
-                packet.WriteInteger(holder.PlayerId);
-            }
-            else
-            {
-                packet.WriteInteger(-1);
-            }
+            packet.WriteInteger((int)wallObject.Logic.UsagePolicy);
+            packet.WriteInteger(wallObject.RoomObjectHolder?.PlayerId ?? -1);
         }
     }
 }

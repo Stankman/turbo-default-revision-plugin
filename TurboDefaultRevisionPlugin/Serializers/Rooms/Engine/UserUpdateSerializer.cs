@@ -15,28 +15,24 @@ namespace TurboDefaultRevisionPlugin.Serializers.Rooms.Engine
         {
             packet.WriteInteger(message.RoomObjects.Count);
 
-            foreach (var roomObject in message.RoomObjects)
+            foreach (var avatarObject in message.RoomObjects)
             {
-                packet.WriteInteger(roomObject.Id);
-
-                packet.WriteInteger(roomObject.Location.X);
-                packet.WriteInteger(roomObject.Location.Y);
-                packet.WriteString(roomObject.Location.Z.ToString());
-
-                packet.WriteInteger((int)roomObject.Location.HeadRotation);// head rotation
-                packet.WriteInteger((int)roomObject.Location.Rotation); // body rotation
-
-                MovingAvatarLogic avatarLogic = (MovingAvatarLogic)roomObject.Logic;
+                packet.WriteInteger(avatarObject.Id);
+                packet.WriteInteger(avatarObject.Location.X);
+                packet.WriteInteger(avatarObject.Location.Y);
+                packet.WriteString(avatarObject.Location.Z.ToString());
+                packet.WriteInteger((int)avatarObject.Location.HeadRotation);
+                packet.WriteInteger((int)avatarObject.Location.Rotation);
 
                 StringBuilder statusString = new StringBuilder("/");
 
-                foreach (var status in avatarLogic.Statuses)
+                foreach (var status in avatarObject.Logic.Statuses)
                 {
                     statusString
-                            .Append(status.Key)
-                            .Append(' ')
-                            .Append(status.Value)
-                            .Append('/');
+                        .Append(status.Key)
+                        .Append(' ')
+                        .Append(status.Value)
+                        .Append('/');
                 }
 
                 packet.WriteString(statusString.ToString());

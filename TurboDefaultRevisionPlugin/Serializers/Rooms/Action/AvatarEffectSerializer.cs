@@ -9,7 +9,7 @@ namespace TurboDefaultRevisionPlugin.Serializers.Rooms.Action
         public AvatarEffectSerializer(int header) : base(header) { }
         protected override void Serialize(IServerPacket packet, AvatarEffectMessage message)
         {
-            packet.WriteInteger(message.UserId);
+            packet.WriteInteger(message.ObjectId);
             packet.WriteInteger(message.EffectId);
             packet.WriteInteger(message.DelayMilliSeconds);
         }

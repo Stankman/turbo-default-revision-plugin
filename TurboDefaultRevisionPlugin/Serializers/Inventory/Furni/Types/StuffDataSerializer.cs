@@ -9,11 +9,9 @@ namespace TurboDefaultRevisionPlugin.Serializers.Inventory.Furni.Types
 {
     public static class StuffDataSerializer
     {
-        public static void SerializeStuffData(IServerPacket packet, IRoomObject roomObject)
+        public static void SerializeStuffData(IServerPacket packet, IRoomObjectFloor floorObject)
         {
-            if (roomObject?.Logic is not IFurnitureLogic furnitureLogic) return;
-
-            SerializeStuffData(packet, furnitureLogic.StuffData);
+            SerializeStuffData(packet, floorObject.Logic.StuffData);
         }
 
         public static void SerializeStuffData(IServerPacket packet, IStuffData stuffData)

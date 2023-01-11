@@ -18,7 +18,7 @@ namespace TurboDefaultRevisionPlugin.Serializers.Rooms.Engine
 
             packet.WriteInteger(message.Furniture.Count);
 
-            foreach(var obj in message.Furniture)
+            foreach (var obj in message.Furniture)
             {
                 packet.WriteInteger(obj.RoomObject.Id);
                 packet.WriteString(string.Format("{0:N3}", obj.Height));
@@ -27,12 +27,12 @@ namespace TurboDefaultRevisionPlugin.Serializers.Rooms.Engine
 
             packet.WriteInteger(message.RollerItemId);
 
-            if(message.User != null)
+            if (message.Avatar != null)
             {
                 packet.WriteInteger((int)message.MoveType);
-                packet.WriteInteger(message.User.RoomObject.Id);
-                packet.WriteString(string.Format("{0:N3}", message.User.Height));
-                packet.WriteString(string.Format("{0:N3}", message.User.HeightNext));
+                packet.WriteInteger(message.Avatar.RoomObject.Id);
+                packet.WriteString(string.Format("{0:N3}", message.Avatar.Height));
+                packet.WriteString(string.Format("{0:N3}", message.Avatar.HeightNext));
             }
         }
     }

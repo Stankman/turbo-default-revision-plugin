@@ -14,7 +14,7 @@ namespace TurboDefaultRevisionPlugin.Serializers.Rooms.Engine
         {
             packet.WriteInteger(message.OwnersIdToUsername.Count);
 
-            foreach(var entry in message.OwnersIdToUsername)
+            foreach (var entry in message.OwnersIdToUsername)
             {
                 packet.WriteInteger(entry.Key);
                 packet.WriteString(entry.Value);
@@ -22,7 +22,7 @@ namespace TurboDefaultRevisionPlugin.Serializers.Rooms.Engine
 
             packet.WriteInteger(message.Objects.Count);
 
-            foreach(var obj in message.Objects)
+            foreach (var obj in message.Objects)
             {
                 ObjectDataSerializer.Serialize(packet, obj);
             }
