@@ -5,6 +5,7 @@ using Turbo.Core.Packets.Revisions;
 using Turbo.Packets.Outgoing.Handshake;
 using Turbo.Packets.Outgoing.Inventory.Furni;
 using Turbo.Packets.Outgoing.Navigator;
+using Turbo.Packets.Outgoing.Notifications;
 using Turbo.Packets.Outgoing.Room.Action;
 using Turbo.Packets.Outgoing.Room.Engine;
 using Turbo.Packets.Outgoing.Room.Permissions;
@@ -21,6 +22,7 @@ using TurboDefaultRevisionPlugin.Parsers.Room.Session;
 using TurboDefaultRevisionPlugin.Serializers.Handshake;
 using TurboDefaultRevisionPlugin.Serializers.Inventory.Furni;
 using TurboDefaultRevisionPlugin.Serializers.Navigator;
+using TurboDefaultRevisionPlugin.Serializers.Notifications;
 using TurboDefaultRevisionPlugin.Serializers.Rooms.Action;
 using TurboDefaultRevisionPlugin.Serializers.Rooms.Engine;
 using TurboDefaultRevisionPlugin.Serializers.Rooms.Permissions;
@@ -174,6 +176,10 @@ namespace TurboDefaultRevisionPlugin
             Serializers.Add(typeof(NavigatorSavedSearchesMessage), new NavigatorSavedSearchesSerializer(Outgoing.NavigatorSavedSearches));
             Serializers.Add(typeof(NavigatorEventCategoriesMessage), new NavigatorEventCategoriesSerializer(Outgoing.NavigatorEventCategories));
             Serializers.Add(typeof(NavigatorSettingsMessage), new NavigatorSettingsSerializer(Outgoing.NavigatorSettings));
+            #endregion
+
+            #region Notifications
+            Serializers.Add(typeof(UnseenItemsMessage), new UnseenItemsSerializer(Outgoing.UnseenItems));
             #endregion
 
             #region Room

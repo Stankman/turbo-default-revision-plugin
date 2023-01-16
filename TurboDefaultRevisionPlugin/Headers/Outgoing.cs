@@ -28,6 +28,10 @@ namespace TurboDefaultRevisionPlugin.Headers
         public const int NavigatorSettings = 2875;
         #endregion
 
+        #region Notifications
+        public const int UnseenItems = 2103;
+        #endregion
+
         #region Room
 
         #region Action
