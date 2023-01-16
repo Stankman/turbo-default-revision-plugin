@@ -7,7 +7,7 @@ namespace TurboDefaultRevisionPlugin.Serializers.Rooms.Engine.Types
     {
         public static void Serialize(IServerPacket packet, IRoomObjectWall wallObject)
         {
-            packet.WriteInteger(wallObject.Id);
+            packet.WriteString(wallObject.Id.ToString());
             packet.WriteInteger(wallObject.Logic.FurnitureDefinition.SpriteId);
             packet.WriteString(wallObject.WallLocation);
             packet.WriteString(wallObject.Logic.StuffData.GetLegacyString());
