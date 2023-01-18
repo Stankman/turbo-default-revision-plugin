@@ -3,15 +3,19 @@ using System.Collections.Generic;
 using Turbo.Core.Packets.Messages;
 using Turbo.Core.Packets.Revisions;
 using Turbo.Packets.Outgoing.Handshake;
+using Turbo.Packets.Outgoing.Inventory.Badges;
 using Turbo.Packets.Outgoing.Inventory.Furni;
 using Turbo.Packets.Outgoing.Navigator;
 using Turbo.Packets.Outgoing.Notifications;
 using Turbo.Packets.Outgoing.Room.Action;
 using Turbo.Packets.Outgoing.Room.Engine;
+using Turbo.Packets.Outgoing.Room.Furniture;
 using Turbo.Packets.Outgoing.Room.Permissions;
 using Turbo.Packets.Outgoing.Room.Session;
+using Turbo.Packets.Outgoing.Users;
 using TurboDefaultRevisionPlugin.Headers;
 using TurboDefaultRevisionPlugin.Parsers.Handshake;
+using TurboDefaultRevisionPlugin.Parsers.Inventory.Badges;
 using TurboDefaultRevisionPlugin.Parsers.Inventory.Furni;
 using TurboDefaultRevisionPlugin.Parsers.Navigator;
 using TurboDefaultRevisionPlugin.Parsers.Room.Action;
@@ -19,14 +23,18 @@ using TurboDefaultRevisionPlugin.Parsers.Room.Avatar;
 using TurboDefaultRevisionPlugin.Parsers.Room.Engine;
 using TurboDefaultRevisionPlugin.Parsers.Room.Furniture;
 using TurboDefaultRevisionPlugin.Parsers.Room.Session;
+using TurboDefaultRevisionPlugin.Parsers.Users;
 using TurboDefaultRevisionPlugin.Serializers.Handshake;
+using TurboDefaultRevisionPlugin.Serializers.Inventory.Badges;
 using TurboDefaultRevisionPlugin.Serializers.Inventory.Furni;
 using TurboDefaultRevisionPlugin.Serializers.Navigator;
 using TurboDefaultRevisionPlugin.Serializers.Notifications;
 using TurboDefaultRevisionPlugin.Serializers.Rooms.Action;
 using TurboDefaultRevisionPlugin.Serializers.Rooms.Engine;
+using TurboDefaultRevisionPlugin.Serializers.Rooms.Furniture;
 using TurboDefaultRevisionPlugin.Serializers.Rooms.Permissions;
 using TurboDefaultRevisionPlugin.Serializers.Rooms.Session;
+using TurboDefaultRevisionPlugin.Serializers.Users;
 
 namespace TurboDefaultRevisionPlugin
 {
@@ -62,11 +70,17 @@ namespace TurboDefaultRevisionPlugin
 
             #region Inventory
 
+            #region Badges
+            Parsers.Add(Incoming.GetBadges, new GetBadgesParser());
+            Parsers.Add(Incoming.SetActivatedBadges, new SetActivatedBadgesParser());
+            #endregion
+
             #region Furni
             Parsers.Add(Incoming.RequestFurniInventory, new RequestFurniInventoryParser());
             Parsers.Add(Incoming.RequestFurniInventoryWhenNotInRoom, new RequestFurniInventoryWhenNotInRoomParser());
             Parsers.Add(Incoming.RequestRoomPropertySet, new RequestRoomPropertySetParser());
             #endregion
+
             #endregion
 
             #region Room
@@ -107,6 +121,7 @@ namespace TurboDefaultRevisionPlugin
 
             #region Furniture
             Parsers.Add(Incoming.ThrowDice, new ThrowDiceParser());
+            Parsers.Add(Incoming.SetCustomStackingHeight, new SetCustomStackingHeightParser());
             Parsers.Add(Incoming.CloseDice, new DiceOffParser());
             #endregion
 
@@ -146,6 +161,10 @@ namespace TurboDefaultRevisionPlugin
             Parsers.Add(Incoming.RoomsWithHighestScoreSearch, new RoomsWithHighestScoreSearchParser());
             Parsers.Add(Incoming.SetNewNavigatorWindowPreferences, new SetNewNavigatorWindowPreferencesParser());
             #endregion
+
+            #region Users
+            Parsers.Add(Incoming.GetSelectedBadges, new GetSelectedBadgesParser());
+            #endregion
         }
 
         private void RegisterSerializers()
@@ -158,6 +177,11 @@ namespace TurboDefaultRevisionPlugin
             #endregion
 
             #region Inventory
+
+            #region Badges
+            Serializers.Add(typeof(BadgeReceivedMessage), new BadgeReceivedSerializer(Outgoing.BadgeReceived));
+            Serializers.Add(typeof(BadgeMessage), new BadgeSerializer(Outgoing.Badge));
+            #endregion
 
             #region Furni
             Serializers.Add(typeof(FurniListAddOrUpdateMessage), new FurniListAddOrUpdateSerializer(Outgoing.FurniListAddOrUpdate));
@@ -220,6 +244,10 @@ namespace TurboDefaultRevisionPlugin
             Serializers.Add(typeof(UserChangeMessage), new UserChangeSerializer(Outgoing.UserChange));
             #endregion
 
+            #region Furniture
+            Serializers.Add(typeof(CustomStackingHeightUpdateMessage), new CustomStackingHeightUpdateSerializer(Outgoing.CustomStackingHeightUpdate));
+            #endregion
+
             #region Permissions
             Serializers.Add(typeof(YouAreControllerMessage), new YouAreControllerSerializer(Outgoing.YouAreController));
             Serializers.Add(typeof(YouAreNotControllerMessage), new YouAreNotControllerSerializer(Outgoing.YouAreNotController));
@@ -234,6 +262,10 @@ namespace TurboDefaultRevisionPlugin
             Serializers.Add(typeof(CloseConnectionMessage), new CloseConnectionSerializer(Outgoing.CloseConnection));
             #endregion
 
+            #endregion
+
+            #region Users
+            Serializers.Add(typeof(UserBadgesMessage), new UserBadgesSerializer(Outgoing.UserBadges));
             #endregion
         }
     }

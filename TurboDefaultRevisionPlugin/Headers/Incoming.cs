@@ -16,11 +16,17 @@
 
         #region Inventory
 
+        #region Badges
+        public const int GetBadges = 2769;
+        public const int SetActivatedBadges = 644;
+        #endregion
+
         #region Furni
         public const int RequestFurniInventory = 3150;
         public const int RequestFurniInventoryWhenNotInRoom = 3500;
         public const int RequestRoomPropertySet = 711;
         #endregion
+
         #endregion
 
         #region Navigator
@@ -93,6 +99,7 @@
 
         #region Furniture
         public const int ThrowDice = 1990;
+        public const int SetCustomStackingHeight = 3839;
         public const int CloseDice = 1533;
         #endregion
 
@@ -103,6 +110,10 @@
         public const int ChangeQueue = 3093;
         #endregion
 
+        #endregion
+
+        #region Users
+        public const int GetSelectedBadges = 2091;
         #endregion
     }
 }

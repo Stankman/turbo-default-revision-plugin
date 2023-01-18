@@ -10,6 +10,12 @@ namespace TurboDefaultRevisionPlugin.Headers
         #endregion
 
         #region Inventory
+
+        #region Badges
+        public const int BadgeReceived = 2493;
+        public const int Badge = 717;
+        #endregion
+
         #region Furni
         public const int FurniListAddOrUpdate = 104;
         public const int FurniListInvalidate = 3151;
@@ -17,6 +23,7 @@ namespace TurboDefaultRevisionPlugin.Headers
         public const int FurniList = 994;
         public const int PostItPlaced = 1501;
         #endregion
+
         #endregion
 
         #region Navigator
@@ -70,6 +77,10 @@ namespace TurboDefaultRevisionPlugin.Headers
         public const int UserChange = 3920;
         #endregion
 
+        #region Furniture
+        public const int CustomStackingHeightUpdate = 2816;
+        #endregion;
+
         #region Permissions
         public const int YouAreOwner = 339;
         public const int YouAreController = 780;
@@ -83,6 +94,11 @@ namespace TurboDefaultRevisionPlugin.Headers
         public const int CantConnect = 899;
         public const int CloseConnection = 122;
         #endregion
+
+        #endregion
+
+        #region Users
+        public const int UserBadges = 1087;
         #endregion
     }
 }
