@@ -100,5 +100,14 @@ namespace TurboDefaultRevisionPlugin.Headers
         #region Users
         public const int UserBadges = 1087;
         #endregion
+
+        #region Wired
+        public const int WiredOpen = 1830;
+        public const int WiredConditionData = 1108;
+        public const int WiredEffectData = 1434;
+        public const int WiredRewardResult = 178;
+        public const int WiredSaved = 1155;
+        public const int WiredTriggerData = 383;
+        #endregion
     }
 }

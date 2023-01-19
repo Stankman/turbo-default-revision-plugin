@@ -13,6 +13,7 @@ using Turbo.Packets.Outgoing.Room.Furniture;
 using Turbo.Packets.Outgoing.Room.Permissions;
 using Turbo.Packets.Outgoing.Room.Session;
 using Turbo.Packets.Outgoing.Users;
+using Turbo.Packets.Outgoing.Wired;
 using TurboDefaultRevisionPlugin.Headers;
 using TurboDefaultRevisionPlugin.Parsers.Handshake;
 using TurboDefaultRevisionPlugin.Parsers.Inventory.Badges;
@@ -24,6 +25,7 @@ using TurboDefaultRevisionPlugin.Parsers.Room.Engine;
 using TurboDefaultRevisionPlugin.Parsers.Room.Furniture;
 using TurboDefaultRevisionPlugin.Parsers.Room.Session;
 using TurboDefaultRevisionPlugin.Parsers.Users;
+using TurboDefaultRevisionPlugin.Parsers.Wired;
 using TurboDefaultRevisionPlugin.Serializers.Handshake;
 using TurboDefaultRevisionPlugin.Serializers.Inventory.Badges;
 using TurboDefaultRevisionPlugin.Serializers.Inventory.Furni;
@@ -35,6 +37,7 @@ using TurboDefaultRevisionPlugin.Serializers.Rooms.Furniture;
 using TurboDefaultRevisionPlugin.Serializers.Rooms.Permissions;
 using TurboDefaultRevisionPlugin.Serializers.Rooms.Session;
 using TurboDefaultRevisionPlugin.Serializers.Users;
+using TurboDefaultRevisionPlugin.Serializers.Wired;
 
 namespace TurboDefaultRevisionPlugin
 {
@@ -165,6 +168,14 @@ namespace TurboDefaultRevisionPlugin
             #region Users
             Parsers.Add(Incoming.GetSelectedBadges, new GetSelectedBadgesParser());
             #endregion
+
+            #region Wired
+            Parsers.Add(Incoming.ApplySnapshot, new ApplySnapshotParser());
+            Parsers.Add(Incoming.OpenWired, new OpenParser());
+            Parsers.Add(Incoming.UpdateAction, new UpdateActionParser());
+            Parsers.Add(Incoming.UpdateCondition, new UpdateConditionParser());
+            Parsers.Add(Incoming.UpdateTrigger, new UpdateTriggerParser());
+            #endregion
         }
 
         private void RegisterSerializers()
@@ -266,6 +277,15 @@ namespace TurboDefaultRevisionPlugin
 
             #region Users
             Serializers.Add(typeof(UserBadgesMessage), new UserBadgesSerializer(Outgoing.UserBadges));
+            #endregion
+
+            #region Wired
+            Serializers.Add(typeof(OpenMessage), new OpenSerializer(Outgoing.WiredOpen));
+            Serializers.Add(typeof(WiredConditionDataMessage), new WiredConditionDataSerializer(Outgoing.WiredConditionData));
+            Serializers.Add(typeof(WiredEffectDataMessage), new WiredEffectDataSerializer(Outgoing.WiredEffectData));
+            Serializers.Add(typeof(WiredRewardResultMessage), new WiredRewardResultSerializer(Outgoing.WiredRewardResult));
+            Serializers.Add(typeof(WiredSavedMessage), new WiredSavedSerializer(Outgoing.WiredSaved));
+            Serializers.Add(typeof(WiredTriggerDataMessage), new WiredTriggerDataSerializer(Outgoing.WiredTriggerData));
             #endregion
         }
     }

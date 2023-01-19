@@ -115,5 +115,13 @@
         #region Users
         public const int GetSelectedBadges = 2091;
         #endregion
+
+        #region Wired
+        public const int ApplySnapshot = 3373;
+        public const int OpenWired = 768;
+        public const int UpdateAction = 2281;
+        public const int UpdateCondition = 3203;
+        public const int UpdateTrigger = 1520;
+        #endregion
     }
 }
