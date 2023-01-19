@@ -12,15 +12,17 @@ namespace TurboDefaultRevisionPlugin.Parsers.Wired
         {
             var itemId = packet.PopInt();
 
+            var totalInts = packet.PopInt();
             List<int> integerParams = new();
 
-            for (int i = 0; i < packet.PopInt(); i++) integerParams.Add(packet.PopInt());
+            for (int i = 0; i < totalInts; i++) integerParams.Add(packet.PopInt());
 
             var stringParam = packet.PopString();
 
+            var totalIds = packet.PopInt();
             List<int> selectedIds = new();
 
-            for (int i = 0; i < packet.PopInt(); i++) selectedIds.Add(packet.PopInt());
+            for (int i = 0; i < totalIds; i++) selectedIds.Add(packet.PopInt());
 
             var selectionCode = packet.PopInt();
 
