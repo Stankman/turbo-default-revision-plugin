@@ -15,6 +15,7 @@ using Turbo.Packets.Outgoing.Room.Session;
 using Turbo.Packets.Outgoing.Users;
 using Turbo.Packets.Outgoing.Wired;
 using TurboDefaultRevisionPlugin.Headers;
+using TurboDefaultRevisionPlugin.Parsers.Catalog;
 using TurboDefaultRevisionPlugin.Parsers.Handshake;
 using TurboDefaultRevisionPlugin.Parsers.Inventory.Badges;
 using TurboDefaultRevisionPlugin.Parsers.Inventory.Furni;
@@ -53,12 +54,51 @@ namespace TurboDefaultRevisionPlugin
         {
             Parsers = new Dictionary<int, IParser>();
             Serializers = new Dictionary<Type, ISerializer>();
+
             RegisterParsers();
             RegisterSerializers();
         }
 
         private void RegisterParsers()
         {
+            #region Catalog
+            Parsers.Add(Incoming.BuildersClubPlaceRoomItem, new BuildersClubPlaceRoomItemParser());
+            Parsers.Add(Incoming.BuildersClubPlaceWallItem, new BuildersClubPlaceWallItemParser());
+            Parsers.Add(Incoming.BuildersClubQueryFurniCount, new BuildersClubQueryFurniCountParser());
+            Parsers.Add(Incoming.ChargeFirework, new ChargeFireworkParser());
+            Parsers.Add(Incoming.GetBonusRareInfo, new GetBonusRareInfoParser());
+            Parsers.Add(Incoming.GetBundleDiscountRuleset, new GetBundleDiscountRulesetParser());
+            Parsers.Add(Incoming.GetCatalogIndex, new GetCatalogIndexParser());
+            Parsers.Add(Incoming.GetCatalogPage, new GetCatalogPageParser());
+            Parsers.Add(Incoming.GetCatalogPageWithEarliestExpiry, new GetCatalogPageWithEarliestExpiryParser());
+            Parsers.Add(Incoming.GetClubGiftInfo, new GetClubGiftInfoParser());
+            Parsers.Add(Incoming.GetClubOffers, new GetClubOffersParser());
+            Parsers.Add(Incoming.GetDirectClubBuyAvailable, new GetDirectClubBuyAvailableParser());
+            Parsers.Add(Incoming.GetGiftWrappingConfiguration, new GetGiftWrappingConfigurationParser());
+            Parsers.Add(Incoming.GetHabboBasicMembershipExtendOffer, new GetHabboBasicMembershipExtendOfferParser());
+            Parsers.Add(Incoming.GetHabboClubExtendOffer, new GetHabboClubExtendOfferParser());
+            Parsers.Add(Incoming.GetIsOfferGiftable, new GetIsOfferGiftableParser());
+            Parsers.Add(Incoming.GetLimitedOfferAppearingNext, new GetLimitedOfferAppearingNextParser());
+            Parsers.Add(Incoming.GetNextTargetedOffer, new GetNextTargetedOfferParser());
+            Parsers.Add(Incoming.GetProductOffer, new GetProductOfferParser());
+            Parsers.Add(Incoming.GetRoomAdPurchaseInfo, new GetRoomAdPurchaseInfoParser());
+            Parsers.Add(Incoming.GetSeasonalCalendarDailyOffer, new GetSeasonalCalendarDailyOfferParser());
+            Parsers.Add(Incoming.GetSellablePetPalettes, new GetSellablePetPalettesParser());
+            Parsers.Add(Incoming.GetTargetedOffer, new GetTargetedOfferParser());
+            Parsers.Add(Incoming.MarkCatalogNewAdditionsPageOpened, new MarkCatalogNewAdditionsPageOpenedParser());
+            Parsers.Add(Incoming.PurchaseBasicMembershipExtension, new PurchaseBasicMembershipExtensionParser());
+            Parsers.Add(Incoming.PurchaseFromCatalogAsGift, new PurchaseFromCatalogAsGiftParser());
+            Parsers.Add(Incoming.PurchaseFromCatalog, new PurchaseFromCatalogParser());
+            Parsers.Add(Incoming.PurchaseRoomAd, new PurchaseRoomAdParser());
+            Parsers.Add(Incoming.PurchaseTargetedOffer, new PurchaseTargetedOfferParser());
+            Parsers.Add(Incoming.PurchaseVipMembershipExtension, new PurchaseVipMembershipExtensionParser());
+            Parsers.Add(Incoming.RedeemVoucher, new RedeemVoucherParser());
+            Parsers.Add(Incoming.RoomAdPurchaseInitiated, new RoomAdPurchaseInitiatedParser());
+            Parsers.Add(Incoming.SelectClubGift, new SelectClubGiftParser());
+            Parsers.Add(Incoming.SetTargetedOfferState, new SetTargetedOfferStateParser());
+            Parsers.Add(Incoming.ShopTargetedOfferViewed, new ShopTargetedOfferViewedParser());
+            #endregion
+
             #region Handshake
             Parsers.Add(Incoming.ClientHello, new ClientHelloParser());
             Parsers.Add(Incoming.SSOTicket, new SSOTicketParser());
@@ -180,6 +220,9 @@ namespace TurboDefaultRevisionPlugin
 
         private void RegisterSerializers()
         {
+            #region Catalog
+            #endregion
+
             #region Handshake
             Serializers.Add(typeof(AuthenticationOKMessage), new AuthenticationOKSerializer(Outgoing.AuthenticationOK));
             Serializers.Add(typeof(PingMessage), new PingSerializer(Outgoing.Ping));

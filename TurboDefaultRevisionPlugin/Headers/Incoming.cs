@@ -2,6 +2,44 @@
 {
     public static class Incoming
     {
+        #region Catalog
+        public const int BuildersClubPlaceRoomItem = 1051;
+        public const int BuildersClubPlaceWallItem = 462;
+        public const int BuildersClubQueryFurniCount = 2529;
+        public const int ChargeFirework = -1;
+        public const int GetBonusRareInfo = 957;
+        public const int GetBundleDiscountRuleset = 223;
+        public const int GetCatalogIndex = 1195;
+        public const int GetCatalogPage = 412;
+        public const int GetCatalogPageWithEarliestExpiry = 3135;
+        public const int GetClubGiftInfo = 487;
+        public const int GetClubOffers = 3285;
+        public const int GetDirectClubBuyAvailable = 801;
+        public const int GetGiftWrappingConfiguration = 418;
+        public const int GetHabboBasicMembershipExtendOffer = 603;
+        public const int GetHabboClubExtendOffer = 2462;
+        public const int GetIsOfferGiftable = 1347;
+        public const int GetLimitedOfferAppearingNext = 410;
+        public const int GetNextTargetedOffer = 596;
+        public const int GetProductOffer = 2594;
+        public const int GetRoomAdPurchaseInfo = 1075;
+        public const int GetSeasonalCalendarDailyOffer = 3257;
+        public const int GetSellablePetPalettes = 1756;
+        public const int GetTargetedOffer = 2487;
+        public const int MarkCatalogNewAdditionsPageOpened = 2150;
+        public const int PurchaseBasicMembershipExtension = 2735;
+        public const int PurchaseFromCatalogAsGift = 1411;
+        public const int PurchaseFromCatalog = 3492;
+        public const int PurchaseRoomAd = 777;
+        public const int PurchaseTargetedOffer = 1826;
+        public const int PurchaseVipMembershipExtension = 3407;
+        public const int RedeemVoucher = 339;
+        public const int RoomAdPurchaseInitiated = 2283;
+        public const int SelectClubGift = 2276;
+        public const int SetTargetedOfferState = 2041;
+        public const int ShopTargetedOfferViewed = 3483;
+        #endregion
+
         #region Handshake
         public const int ClientHello = 4000;
         public const int SSOTicket = 2419;
