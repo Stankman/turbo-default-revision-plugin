@@ -2,6 +2,18 @@ namespace TurboDefaultRevisionPlugin.Headers
 {
     public static class Outgoing
     {
+        #region Catalog
+        public const int BonusRareInfo = 1533;
+        public const int BuildersClubFurniCount = 3828;
+        public const int BuildersClubSubscriptionStatus = 1452;
+        public const int BundleDiscountRuleset = 2347;
+        public const int CatalogIndex = 1032;
+        public const int CatalogPage = 804;
+        public const int PurchaseOk = 869;
+        public const int PurchaseError = 1404;
+        public const int PurchaseNotAllowed = 3770;
+        #endregion
+
         #region Handshake
         public const int AuthenticationOK = 2491;
         public const int Ping = 3928;

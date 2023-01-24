@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Turbo.Core.Packets.Messages;
 using Turbo.Core.Packets.Revisions;
+using Turbo.Packets.Outgoing.Catalog;
 using Turbo.Packets.Outgoing.Handshake;
 using Turbo.Packets.Outgoing.Inventory.Badges;
 using Turbo.Packets.Outgoing.Inventory.Furni;
@@ -27,6 +28,7 @@ using TurboDefaultRevisionPlugin.Parsers.Room.Furniture;
 using TurboDefaultRevisionPlugin.Parsers.Room.Session;
 using TurboDefaultRevisionPlugin.Parsers.Users;
 using TurboDefaultRevisionPlugin.Parsers.Wired;
+using TurboDefaultRevisionPlugin.Serializers.Catalog;
 using TurboDefaultRevisionPlugin.Serializers.Handshake;
 using TurboDefaultRevisionPlugin.Serializers.Inventory.Badges;
 using TurboDefaultRevisionPlugin.Serializers.Inventory.Furni;
@@ -221,6 +223,15 @@ namespace TurboDefaultRevisionPlugin
         private void RegisterSerializers()
         {
             #region Catalog
+            Serializers.Add(typeof(BonusRareInfoMessage), new BonusRareInfoSerializer(Outgoing.BonusRareInfo));
+            Serializers.Add(typeof(BuildersClubFurniCountMessage), new BuildersClubFurniCountSerializer(Outgoing.BuildersClubFurniCount));
+            Serializers.Add(typeof(BuildersClubSubscriptionStatusMessage), new BuildersClubSubscriptionStatusSerializer(Outgoing.BuildersClubSubscriptionStatus));
+            Serializers.Add(typeof(BundleDiscountRulesetMessage), new BundleDiscountRulesetSerializer(Outgoing.BundleDiscountRuleset));
+            Serializers.Add(typeof(CatalogIndexMessage), new CatalogIndexerializer(Outgoing.CatalogIndex));
+            Serializers.Add(typeof(CatalogPageMessage), new CatalogPageSerializer(Outgoing.CatalogPage));
+            Serializers.Add(typeof(PurchaseErrorMessage), new PurchaseErrorSerializer(Outgoing.PurchaseError));
+            Serializers.Add(typeof(PurchaseNotAllowedMessage), new PurchaseNotAllowedSerializer(Outgoing.PurchaseNotAllowed));
+            Serializers.Add(typeof(PurchaseOkMessage), new PurchaseOkSerializer(Outgoing.PurchaseOk));
             #endregion
 
             #region Handshake
