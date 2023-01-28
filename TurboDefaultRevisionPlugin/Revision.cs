@@ -229,6 +229,7 @@ namespace TurboDefaultRevisionPlugin
             Serializers.Add(typeof(BundleDiscountRulesetMessage), new BundleDiscountRulesetSerializer(Outgoing.BundleDiscountRuleset));
             Serializers.Add(typeof(CatalogIndexMessage), new CatalogIndexerializer(Outgoing.CatalogIndex));
             Serializers.Add(typeof(CatalogPageMessage), new CatalogPageSerializer(Outgoing.CatalogPage));
+            Serializers.Add(typeof(ProductOfferMessage), new ProductOfferSerializer(Outgoing.ProductOffer));
             Serializers.Add(typeof(PurchaseErrorMessage), new PurchaseErrorSerializer(Outgoing.PurchaseError));
             Serializers.Add(typeof(PurchaseNotAllowedMessage), new PurchaseNotAllowedSerializer(Outgoing.PurchaseNotAllowed));
             Serializers.Add(typeof(PurchaseOkMessage), new PurchaseOkSerializer(Outgoing.PurchaseOk));

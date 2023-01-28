@@ -9,9 +9,11 @@ namespace TurboDefaultRevisionPlugin.Headers
         public const int BundleDiscountRuleset = 2347;
         public const int CatalogIndex = 1032;
         public const int CatalogPage = 804;
-        public const int PurchaseOk = 869;
+        public const int ProductOffer = 3388;
         public const int PurchaseError = 1404;
         public const int PurchaseNotAllowed = 3770;
+        public const int PurchaseOk = 869;
+
         #endregion
 
         #region Handshake
