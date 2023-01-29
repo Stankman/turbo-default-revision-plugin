@@ -9,10 +9,12 @@ using Turbo.Packets.Outgoing.Inventory.Furni;
 using Turbo.Packets.Outgoing.Navigator;
 using Turbo.Packets.Outgoing.Notifications;
 using Turbo.Packets.Outgoing.Room.Action;
+using Turbo.Packets.Outgoing.Room.Chat;
 using Turbo.Packets.Outgoing.Room.Engine;
 using Turbo.Packets.Outgoing.Room.Furniture;
 using Turbo.Packets.Outgoing.Room.Permissions;
 using Turbo.Packets.Outgoing.Room.Session;
+using Turbo.Packets.Outgoing.RoomSettings;
 using Turbo.Packets.Outgoing.Users;
 using Turbo.Packets.Outgoing.Wired;
 using TurboDefaultRevisionPlugin.Headers;
@@ -26,6 +28,7 @@ using TurboDefaultRevisionPlugin.Parsers.Room.Avatar;
 using TurboDefaultRevisionPlugin.Parsers.Room.Engine;
 using TurboDefaultRevisionPlugin.Parsers.Room.Furniture;
 using TurboDefaultRevisionPlugin.Parsers.Room.Session;
+using TurboDefaultRevisionPlugin.Parsers.RoomSettings;
 using TurboDefaultRevisionPlugin.Parsers.Users;
 using TurboDefaultRevisionPlugin.Parsers.Wired;
 using TurboDefaultRevisionPlugin.Serializers.Catalog;
@@ -35,10 +38,12 @@ using TurboDefaultRevisionPlugin.Serializers.Inventory.Furni;
 using TurboDefaultRevisionPlugin.Serializers.Navigator;
 using TurboDefaultRevisionPlugin.Serializers.Notifications;
 using TurboDefaultRevisionPlugin.Serializers.Rooms.Action;
+using TurboDefaultRevisionPlugin.Serializers.Rooms.Chat;
 using TurboDefaultRevisionPlugin.Serializers.Rooms.Engine;
 using TurboDefaultRevisionPlugin.Serializers.Rooms.Furniture;
 using TurboDefaultRevisionPlugin.Serializers.Rooms.Permissions;
 using TurboDefaultRevisionPlugin.Serializers.Rooms.Session;
+using TurboDefaultRevisionPlugin.Serializers.RoomSettings;
 using TurboDefaultRevisionPlugin.Serializers.Users;
 using TurboDefaultRevisionPlugin.Serializers.Wired;
 
@@ -128,6 +133,33 @@ namespace TurboDefaultRevisionPlugin
 
             #endregion
 
+            #region Navigator
+            Parsers.Add(Incoming.CanCreateRoom, new CanCreateRoomParser());
+            Parsers.Add(Incoming.CreateFlat, new CreateFlatParser());
+            Parsers.Add(Incoming.ForwardToSomeRoom, new ForwardToSomeRoomParser());
+            Parsers.Add(Incoming.GetPopularRoomTags, new GetPopularRoomTagsParser());
+            Parsers.Add(Incoming.GetGuestRoom, new GetGuestRoomParser());
+            Parsers.Add(Incoming.GetUserEventCats, new GetUserEventCatsParser());
+            Parsers.Add(Incoming.GetUserFlatCats, new GetUserFlatCatsParser());
+            Parsers.Add(Incoming.MyFavouriteRoomsSearch, new MyFavouriteRoomsSearchParser());
+            Parsers.Add(Incoming.MyFriendsRoomsSearch, new MyFriendsRoomsSearchParser());
+            Parsers.Add(Incoming.MyGuildBasesSearch, new MyGuildBasesSearchParser());
+            Parsers.Add(Incoming.MyRoomHistorySearch, new MyRoomHistorySearchParser());
+            Parsers.Add(Incoming.MyRoomRightsSearch, new MyRoomRightsSearchParser());
+            Parsers.Add(Incoming.MyRoomsSearch, new MyRoomsSearchParser());
+            Parsers.Add(Incoming.NavigatorAddCollapsedCategory, new NavigatorAddCollapsedCategoryParser());
+            Parsers.Add(Incoming.NavigatorAddSavedSearch, new NavigatorAddSavedSearchParser());
+            Parsers.Add(Incoming.NavigatorDeleteSavedSearch, new NavigatorDeleteSavedSearchParser());
+            Parsers.Add(Incoming.NavigatorRemoveCollapsedCategory, new NavigatorRemoveCollapsedCategoryParser());
+            Parsers.Add(Incoming.NavigatorSetSearchCodeViewMode, new NavigatorSetSearchCodeViewModeParser());
+            Parsers.Add(Incoming.NewNavigatorInit, new NewNavigatorInitParser());
+            Parsers.Add(Incoming.NewNavigatorSearch, new NewNavigatorSearchParser());
+            Parsers.Add(Incoming.PopularRoomsSearch, new PopularRoomsSearchParser());
+            Parsers.Add(Incoming.RoomsWhereMyFriendsAreSearch, new RoomsWhereMyFriendsAreSearchParser());
+            Parsers.Add(Incoming.RoomsWithHighestScoreSearch, new RoomsWithHighestScoreSearchParser());
+            Parsers.Add(Incoming.SetNewNavigatorWindowPreferences, new SetNewNavigatorWindowPreferencesParser());
+            #endregion
+
             #region Room
 
             #region Action
@@ -179,32 +211,15 @@ namespace TurboDefaultRevisionPlugin
 
             #endregion
 
-            #region Navigator
-            Parsers.Add(Incoming.CanCreateRoom, new CanCreateRoomParser());
-            Parsers.Add(Incoming.CreateFlat, new CreateFlatParser());
+            #region RoomSettings
             Parsers.Add(Incoming.DeleteRoom, new DeleteRoomParser());
-            Parsers.Add(Incoming.ForwardToSomeRoom, new ForwardToSomeRoomParser());
-            Parsers.Add(Incoming.GetPopularRoomTags, new GetPopularRoomTagsParser());
-            Parsers.Add(Incoming.GetGuestRoom, new GetGuestRoomParser());
-            Parsers.Add(Incoming.GetUserEventCats, new GetUserEventCatsParser());
-            Parsers.Add(Incoming.GetUserFlatCats, new GetUserFlatCatsParser());
-            Parsers.Add(Incoming.MyFavouriteRoomsSearch, new MyFavouriteRoomsSearchParser());
-            Parsers.Add(Incoming.MyFriendsRoomsSearch, new MyFriendsRoomsSearchParser());
-            Parsers.Add(Incoming.MyGuildBasesSearch, new MyGuildBasesSearchParser());
-            Parsers.Add(Incoming.MyRoomHistorySearch, new MyRoomHistorySearchParser());
-            Parsers.Add(Incoming.MyRoomRightsSearch, new MyRoomRightsSearchParser());
-            Parsers.Add(Incoming.MyRoomsSearch, new MyRoomsSearchParser());
-            Parsers.Add(Incoming.NavigatorAddCollapsedCategory, new NavigatorAddCollapsedCategoryParser());
-            Parsers.Add(Incoming.NavigatorAddSavedSearch, new NavigatorAddSavedSearchParser());
-            Parsers.Add(Incoming.NavigatorDeleteSavedSearch, new NavigatorDeleteSavedSearchParser());
-            Parsers.Add(Incoming.NavigatorRemoveCollapsedCategory, new NavigatorRemoveCollapsedCategoryParser());
-            Parsers.Add(Incoming.NavigatorSetSearchCodeViewMode, new NavigatorSetSearchCodeViewModeParser());
-            Parsers.Add(Incoming.NewNavigatorInit, new NewNavigatorInitParser());
-            Parsers.Add(Incoming.NewNavigatorSearch, new NewNavigatorSearchParser());
-            Parsers.Add(Incoming.PopularRoomsSearch, new PopularRoomsSearchParser());
-            Parsers.Add(Incoming.RoomsWhereMyFriendsAreSearch, new RoomsWhereMyFriendsAreSearchParser());
-            Parsers.Add(Incoming.RoomsWithHighestScoreSearch, new RoomsWithHighestScoreSearchParser());
-            Parsers.Add(Incoming.SetNewNavigatorWindowPreferences, new SetNewNavigatorWindowPreferencesParser());
+            Parsers.Add(Incoming.GetBannedUsersFromRoom, new GetBannedUsersFromRoomParser());
+            Parsers.Add(Incoming.GetCustomRoomFilter, new GetCustomRoomFilterParser());
+            Parsers.Add(Incoming.GetFlatControllers, new GetFlatControllersParser());
+            Parsers.Add(Incoming.GetRoomSettings, new GetRoomSettingsParser());
+            Parsers.Add(Incoming.SaveRoomSettings, new SaveRoomSettingsParser());
+            Parsers.Add(Incoming.UpdateRoomCategoryAndTradeSettings, new UpdateRoomCategoryAndTradeSettingsParser());
+            Parsers.Add(Incoming.UpdateRoomFilter, new UpdateRoomFilterParser());
             #endregion
 
             #region Users
@@ -266,6 +281,7 @@ namespace TurboDefaultRevisionPlugin
             Serializers.Add(typeof(NavigatorSavedSearchesMessage), new NavigatorSavedSearchesSerializer(Outgoing.NavigatorSavedSearches));
             Serializers.Add(typeof(NavigatorEventCategoriesMessage), new NavigatorEventCategoriesSerializer(Outgoing.NavigatorEventCategories));
             Serializers.Add(typeof(NavigatorSettingsMessage), new NavigatorSettingsSerializer(Outgoing.NavigatorSettings));
+            Serializers.Add(typeof(RoomInfoUpdatedMessage), new RoomInfoUpdatedSerializer(Outgoing.RoomInfoUpdated));
             #endregion
 
             #region Notifications
@@ -281,6 +297,15 @@ namespace TurboDefaultRevisionPlugin
             Serializers.Add(typeof(ExpressionMessage), new ExpressionSerializer(Outgoing.Expression));
             Serializers.Add(typeof(SleepMessage), new SleepSerializer(Outgoing.Sleep));
             Serializers.Add(typeof(UseObjectMessage), new UseObjectSerializer(Outgoing.UseObject));
+            #endregion
+
+            #region Chat
+            Serializers.Add(typeof(ChatMessage), new ChatSerializer(Outgoing.Chat));
+            Serializers.Add(typeof(FloodControlMessage), new FloodControlSerializer(Outgoing.FloodControl));
+            Serializers.Add(typeof(RemaningMutePeriodMessage), new RemainingMutePeriodSerializer(Outgoing.RemainingMutePeriod));
+            Serializers.Add(typeof(RoomChatSettingsMessage), new RoomChatSettingsSerializer(Outgoing.RoomChatSettings));
+            Serializers.Add(typeof(RoomFilterSettingsMessage), new RoomFilterSettingsSerializer(Outgoing.RoomFilterSettings));
+            Serializers.Add(typeof(UserTypingMessage), new UserTypingSerializer(Outgoing.UserTyping));
             #endregion
 
             #region Engine
@@ -328,6 +353,21 @@ namespace TurboDefaultRevisionPlugin
             Serializers.Add(typeof(CloseConnectionMessage), new CloseConnectionSerializer(Outgoing.CloseConnection));
             #endregion
 
+            #endregion
+
+            #region RoomSettings
+            Serializers.Add(typeof(BannedUsersFromRoomMessage), new BannedUsersFromRoomSerializer(Outgoing.BannedUsersFromRoom));
+            Serializers.Add(typeof(FlatControllerAddedMessage), new FlatControllerAddedSerializer(Outgoing.FlatControllerAdded));
+            Serializers.Add(typeof(FlatControllerRemovedMessage), new FlatControllerRemovedSerializer(Outgoing.FlatControllerRemoved));
+            Serializers.Add(typeof(FlatControllersMessage), new FlatControllersSerializer(Outgoing.FlatControllers));
+            Serializers.Add(typeof(MuteAllInRoomMessage), new MuteAllInRoomSerializer(Outgoing.MuteAllInRoom));
+            Serializers.Add(typeof(NoSuchFlatMessage), new NoSuchFlatSerializer(Outgoing.NoSuchFlat));
+            Serializers.Add(typeof(RoomSettingsDataMessage), new RoomSettingsDataSerializer(Outgoing.RoomSettingsData));
+            Serializers.Add(typeof(RoomSettingsErrorMessage), new RoomSettingsErrorSerializer(Outgoing.RoomSettingsError));
+            Serializers.Add(typeof(RoomSettingsSavedMessage), new RoomSettingsSavedSerializer(Outgoing.RoomSettingsSaved));
+            Serializers.Add(typeof(RoomSettingsSaveErrorMessage), new RoomSettingsSaveErrorSerializer(Outgoing.RoomSettingsSaveError));
+            Serializers.Add(typeof(ShowEnforceRoomCategoryDialogMessage), new ShowEnforceRoomCategoryDialogSerializer(Outgoing.ShowEnforceRoomCategoryDialog));
+            Serializers.Add(typeof(UserUnbannedFromRoomMessage), new UserUnbannedFromRoomSerializer(Outgoing.UserUnbannedFromRoom));
             #endregion
 
             #region Users

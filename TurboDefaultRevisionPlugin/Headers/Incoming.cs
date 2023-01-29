@@ -70,7 +70,6 @@
         #region Navigator
         public const int CanCreateRoom = 2128;
         public const int CreateFlat = 2752;
-        public const int DeleteRoom = 532;
         public const int ForwardToSomeRoom = 1703;
         public const int GetPopularRoomTags = 826;
         public const int GetGuestRoom = 2230;
@@ -148,6 +147,17 @@
         public const int ChangeQueue = 3093;
         #endregion
 
+        #endregion
+
+        #region RoomSettings
+        public const int DeleteRoom = 532;
+        public const int GetBannedUsersFromRoom = 2267;
+        public const int GetCustomRoomFilter = 1911;
+        public const int GetFlatControllers = 3385;
+        public const int GetRoomSettings = 3129;
+        public const int SaveRoomSettings = 1969;
+        public const int UpdateRoomCategoryAndTradeSettings = 1265;
+        public const int UpdateRoomFilter = 3001;
         #endregion
 
         #region Users

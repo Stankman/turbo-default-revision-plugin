@@ -1,14 +1,14 @@
-﻿using Turbo.Core.Packets.Messages;
-using Turbo.Packets.Incoming.Navigator;
+using Turbo.Core.Packets.Messages;
+using Turbo.Packets.Incoming.RoomSettings;
 using Turbo.Packets.Parsers;
 
-namespace TurboDefaultRevisionPlugin.Parsers.Navigator
+namespace TurboDefaultRevisionPlugin.Parsers.RoomSettings
 {
     public class DeleteRoomParser : AbstractParser<DeleteRoomMessage>
     {
         public override IMessageEvent Parse(IClientPacket packet) => new DeleteRoomMessage
         {
-            RoomID = packet.PopInt()
+            RoomId = packet.PopInt()
         };
     }
 }

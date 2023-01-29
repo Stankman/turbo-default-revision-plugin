@@ -47,6 +47,7 @@ namespace TurboDefaultRevisionPlugin.Headers
         public const int NavigatorSavedSearches = 3984;
         public const int NavigatorEventCategories = 3244;
         public const int NavigatorSettings = 2875;
+        public const int RoomInfoUpdated = 3297;
         #endregion
 
         #region Notifications
@@ -62,6 +63,15 @@ namespace TurboDefaultRevisionPlugin.Headers
         public const int Expression = 1631;
         public const int Sleep = 1797;
         public const int UseObject = 1774;
+        #endregion
+
+        #region Chat
+        public const int Chat = 1446;
+        public const int FloodControl = 566;
+        public const int RemainingMutePeriod = 826;
+        public const int RoomChatSettings = 1191;
+        public const int RoomFilterSettings = 2937;
+        public const int UserTyping = 1717;
         #endregion
 
         #region Engine
@@ -108,6 +118,22 @@ namespace TurboDefaultRevisionPlugin.Headers
         public const int CantConnect = 899;
         public const int CloseConnection = 122;
         #endregion
+
+        #endregion
+
+        #region RoomSettings
+        public const int BannedUsersFromRoom = 1869;
+        public const int FlatControllerAdded = 2088;
+        public const int FlatControllerRemoved = 1327;
+        public const int FlatControllers = 1284;
+        public const int MuteAllInRoom = 2533;
+        public const int NoSuchFlat = 84;
+        public const int RoomSettingsData = 1498;
+        public const int RoomSettingsError = 2897;
+        public const int RoomSettingsSaved = 948;
+        public const int RoomSettingsSaveError = 1555;
+        public const int ShowEnforceRoomCategoryDialog = 3896;
+        public const int UserUnbannedFromRoom = 3429;
 
         #endregion
 
