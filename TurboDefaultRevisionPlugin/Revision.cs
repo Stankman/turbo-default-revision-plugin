@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Turbo.Core.Packets.Messages;
 using Turbo.Core.Packets.Revisions;
+using Turbo.Packets.Incoming.Navigator;
 using Turbo.Packets.Outgoing.Catalog;
 using Turbo.Packets.Outgoing.Handshake;
 using Turbo.Packets.Outgoing.Inventory.Badges;
@@ -16,7 +17,6 @@ using Turbo.Packets.Outgoing.Room.Permissions;
 using Turbo.Packets.Outgoing.Room.Session;
 using Turbo.Packets.Outgoing.RoomSettings;
 using Turbo.Packets.Outgoing.Users;
-using Turbo.Packets.Outgoing.Wired;
 using TurboDefaultRevisionPlugin.Headers;
 using TurboDefaultRevisionPlugin.Parsers.Catalog;
 using TurboDefaultRevisionPlugin.Parsers.Handshake;
@@ -46,6 +46,7 @@ using TurboDefaultRevisionPlugin.Serializers.Rooms.Session;
 using TurboDefaultRevisionPlugin.Serializers.RoomSettings;
 using TurboDefaultRevisionPlugin.Serializers.Users;
 using TurboDefaultRevisionPlugin.Serializers.Wired;
+using TurboWiredPlugin.Packets.Outgoing.Wired;
 
 namespace TurboDefaultRevisionPlugin
 {
@@ -252,6 +253,7 @@ namespace TurboDefaultRevisionPlugin
 
             #region Handshake
             Serializers.Add(typeof(AuthenticationOKMessage), new AuthenticationOKSerializer(Outgoing.AuthenticationOK));
+            Serializers.Add(typeof(GenericErrorMessage), new GenericErrorSerializer(Outgoing.GenericError));
             Serializers.Add(typeof(PingMessage), new PingSerializer(Outgoing.Ping));
             Serializers.Add(typeof(UniqueMachineIdMessage), new UniqueMachineIdSerializer(Outgoing.UniqueMachineID));
             Serializers.Add(typeof(UserObjectMessage), new UserObjectSerializer(Outgoing.UserObject));
@@ -275,13 +277,16 @@ namespace TurboDefaultRevisionPlugin
             #endregion
 
             #region Navigator
-            Serializers.Add(typeof(NavigatorMetaDataMessage), new NavigatorMetaDataSerializer(Outgoing.NavigatorMetaData));
+            Serializers.Add(typeof(DoorbellMessage), new DoorbellSerializer(Outgoing.Doorbell));
             Serializers.Add(typeof(GetGuestRoomResultMessage), new GetGuestRoomResultSerializer(Outgoing.GetGuestRoomResult));
-            Serializers.Add(typeof(NavigatorLiftedRoomsMessage), new NavigatorLiftedRoomsSerializer(Outgoing.NavigatorLiftedRooms));
-            Serializers.Add(typeof(NavigatorSavedSearchesMessage), new NavigatorSavedSearchesSerializer(Outgoing.NavigatorSavedSearches));
             Serializers.Add(typeof(NavigatorEventCategoriesMessage), new NavigatorEventCategoriesSerializer(Outgoing.NavigatorEventCategories));
+            Serializers.Add(typeof(NavigatorLiftedRoomsMessage), new NavigatorLiftedRoomsSerializer(Outgoing.NavigatorLiftedRooms));
+            Serializers.Add(typeof(NavigatorMetaDataMessage), new NavigatorMetaDataSerializer(Outgoing.NavigatorMetaData));
+            Serializers.Add(typeof(NavigatorSavedSearchesMessage), new NavigatorSavedSearchesSerializer(Outgoing.NavigatorSavedSearches));
             Serializers.Add(typeof(NavigatorSettingsMessage), new NavigatorSettingsSerializer(Outgoing.NavigatorSettings));
+            Serializers.Add(typeof(NewNavigatorPreferencesMessage), new NewNavigatorPreferencesSerializer(Outgoing.NewNavigatorPreferences));
             Serializers.Add(typeof(RoomInfoUpdatedMessage), new RoomInfoUpdatedSerializer(Outgoing.RoomInfoUpdated));
+            Serializers.Add(typeof(UserFlatCatsMessage), new UserFlatCatsSerializer(Outgoing.UserFlatCats));
             #endregion
 
             #region Notifications
@@ -346,11 +351,14 @@ namespace TurboDefaultRevisionPlugin
             #endregion
 
             #region Session
-            Serializers.Add(typeof(OpenConnectionMessage), new OpenConnectionSerializer(Outgoing.OpenConnection));
-            Serializers.Add(typeof(RoomReadyMessage), new RoomReadySerializer(Outgoing.RoomReady));
-            Serializers.Add(typeof(RoomForwardMessage), new RoomForwardSerializer(Outgoing.RoomForward));
             Serializers.Add(typeof(CantConnectMessage), new CantConnectSerializer(Outgoing.CantConnect));
             Serializers.Add(typeof(CloseConnectionMessage), new CloseConnectionSerializer(Outgoing.CloseConnection));
+            Serializers.Add(typeof(FlatAccessibleMessage), new FlatAccessibleSerializer(Outgoing.FlatAccessible));
+            Serializers.Add(typeof(OpenConnectionMessage), new OpenConnectionSerializer(Outgoing.OpenConnection));
+            Serializers.Add(typeof(RoomForwardMessage), new RoomForwardSerializer(Outgoing.RoomForward));
+            Serializers.Add(typeof(RoomReadyMessage), new RoomReadySerializer(Outgoing.RoomReady));
+            Serializers.Add(typeof(YouArePlayingGameMessage), new YouArePlayingGameSerializer(Outgoing.YouArePlayingGame));
+            Serializers.Add(typeof(YouAreSpectatorMessage), new YouAreSpectatorSerializer(Outgoing.YouAreSpectator));
             #endregion
 
             #endregion

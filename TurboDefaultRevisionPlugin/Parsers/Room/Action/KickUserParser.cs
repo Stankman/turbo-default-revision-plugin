@@ -8,7 +8,7 @@ namespace TurboDefaultRevisionPlugin.Parsers.Room.Action
     {
         public override IMessageEvent Parse(IClientPacket packet) => new KickUserMessage
         {
-            UserId = packet.PopInt()
+            PlayerId = packet.PopInt()
         };
     }
 }

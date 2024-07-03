@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using System.Reflection;
 using Turbo.Core.Packets.Revisions;
 using Turbo.Core.Plugins;
 using Turbo.Packets.Revisions;
@@ -20,7 +21,7 @@ namespace TurboDefaultRevisionPlugin
             _logger = logger;
 
             IRevision myRevision = new Revision();
-            string nitroRev = "NITRO-2-0-0";
+            string nitroRev = "NITRO-1-6-6";
             _revisionManager.Revisions.Add(myRevision.Revision, myRevision);
 
             _revisionManager.Revisions.Add(nitroRev, myRevision);

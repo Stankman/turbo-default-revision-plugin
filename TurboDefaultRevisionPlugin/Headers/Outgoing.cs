@@ -18,6 +18,7 @@ namespace TurboDefaultRevisionPlugin.Headers
 
         #region Handshake
         public const int AuthenticationOK = 2491;
+        public const int GenericError = 1600;
         public const int Ping = 3928;
         public const int UniqueMachineID = 1488;
         public const int UserObject = 2725;
@@ -41,13 +42,17 @@ namespace TurboDefaultRevisionPlugin.Headers
         #endregion
 
         #region Navigator
+        public const int Doorbell = 2309;
         public const int GetGuestRoomResult = 687;
         public const int NavigatorMetaData = 3052;
         public const int NavigatorLiftedRooms = 3104;
         public const int NavigatorSavedSearches = 3984;
         public const int NavigatorEventCategories = 3244;
         public const int NavigatorSettings = 2875;
+        public const int NewNavigatorPreferences = 518;
         public const int RoomInfoUpdated = 3297;
+        public const int UserFlatCats = 1562;
+
         #endregion
 
         #region Notifications
@@ -112,11 +117,15 @@ namespace TurboDefaultRevisionPlugin.Headers
         #endregion
 
         #region Session
+        public const int CantConnect = 899;
+        public const int CloseConnection = 122;
+        public const int FlatAccessible = 3783;
+        public const int GamePlayerValue = 2324;
         public const int OpenConnection = 758;
         public const int RoomReady = 2031;
         public const int RoomForward = 160;
-        public const int CantConnect = 899;
-        public const int CloseConnection = 122;
+        public const int YouArePlayingGame = 448;
+        public const int YouAreSpectator = 1033;
         #endregion
 
         #endregion

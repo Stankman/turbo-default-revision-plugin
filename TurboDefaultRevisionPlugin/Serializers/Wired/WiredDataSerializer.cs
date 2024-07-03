@@ -1,5 +1,5 @@
 using Turbo.Core.Packets.Messages;
-using Turbo.Packets.Outgoing.Wired;
+using TurboWiredPlugin.Packets.Outgoing;
 
 namespace TurboDefaultRevisionPlugin.Serializers.Wired
 {

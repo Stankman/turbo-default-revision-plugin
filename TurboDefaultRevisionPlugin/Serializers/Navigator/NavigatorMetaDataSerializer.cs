@@ -14,21 +14,36 @@ namespace TurboDefaultRevisionPlugin.Serializers.Navigator
 
         protected override void Serialize(IServerPacket packet, NavigatorMetaDataMessage message)
         {
-            packet.WriteInteger(message.TopLevelContexts.Count);
-
-            message.TopLevelContexts.ForEach(topLevelContext =>
+            if(message.TopLevelContexts.Count == 0)
             {
-                packet.WriteString(topLevelContext.SearchCode);
-                packet.WriteInteger(topLevelContext.SavedSearches?.Count ?? 0);
+                packet.WriteInteger(0);
+            }
+            else
+            {
+                packet.WriteInteger(message.TopLevelContexts.Count);
 
-                topLevelContext.SavedSearches?.ForEach(savedSearch =>
+                foreach (var topLevelContext in message.TopLevelContexts)
                 {
-                    packet.WriteInteger(savedSearch.Id);
-                    packet.WriteString(savedSearch.SearchCode);
-                    packet.WriteString(savedSearch.Filter);
-                    packet.WriteString(savedSearch.Localization);
-                });
-            });
+                    packet.WriteString(topLevelContext.SearchCode);
+
+                    if (topLevelContext.SavedSearches != null)
+                    {
+                        packet.WriteInteger(topLevelContext.SavedSearches.Count);
+
+                        foreach (var savedSearch in topLevelContext.SavedSearches)
+                        {
+                            packet.WriteInteger(savedSearch.Id);
+                            packet.WriteString(savedSearch.SearchCode);
+                            packet.WriteString(savedSearch.Filter);
+                            packet.WriteString(savedSearch.Localization);
+                        }
+                    }
+                    else
+                    {
+                        packet.WriteInteger(0);
+                    }
+                }
+            }
         }
     }
 }

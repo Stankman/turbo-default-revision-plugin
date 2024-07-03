@@ -8,7 +8,7 @@ namespace TurboDefaultRevisionPlugin.Parsers.Room.Action
     {
         public override IMessageEvent Parse(IClientPacket packet) => new MuteUserMessage
         {
-            UserId = packet.PopInt(),
+            PlayerId = packet.PopInt(),
             RoomId = packet.PopInt(),
             Minutes = packet.PopInt()
         };

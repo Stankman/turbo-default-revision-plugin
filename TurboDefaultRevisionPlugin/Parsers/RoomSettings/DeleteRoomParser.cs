@@ -1,5 +1,5 @@
 using Turbo.Core.Packets.Messages;
-using Turbo.Packets.Incoming.RoomSettings;
+using Turbo.Packets.Incoming.Navigator;
 using Turbo.Packets.Parsers;
 
 namespace TurboDefaultRevisionPlugin.Parsers.RoomSettings
