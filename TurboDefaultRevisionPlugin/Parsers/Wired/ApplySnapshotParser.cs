@@ -1,6 +1,6 @@
 using Turbo.Core.Packets.Messages;
+using Turbo.Packets.Incoming.Wired;
 using Turbo.Packets.Parsers;
-using TurboWiredPlugin.Packets.Incoming.Wired;
 
 namespace TurboDefaultRevisionPlugin.Parsers.Wired
 {

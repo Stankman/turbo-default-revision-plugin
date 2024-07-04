@@ -104,8 +104,8 @@
                 public const int MuteAllInRoom = 3637;
                 public const int RemoveAllRights = 2683;
                 public const int RemoveRights = 2064;
-                public const int RoomUserKick = 1320;
-                public const int RoomUserMute = 3485;
+                public const int KickUser = 1320;
+                public const int MuteUser = 3485;
                 public const int UnbanUserFromRoom = 992;
                 #endregion
 

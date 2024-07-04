@@ -40,8 +40,5 @@
     <Reference Include="Turbo.Rooms">
       <HintPath>..\..\turbo\Turbo\bin\Debug\net8.0\Turbo.Rooms.dll</HintPath>
     </Reference>
-    <Reference Include="TurboWiredPlugin">
-      <HintPath>..\..\turbo\Turbo\bin\Debug\net8.0\plugins\TurboWiredPlugin.dll</HintPath>
-    </Reference>
   </ItemGroup>
 </Project>

@@ -17,6 +17,7 @@ using Turbo.Packets.Outgoing.Room.Permissions;
 using Turbo.Packets.Outgoing.Room.Session;
 using Turbo.Packets.Outgoing.RoomSettings;
 using Turbo.Packets.Outgoing.Users;
+using Turbo.Packets.Outgoing.Wired;
 using TurboDefaultRevisionPlugin.Headers;
 using TurboDefaultRevisionPlugin.Parsers.Catalog;
 using TurboDefaultRevisionPlugin.Parsers.Handshake;
@@ -46,7 +47,6 @@ using TurboDefaultRevisionPlugin.Serializers.Rooms.Session;
 using TurboDefaultRevisionPlugin.Serializers.RoomSettings;
 using TurboDefaultRevisionPlugin.Serializers.Users;
 using TurboDefaultRevisionPlugin.Serializers.Wired;
-using TurboWiredPlugin.Packets.Outgoing.Wired;
 
 namespace TurboDefaultRevisionPlugin
 {
@@ -171,8 +171,8 @@ namespace TurboDefaultRevisionPlugin
             Parsers.Add(Incoming.MuteAllInRoom, new MuteAllInRoomParser());
             Parsers.Add(Incoming.RemoveAllRights, new RemoveAllRightsParser());
             Parsers.Add(Incoming.RemoveRights, new RemoveRightsParser());
-            Parsers.Add(Incoming.RoomUserKick, new RoomUserKickParser());
-            Parsers.Add(Incoming.RoomUserMute, new RoomUserMuteParser());
+            Parsers.Add(Incoming.KickUser, new KickUserParser());
+            Parsers.Add(Incoming.MuteUser, new MuteUserParser());
             Parsers.Add(Incoming.UnbanUserFromRoom, new UnbanUserFromRoomParser());
             #endregion
 

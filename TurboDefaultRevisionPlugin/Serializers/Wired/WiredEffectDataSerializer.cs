@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using Turbo.Packets.Serializers;
 using Turbo.Core.Packets.Messages;
-using TurboWiredPlugin.Packets.Outgoing.Wired;
-using TurboWiredPlugin.Core.Data;
+using Turbo.Packets.Outgoing.Wired;
+using Turbo.Core.Game.Rooms.Object.Logic.Wired.Data;
 
 namespace TurboDefaultRevisionPlugin.Serializers.Wired
 {
