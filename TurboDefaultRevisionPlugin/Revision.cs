@@ -166,6 +166,7 @@ namespace TurboDefaultRevisionPlugin
             #region Action
             Parsers.Add(Incoming.KickUser, new KickUserParser());
             Parsers.Add(Incoming.MuteUser, new MuteUserParser());
+            Parsers.Add(Incoming.AssignRights, new AssignRightsParser());
             #endregion
 
             #region Avatar
