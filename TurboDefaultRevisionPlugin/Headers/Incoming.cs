@@ -99,6 +99,7 @@
         #region Action
         public const int KickUser = 1320;
         public const int MuteUser = 3485;
+        public const int AssignRights = 808;
         #endregion
 
         #region Avatar
