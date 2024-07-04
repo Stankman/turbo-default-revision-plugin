@@ -14,12 +14,13 @@ namespace TurboDefaultRevisionPlugin.Serializers.Navigator
         protected override void Serialize(IServerPacket packet, NavigatorEventCategoriesMessage message)
         {
             packet.WriteInteger(message.EventCategories?.Count ?? 0);
-            message.EventCategories?.ForEach(category =>
+
+            foreach (var category in message.EventCategories)
             {
                 packet.WriteInteger(category.Id);
                 packet.WriteString(category.Name ?? string.Empty);
                 packet.WriteBoolean(category.Enabled);
-            });
+            }
         }
     }
 }

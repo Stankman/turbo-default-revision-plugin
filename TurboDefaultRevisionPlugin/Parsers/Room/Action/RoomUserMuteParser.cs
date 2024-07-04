@@ -4,9 +4,9 @@ using Turbo.Packets.Parsers;
 
 namespace TurboDefaultRevisionPlugin.Parsers.Room.Action
 {
-    public class MuteUserParser : AbstractParser<MuteUserMessage>
+    public class RoomUserMuteParser : AbstractParser<RoomUserMuteMessage>
     {
-        public override IMessageEvent Parse(IClientPacket packet) => new MuteUserMessage
+        public override IMessageEvent Parse(IClientPacket packet) => new RoomUserMuteMessage
         {
             PlayerId = packet.PopInt(),
             RoomId = packet.PopInt(),

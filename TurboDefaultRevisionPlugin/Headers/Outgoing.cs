@@ -22,6 +22,7 @@ namespace TurboDefaultRevisionPlugin.Headers
         public const int Ping = 3928;
         public const int UniqueMachineID = 1488;
         public const int UserObject = 2725;
+        public const int UserRights = 411;
         #endregion
 
         #region Inventory

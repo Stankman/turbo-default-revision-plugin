@@ -164,9 +164,16 @@ namespace TurboDefaultRevisionPlugin
             #region Room
 
             #region Action
-            Parsers.Add(Incoming.KickUser, new KickUserParser());
-            Parsers.Add(Incoming.MuteUser, new MuteUserParser());
+            Parsers.Add(Incoming.AmbassadorAlert, new AmbassadorAlertParser());
             Parsers.Add(Incoming.AssignRights, new AssignRightsParser());
+            Parsers.Add(Incoming.BanUserWithDuration, new BanUserWithDurationParser());
+            Parsers.Add(Incoming.LetUserIn, new LetUserInParser());
+            Parsers.Add(Incoming.MuteAllInRoom, new MuteAllInRoomParser());
+            Parsers.Add(Incoming.RemoveAllRights, new RemoveAllRightsParser());
+            Parsers.Add(Incoming.RemoveRights, new RemoveRightsParser());
+            Parsers.Add(Incoming.RoomUserKick, new RoomUserKickParser());
+            Parsers.Add(Incoming.RoomUserMute, new RoomUserMuteParser());
+            Parsers.Add(Incoming.UnbanUserFromRoom, new UnbanUserFromRoomParser());
             #endregion
 
             #region Avatar
@@ -258,6 +265,7 @@ namespace TurboDefaultRevisionPlugin
             Serializers.Add(typeof(PingMessage), new PingSerializer(Outgoing.Ping));
             Serializers.Add(typeof(UniqueMachineIdMessage), new UniqueMachineIdSerializer(Outgoing.UniqueMachineID));
             Serializers.Add(typeof(UserObjectMessage), new UserObjectSerializer(Outgoing.UserObject));
+            Serializers.Add(typeof(UserRightsMessage), new UserRightsSerializer(Outgoing.UserRights));
             #endregion
 
             #region Inventory

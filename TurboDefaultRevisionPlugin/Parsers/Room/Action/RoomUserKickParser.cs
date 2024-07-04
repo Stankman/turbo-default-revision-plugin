@@ -4,9 +4,9 @@ using Turbo.Packets.Parsers;
 
 namespace TurboDefaultRevisionPlugin.Parsers.Room.Action
 {
-    public class KickUserParser : AbstractParser<KickUserMessage>
+    public class RoomUserKickParser : AbstractParser<RoomUserKickMessage>
     {
-        public override IMessageEvent Parse(IClientPacket packet) => new KickUserMessage
+        public override IMessageEvent Parse(IClientPacket packet) => new RoomUserKickMessage
         {
             PlayerId = packet.PopInt()
         };

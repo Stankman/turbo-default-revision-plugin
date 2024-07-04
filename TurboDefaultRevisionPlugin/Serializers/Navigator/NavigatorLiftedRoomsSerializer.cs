@@ -15,13 +15,14 @@ namespace TurboDefaultRevisionPlugin.Serializers.Navigator
         protected override void Serialize(IServerPacket packet, NavigatorLiftedRoomsMessage message)
         {
             packet.WriteInteger(message.LiftedRooms?.Count ?? 0);
-            message.LiftedRooms?.ForEach(room =>
+
+            foreach (var room in message.LiftedRooms)
             {
                 packet.WriteInteger(room.FlatId);
                 packet.WriteInteger(room.Unused);
                 packet.WriteString(room.Image);
                 packet.WriteString(room.Caption);
-            });
+            }
         }
     }
 }

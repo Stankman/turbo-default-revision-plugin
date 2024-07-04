@@ -13,15 +13,15 @@ namespace TurboDefaultRevisionPlugin.Serializers.Navigator
 
         protected override void Serialize(IServerPacket packet, NavigatorSavedSearchesMessage message)
         {
-            packet.WriteInteger(message.SavedSearches?.Count ?? 0);
+            packet.WriteInteger(message.SavedSearches.Count);
 
-            message.SavedSearches?.ForEach(savedSearch =>
+            foreach (var savedSearch in message.SavedSearches)
             {
                 packet.WriteInteger(savedSearch.Id);
                 packet.WriteString(savedSearch.SearchCode ?? string.Empty);
                 packet.WriteString(savedSearch.Filter ?? string.Empty);
                 packet.WriteString(savedSearch.Localization ?? string.Empty);
-            });
+            }
         }
     }
 }
