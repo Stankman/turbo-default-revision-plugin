@@ -18,7 +18,25 @@ namespace TurboDefaultRevisionPlugin.Serializers.Navigator
 
         protected override void Serialize(IServerPacket packet, UserFlatCatsMessage message)
         {
-            
+            if (message.Categories.Count == 0)
+            {
+                packet.WriteInteger(0);
+            }
+            else
+            {
+                packet.WriteInteger(message.Categories.Count);
+
+                foreach (var category in message.Categories)
+                {
+                    packet.WriteInteger(category.Id);
+                    packet.WriteString(category.Name);
+                    packet.WriteBoolean(category.Visible);
+                    packet.WriteBoolean(category.Automatic);
+                    packet.WriteString(category.AutomaticCategoryKey);
+                    packet.WriteString(category.GlobalCategoryKey);
+                    packet.WriteBoolean(category.StaffOnly);
+                }
+            }
         }
     }
 }
