@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Turbo.Packets.Serializers;
 using Turbo.Core.Packets.Messages;
 using Turbo.Packets.Outgoing.Wired;
-using Turbo.Core.Game.Rooms.Object.Logic.Wired.Data;
+using Turbo.Core.Game.Wired.Data;
 
 namespace TurboDefaultRevisionPlugin.Serializers.Wired
 {
