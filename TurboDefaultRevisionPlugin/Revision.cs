@@ -243,6 +243,7 @@ namespace TurboDefaultRevisionPlugin
 
             #region Users
             Parsers.Add(Incoming.GetSelectedBadges, new GetSelectedBadgesParser());
+            Parsers.Add(Incoming.GetUserWallet, new GetUserWalletParser());
             #endregion
 
             #region Wired
@@ -401,6 +402,8 @@ namespace TurboDefaultRevisionPlugin
 
             #region Users
             Serializers.Add(typeof(UserBadgesMessage), new UserBadgesSerializer(Outgoing.UserBadges));
+            Serializers.Add(typeof(UserCreditsMessage), new UserCreditsSerializer(Outgoing.UserCredits));
+            Serializers.Add(typeof(UserCurrencyMessage), new UserCurrencySerializer(Outgoing.UserCurrency));
             #endregion
 
             #region Wired

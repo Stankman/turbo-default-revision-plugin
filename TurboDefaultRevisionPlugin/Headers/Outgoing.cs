@@ -151,6 +151,8 @@ namespace TurboDefaultRevisionPlugin.Headers
 
         #region Users
         public const int UserBadges = 1087;
+        public const int UserCredits = 3475;
+        public const int UserCurrency = 2018;
         #endregion
 
         #region Wired

@@ -175,6 +175,7 @@
 
                 #region Users
                 public const int GetSelectedBadges = 2091;
+                public const int GetUserWallet = 273;
                 #endregion
 
                 #region Wired
